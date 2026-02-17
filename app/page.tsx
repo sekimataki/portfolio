@@ -153,12 +153,12 @@ export default function Home() {
       {/* Fixed global header */}
       <header className="fixed top-0 left-0 right-3.75 z-20 h-[13vh] flex items-center justify-between px-12 md:px-20">
         <Link href="/">
-          <h1 className="font-mazeani text-[#71767D] text-3xl md:text-4xl font-normal tracking-tight cursor-pointer hover:opacity-70 transition-opacity uppercase">
+          <h1 className="font-mazeani text-[#71767D] text-3xl md:text-4xl font-normal tracking-tight cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all uppercase">
             Sangyu Xi
           </h1>
         </Link>
         <Link href="/about">
-          <h2 className="font-mazeani text-[#71767D] text-3xl md:text-4xl font-normal tracking-tight uppercase cursor-pointer hover:opacity-70 transition-opacity">
+          <h2 className="font-mazeani text-[#71767D] text-3xl md:text-4xl font-normal tracking-tight uppercase cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all">
             About
           </h2>
         </Link>
@@ -175,19 +175,19 @@ export default function Home() {
         </div>
 
         <div
-          className="absolute bottom-0 left-0 right-0 h-[265px] border-t border-white/30 z-10"
+          className="absolute bottom-0 left-0 w-screen h-[265px] border-t border-white/30 z-10"
           style={{
             backdropFilter: "blur(80px) saturate(80%)",
             WebkitBackdropFilter: "blur(80px) saturate(80%)",
-            backgroundColor: "rgba(255, 255, 255, 0.08)",
+            backgroundColor: "rgba(255, 255, 255, 0.2)",
           }}
         >
-          <div className="flex justify-between items-start px-20 pt-16 right-80">
+          <div className="flex justify-between items-start px-20 pt-16 right-0">
             <div className="flex flex-col gap-4">
               <h3 className="font-mazeani text-[#71767D] text-3xl md:text-4xl font-normal">
                 Product Designer
               </h3>
-              <div className="font-montserrat font-medium text-[#71767D] text-xl leading-relaxed">
+              <div className="font-montserrat font-medium text-[#71767D] text-lg leading-relaxed">
                 <p className="mb-1">
                   Design AI Teammates at{" "}
                   <a
@@ -215,13 +215,13 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex items-end gap-4">
+            <div className="flex items-center gap-8">
               {Array.from({ length: 7 }, (_, i) => (
                 <img
                   key={`recognition-${i + 1}`}
-                  src={`/recognition${i + 1}.png`}
+                  src={`/recognition${i + 1}.svg`}
                   alt={`Recognition ${i + 1}`}
-                  className="h-[40px] w-auto object-contain"
+                  className="w-[60px] h-auto object-contain"
                 />
               ))}
             </div>
@@ -230,9 +230,9 @@ export default function Home() {
       </section>
 
       {/* Section 2: Project Preview */}
-      <section className="relative z-10 h-screen snap-start px-12 md:px-16 pt-[13vh] pb-10">
+      <section className="relative z-10 h-screen snap-start px-12 md:px-16 pt-[12vh] pb-20">
 
-        <div className="mt-8 grid h-[calc(100%-2rem)] grid-cols-1 gap-8 lg:grid-cols-[7fr_3fr]">
+        <div className="mt-8 grid h-[calc(100%-2rem)] grid-cols-1 gap-8 lg:gap-24 lg:grid-cols-[7fr_3fr]">
           <div className="relative h-full rounded-sm bg-white/20 shadow-[4px_4px_10px_0px_rgba(171,171,171,0.75)] overflow-hidden">
             <div
               className={`absolute inset-0 transition-opacity duration-[400ms] ${previewVisible ? "opacity-100" : "opacity-0"}`}
@@ -270,7 +270,7 @@ export default function Home() {
                     {active ? (
                       <div className="mt-1 space-y-3 text-[#ff5432] transition-all duration-300">
                         <p className="font-montserrat text-2xl font-semibold">{project.subtitle}</p>
-                        <p className="font-montserrat text-[20px] leading-tight max-w-[24rem]">
+                        <p className="font-montserrat text-lg leading-tight max-w-[24rem]">
                           {project.description}
                         </p>
                       </div>
