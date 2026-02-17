@@ -219,7 +219,7 @@ export default function Home() {
               {Array.from({ length: 7 }, (_, i) => (
                 <img
                   key={`recognition-${i + 1}`}
-                  src={`/public/recognition${i + 1}.png`}
+                  src={`/recognition${i + 1}.png`}
                   alt={`Recognition ${i + 1}`}
                   className="h-[40px] w-auto object-contain"
                 />
