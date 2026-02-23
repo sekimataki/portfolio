@@ -17,14 +17,14 @@ const PROJECTS: Project[] = [
     label: "01 Airy",
     subtitle: "2022 | UX design",
     description: "Engage Scoliosis patients towards brace compliance",
-    image: "http://localhost:3845/assets/4db4e322e820f3989d62ddf41b2219285874d7e3.png",
+    image: "/airy-cover.png",
   },
   {
     id: "asana",
     label: "02 Asana",
     subtitle: "2025 | Product design",
     description: "Design AI Teammates experience for collaborative workflows",
-    image: "http://localhost:3845/assets/f421248924f015e73ab265fe75b6a830fc7e5e71.png",
+    image: "/asana-cover.png",
   },
   {
     id: "enlight",
@@ -45,7 +45,7 @@ const PROJECTS: Project[] = [
     label: "05 Nest Fit",
     subtitle: "2021 | Product design",
     description: "Instill confidence in home fitness",
-    image: "/nestfit-cover.png",
+    image: "/nestfit-cover.jpg",
   },
 ];
 
@@ -53,9 +53,9 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
   const [highlightPosition, setHighlightPosition] = useState({ x: 50, y: 50 });
-  const [activeProjectId, setActiveProjectId] = useState<Project["id"] | null>(null);
-  const [displayedProject, setDisplayedProject] = useState<Project | null>(null);
-  const [previewVisible, setPreviewVisible] = useState(false);
+  const [activeProjectId, setActiveProjectId] = useState<Project["id"]>("airy");
+  const [displayedProject, setDisplayedProject] = useState<Project>(PROJECTS[0]);
+  const [previewVisible, setPreviewVisible] = useState(true);
   const animationFrameRef = useRef<number | undefined>(undefined);
   const transitionTimerRef = useRef<number | undefined>(undefined);
 
@@ -219,7 +219,7 @@ export default function Home() {
               {Array.from({ length: 7 }, (_, i) => (
                 <img
                   key={`recognition-${i + 1}`}
-                  src={`/recognition${i + 1}.svg`}
+                  src={`recognition${i + 1}.svg`}
                   alt={`Recognition ${i + 1}`}
                   className="w-[60px] h-auto object-contain"
                 />
@@ -233,16 +233,27 @@ export default function Home() {
       <section className="relative z-10 h-screen snap-start px-12 md:px-16 pt-[12vh] pb-20">
 
         <div className="mt-8 grid h-[calc(100%-2rem)] grid-cols-1 gap-8 lg:gap-24 lg:grid-cols-[7fr_3fr]">
-          <div className="relative h-full rounded-sm bg-white/20 shadow-[4px_4px_10px_0px_rgba(171,171,171,0.75)] overflow-hidden">
+          <div className="relative h-[90%] rounded-sm bg-white/20 shadow-[4px_4px_10px_0px_rgba(171,171,171,0.75)] overflow-hidden">
             <div
               className={`absolute inset-0 transition-opacity duration-[400ms] ${previewVisible ? "opacity-100" : "opacity-0"}`}
             >
               {displayedProject ? (
-                <img
-                  src={displayedProject.image}
-                  alt={displayedProject.label}
-                  className="h-full w-full object-cover"
-                />
+                displayedProject.image.endsWith(".mp4") ? (
+                  <video
+                    src={displayedProject.image}
+                    className="h-full w-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={displayedProject.image}
+                    alt={displayedProject.label}
+                    className="h-full w-full object-cover"
+                  />
+                )
               ) : null}
             </div>
             {!displayedProject ? (
