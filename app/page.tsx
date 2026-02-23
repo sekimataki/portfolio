@@ -151,14 +151,14 @@ export default function Home() {
       />
 
       {/* Fixed global header */}
-      <header className="fixed top-0 left-0 right-3.75 z-20 h-[13vh] flex items-center justify-between px-12 md:px-20">
+      <header className="fixed top-0 left-0 right-0 z-20 h-[10vh] md:h-[13vh] flex items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20">
         <Link href="/">
-          <h1 className="font-mazeani text-[#71767D] text-3xl md:text-4xl font-normal tracking-tight cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all uppercase">
+          <h1 className="font-mazeani text-[#71767D] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all uppercase">
             Sangyu Xi
           </h1>
         </Link>
         <Link href="/about">
-          <h2 className="font-mazeani text-[#71767D] text-3xl md:text-4xl font-normal tracking-tight uppercase cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all">
+          <h2 className="font-mazeani text-[#71767D] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight uppercase cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all">
             About
           </h2>
         </Link>
@@ -166,8 +166,8 @@ export default function Home() {
 
       {/* Section 1 */}
       <section className="relative z-10 h-screen snap-start">
-        <div className="absolute top-[13vh] left-0 right-0 bottom-[265px] flex items-center justify-center z-10">
-          <div className="font-montserrat font-regular text-[#F9F8F8] text-4xl leading-[100px] tracking-[40px] uppercase text-left">
+        <div className="absolute top-[10vh] md:top-[13vh] left-0 right-0 bottom-[200px] sm:bottom-[240px] md:bottom-[265px] flex items-center justify-center z-10">
+          <div className="font-montserrat font-regular text-[#F9F8F8] text-2xl sm:text-3xl md:text-4xl leading-[60px] sm:leading-[80px] md:leading-[100px] tracking-[20px] sm:tracking-[30px] md:tracking-[40px] uppercase text-left">
             <p className="mb-0">DESIGN</p>
             <p className="mb-0">FOR/WITH</p>
             <p className="mb-0">AI</p>
@@ -175,19 +175,19 @@ export default function Home() {
         </div>
 
         <div
-          className="absolute bottom-0 left-0 w-screen h-[265px] border-t border-white/30 z-10"
+          className="absolute bottom-0 left-0 w-screen h-[200px] sm:h-[240px] md:h-[265px] border-t border-white/30 z-10"
           style={{
             backdropFilter: "blur(80px) saturate(80%)",
             WebkitBackdropFilter: "blur(80px) saturate(80%)",
             backgroundColor: "rgba(255, 255, 255, 0.2)",
           }}
         >
-          <div className="flex justify-between items-start px-20 pt-16 right-0">
-            <div className="flex flex-col gap-4">
-              <h3 className="font-mazeani text-[#71767D] text-3xl md:text-4xl font-normal">
+          <div className="flex flex-col sm:flex-row justify-between items-start px-5 sm:px-8 md:px-20 pt-6 sm:pt-10 md:pt-16 gap-4 sm:gap-0">
+            <div className="flex flex-col gap-2 sm:gap-4">
+              <h3 className="font-mazeani text-[#71767D] text-2xl sm:text-3xl md:text-4xl font-normal">
                 Product Designer
               </h3>
-              <div className="font-montserrat font-medium text-[#71767D] text-lg leading-relaxed">
+              <div className="font-montserrat font-medium text-[#71767D] text-sm sm:text-base md:text-lg leading-relaxed">
                 <p className="mb-1">
                   Design AI Teammates at{" "}
                   <a
@@ -210,18 +210,18 @@ export default function Home() {
                     Harvard
                   </a>
                 </p>
-                <p className="mb-0 font-medium">
+                <p className="mb-0 font-medium hidden sm:block">
                   Passionate about designing for AI-powered SaaS products
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-3 sm:gap-4 md:gap-8 flex-wrap sm:flex-nowrap">
               {Array.from({ length: 7 }, (_, i) => (
                 <img
                   key={`recognition-${i + 1}`}
                   src={`recognition${i + 1}.svg`}
                   alt={`Recognition ${i + 1}`}
-                  className="w-[60px] h-auto object-contain"
+                  className="w-[32px] sm:w-[40px] md:w-[60px] h-auto object-contain"
                 />
               ))}
             </div>
@@ -230,10 +230,10 @@ export default function Home() {
       </section>
 
       {/* Section 2: Project Preview */}
-      <section className="relative z-10 h-screen snap-start px-12 md:px-16 pt-[12vh] pb-20">
+      <section className="relative z-10 h-screen snap-start px-5 sm:px-8 md:px-12 lg:px-16 pt-[10vh] md:pt-[12vh] pb-8 md:pb-20">
 
-        <div className="mt-8 grid h-[calc(100%-2rem)] grid-cols-1 gap-8 lg:gap-24 lg:grid-cols-[7fr_3fr]">
-          <div className="relative h-[90%] rounded-sm bg-white/20 shadow-[4px_4px_10px_0px_rgba(171,171,171,0.75)] overflow-hidden">
+        <div className="mt-4 md:mt-8 flex flex-col lg:grid h-[calc(100%-1rem)] md:h-[calc(100%-2rem)] gap-4 sm:gap-6 lg:gap-24 lg:grid-cols-[7fr_3fr]">
+          <div className="relative h-[45vh] sm:h-[50vh] lg:h-[90%] rounded-sm bg-white/20 shadow-[4px_4px_10px_0px_rgba(171,171,171,0.75)] overflow-hidden order-2 lg:order-1">
             <div
               className={`absolute inset-0 transition-opacity duration-[400ms] ${previewVisible ? "opacity-100" : "opacity-0"}`}
             >
@@ -257,31 +257,31 @@ export default function Home() {
               ) : null}
             </div>
             {!displayedProject ? (
-              <div className="absolute inset-0 flex items-center justify-center font-montserrat text-xl text-black/35">
+              <div className="absolute inset-0 flex items-center justify-center font-montserrat text-base md:text-xl text-black/35">
                 Select a project preview
               </div>
             ) : null}
           </div>
 
-          <div className="pt-2">
-            <div className="space-y-8">
+          <div className="pt-0 lg:pt-2 order-1 lg:order-2">
+            <div className="flex lg:flex-col gap-3 sm:gap-4 lg:gap-0 lg:space-y-8 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
               {PROJECTS.map((project) => {
                 const active = activeProjectId === project.id;
                 return (
-                  <div key={project.id} className="transition-all duration-300">
+                  <div key={project.id} className="transition-all duration-300 flex-shrink-0 lg:flex-shrink">
                     <button
                       type="button"
                       onClick={() => handleProjectClick(project)}
-                      className={`block text-left font-mazeani text-4xl leading-[60px] transition-colors duration-300 ${
+                      className={`block text-left font-mazeani text-lg sm:text-2xl lg:text-4xl leading-tight sm:leading-snug lg:leading-[60px] transition-colors duration-300 whitespace-nowrap lg:whitespace-normal ${
                         active ? "text-[#ff5432]" : "text-black/50 hover:text-black/70"
                       }`}
                     >
                       {project.label}
                     </button>
                     {active ? (
-                      <div className="mt-1 space-y-3 text-[#ff5432] transition-all duration-300">
-                        <p className="font-montserrat text-2xl font-semibold">{project.subtitle}</p>
-                        <p className="font-montserrat text-lg leading-tight max-w-[24rem]">
+                      <div className="mt-1 space-y-1 sm:space-y-2 lg:space-y-3 text-[#ff5432] transition-all duration-300 hidden lg:block">
+                        <p className="font-montserrat text-lg lg:text-2xl font-semibold">{project.subtitle}</p>
+                        <p className="font-montserrat text-sm lg:text-lg leading-tight max-w-[24rem]">
                           {project.description}
                         </p>
                       </div>
@@ -290,6 +290,20 @@ export default function Home() {
                 );
               })}
             </div>
+            {activeProjectId && (
+              <div className="mt-2 text-[#ff5432] lg:hidden">
+                {(() => {
+                  const active = PROJECTS.find((p) => p.id === activeProjectId);
+                  if (!active) return null;
+                  return (
+                    <>
+                      <p className="font-montserrat text-sm sm:text-base font-semibold">{active.subtitle}</p>
+                      <p className="font-montserrat text-xs sm:text-sm leading-tight">{active.description}</p>
+                    </>
+                  );
+                })()}
+              </div>
+            )}
           </div>
         </div>
       </section>
