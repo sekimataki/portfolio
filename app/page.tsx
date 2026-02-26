@@ -189,7 +189,7 @@ export default function Home() {
               </h3>
               <div className="font-montserrat font-medium text-[#71767D] text-sm sm:text-base md:text-lg leading-relaxed">
                 <p className="mb-1">
-                  Design AI Teammates at{" "}
+                  Designing AI Teammates at{" "}
                   <a
                     href="https://asana.com/product/ai/ai-teammates"
                     target="_blank"
@@ -200,7 +200,7 @@ export default function Home() {
                   </a>
                 </p>
                 <p className="mb-1">
-                  Master in Design Engineering at{" "}
+                  Master's in Design Engineering at{" "}
                   <a
                     href="https://mde.harvard.edu/sangyu-xi/"
                     target="_blank"
