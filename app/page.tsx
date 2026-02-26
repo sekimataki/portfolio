@@ -194,7 +194,7 @@ export default function Home() {
                     href="https://asana.com/product/ai/ai-teammates"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-bold hover:underline transition-all"
+                    className="font-bold text-[#FF4500] hover:underline transition-all"
                   >
                     Asana
                   </a>
@@ -205,7 +205,7 @@ export default function Home() {
                     href="https://mde.harvard.edu/sangyu-xi/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-bold hover:underline transition-all"
+                    className="font-bold text-[#FF4500] hover:underline transition-all"
                   >
                     Harvard
                   </a>
