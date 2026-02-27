@@ -216,13 +216,27 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-3 sm:gap-4 md:gap-8 flex-wrap sm:flex-nowrap">
-              {Array.from({ length: 7 }, (_, i) => (
-                <img
+              {[
+                { src: "recognition1.svg", href: "https://www.designboom.com/technology/sangyu-xi-airy-scoliosis-brace-james-dyson-award-10-10-2022/" },
+                { src: "recognition2.svg", href: "https://designawards.core77.com/health-wellness/112463/Airy-scoliosis-brace" },
+                { src: "recognition3.svg", href: "https://innovationlabs.harvard.edu/venture/amimi" },
+                { src: "recognition4.svg", href: "https://vimeo.com/758864079" },
+                { src: "recognition5.svg", href: "https://www.dezeen.com/2022/10/10/sangyu-xi-airy-scoliosis-brace-teenagers-confidence/" },
+                { src: "recognition6.svg", href: "https://www.prototypesforhumanity.com/project/airy/" },
+                { src: "recognition7.svg", href: "https://www.dyson.com/newsroom/news/corporate/airy-james-dyson-award" },
+              ].map((item, i) => (
+                <a
                   key={`recognition-${i + 1}`}
-                  src={`recognition${i + 1}.svg`}
-                  alt={`Recognition ${i + 1}`}
-                  className="w-[32px] sm:w-[40px] md:w-[60px] h-auto object-contain"
-                />
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={item.src}
+                    alt={`Recognition ${i + 1}`}
+                    className="w-[32px] sm:w-[40px] md:w-[60px] h-auto object-contain hover:opacity-70 transition-opacity"
+                  />
+                </a>
               ))}
             </div>
           </div>
