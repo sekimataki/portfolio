@@ -8,18 +8,35 @@ export default function About() {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}>
       <div className="relative z-10 min-h-screen">
-        <header className="fixed top-0 left-0 right-0 z-20 h-[10vh] md:h-[13vh] flex items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20">
+      <header className="fixed top-0 left-0 right-0 z-20 h-[10vh] md:h-[13vh] flex items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20">
+        <div className="flex items-center gap-3">
           <Link href="/">
             <h1 className="font-mazeani text-[#71767D] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all uppercase">
               Sangyu Xi
             </h1>
           </Link>
-          <Link href="/about">
-            <h2 className="font-mazeani text-[#71767D] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight uppercase cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all">
-              About
-            </h2>
+        </div>
+        <nav className="flex items-center gap-6 sm:gap-8 md:gap-12">
+          <a
+            href="#work"
+            className="font-manrope text-[#71767D] text-base sm:text-lg md:text-xl font-medium tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+          >
+            Work
+          </a>
+          <Link
+            href="/vibe-coding"
+            className="font-manrope text-[#71767D] text-base sm:text-lg md:text-xl font-medium tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+          >
+            Vibe-coding
           </Link>
-        </header>
+          <Link
+            href="/about"
+            className="font-manrope text-[#71767D] text-base sm:text-lg md:text-xl font-medium tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+          >
+            Resume
+          </Link>
+        </nav>
+      </header>
 
         <div className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-5 sm:px-8 md:px-16 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
@@ -28,7 +45,7 @@ export default function About() {
                 Hello,<br />I&apos;m Sangyu.
               </h2>
 
-              <div className="space-y-4 sm:space-y-6 font-montserrat text-[#71767D] text-sm sm:text-base leading-relaxed">
+              <div className="space-y-4 sm:space-y-6 font-manrope text-[#71767D] text-sm sm:text-base leading-relaxed">
                 <p>
                 &ldquo;Sangyu(桑榆)&rdquo; comes from a Chinese ancient poem, meaning &ldquo;Sunset&rdquo;. In the poem, it suggests that if one loses something at the sunrise, she will gain something else at the sunset. Growing up, I embraced an adventurous spirit, always prioritizing the richness of experience of my journey.
                 </p>
@@ -69,7 +86,7 @@ export default function About() {
           <div className="mt-12 sm:mt-16 md:mt-20 space-y-10 sm:space-y-12 md:space-y-16">
             <section>
               <h3 className="font-mazeani text-[#000000] text-2xl sm:text-3xl mb-4 sm:mb-6">Education</h3>
-              <div className="space-y-4 sm:space-y-6 font-montserrat text-[#71767D]">
+              <div className="space-y-4 sm:space-y-6 font-manrope text-[#71767D]">
                 <div>
                   <h4 className="font-bold text-base sm:text-lg">Harvard - MS. Design Engineering</h4>
                   <p className="text-xs sm:text-sm text-gray-600">2023 - 2025</p>
@@ -90,7 +107,7 @@ export default function About() {
 
             <section>
               <h3 className="font-mazeani text-[#000000] text-2xl sm:text-3xl mb-4 sm:mb-6">Awards & Recognition</h3>
-              <div className="space-y-4 font-montserrat text-[#71767D]">
+              <div className="space-y-4 font-manrope text-[#71767D]">
                 <div>
                   <h4 className="font-bold text-sm sm:text-base">VP Content & Operations of MIT Product & Tech conference</h4>
                   <p className="text-xs sm:text-sm text-gray-600">2025 - Worked with a team of 50 to plan a 300+ attendee conference.</p>
@@ -120,19 +137,19 @@ export default function About() {
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 sm:gap-8">
               <div className="space-y-2">
                 <h4 className="font-mazeani text-[#71767D] text-xl sm:text-2xl uppercase">Sangyu Xi</h4>
-                <p className="font-montserrat text-xs sm:text-sm text-gray-600">
+                <p className="font-manrope text-xs sm:text-sm text-gray-600">
                   Are you an engineer or an entrepreneur?<br />
                   I always welcome new opportunities to exchange ideas and to explore collaborations.<br />
                 </p>
                 <a href="mailto:sangyuxi@gmail.com">
-                <p className="font-montserrat text-xs sm:text-sm text-[#FF4500]">Let&apos;s connect!</p>
+                <p className="font-manrope text-xs sm:text-sm text-[#FF4500]">Let&apos;s connect!</p>
                 </a>
               </div>
               <div className="space-y-2">
-                <h4 className="font-montserrat font-bold text-sm sm:text-base text-[#71767D]">Email</h4>
-                <p className="font-montserrat text-xs sm:text-sm text-[#FF4500]">sangyuxi@gmail.com</p>
-                <h4 className="font-montserrat font-bold text-sm sm:text-base text-[#71767D] mt-4">Phone</h4>
-                <p className="font-montserrat text-xs sm:text-sm text-gray-600">5136380161</p>
+                <h4 className="font-manrope font-bold text-sm sm:text-base text-[#71767D]">Email</h4>
+                <p className="font-manrope text-xs sm:text-sm text-[#FF4500]">sangyuxi@gmail.com</p>
+                <h4 className="font-manrope font-bold text-sm sm:text-base text-[#71767D] mt-4">Phone</h4>
+                <p className="font-manrope text-xs sm:text-sm text-gray-600">5136380161</p>
               </div>
             </div>
             <div className="flex gap-8 items-center mt-6 sm:mt-8">
@@ -142,7 +159,7 @@ export default function About() {
                 </svg>
               </a>
             </div>
-            <p className="font-montserrat text-xs text-gray-500 mt-6 sm:mt-8">
+            <p className="font-manrope text-xs text-gray-500 mt-6 sm:mt-8">
               Copyright &copy; 2026 sangyuxi.com. All rights reserved.
             </p>
           </footer>

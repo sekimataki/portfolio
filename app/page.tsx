@@ -152,70 +152,86 @@ export default function Home() {
 
       {/* Fixed global header */}
       <header className="fixed top-0 left-0 right-0 z-20 h-[10vh] md:h-[13vh] flex items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20">
-        <Link href="/">
-          <h1 className="font-mazeani text-[#71767D] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all uppercase">
-            Sangyu Xi
-          </h1>
-        </Link>
-        <Link href="/about">
-          <h2 className="font-mazeani text-[#71767D] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight uppercase cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all">
+        <div className="flex items-center gap-3">
+          <Link href="/">
+            <h1 className="font-mazeani text-[#71767D] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all uppercase">
+              Sangyu Xi
+            </h1>
+          </Link>
+        </div>
+        <nav className="flex items-center gap-6 sm:gap-8 md:gap-12">
+          <a
+            href="#work"
+            className="font-manrope text-[#71767D] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+          >
+            Work
+          </a>
+          <Link
+            href="/about"
+            className="font-manrope text-[#71767D] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+          >
             About
-          </h2>
-        </Link>
+          </Link>
+        </nav>
       </header>
 
       {/* Section 1 */}
-      <section className="relative z-10 h-screen snap-start">
-        <div className="absolute top-[10vh] md:top-[13vh] left-0 right-0 bottom-[200px] sm:bottom-[240px] md:bottom-[265px] flex items-center justify-center z-10">
-          <div className="font-montserrat font-regular text-[#F9F8F8] text-2xl sm:text-3xl md:text-4xl leading-[60px] sm:leading-[80px] md:leading-[100px] tracking-[20px] sm:tracking-[30px] md:tracking-[40px] uppercase text-left">
-            <p className="mb-0">DESIGN</p>
-            <p className="mb-0">FOR/WITH</p>
-            <p className="mb-0">AI</p>
+     <section className="relative z-10 h-screen snap-start">
+        <div className="absolute top-[9vh] md:top-[12vh] left-0 right-0 bottom-[80px] sm:bottom-[100px] md:bottom-[120px] flex items-center justify-center z-10 px-5 sm:px-8 md:px-12 lg:px-20">
+          <div className="max-w-3xl">
+            <h2 className="font-manrope font-medium text-[#71767D] tracking-[0.5px] text-xl sm:text-2xl md:text-3xl leading-snug sm:leading-snug md:leading-snug tracking-[0px] mb-6 sm:mb-8">
+              Designing a future where humanity thrives with AI
+            </h2>
+
+            <div className="font-manrope font-normal text-[#71767D] text-base sm:text-lg md:text-xl leading-relaxed mb-10 sm:mb-14 md:mb-16">
+              <p className="mb-4">
+                Hello, I&apos;m Sangyu, a product designer with{" "}
+                <a
+                  href="https://www.google.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#FE6F61] hover:underline transition-all"
+                >
+                  3 years
+                </a>
+                {" "}of experience across consulting and tech - currently designing AI Teammates at{" "}
+                <a
+                  href="https://asana.com/product/ai/ai-teammates"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#FE6F61] hover:underline transition-all"
+                >
+                  Asana
+                </a>
+                , building the future of multi-agent collaboration.
+              </p>
+              <p>
+                Graduated from Master&apos;s in Design Engineering at{" "}
+                <a
+                  href="https://mde.harvard.edu/sangyu-xi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#FE6F61] hover:underline transition-all"
+                >
+                  Harvard
+                </a>
+                , my passion lies at the intersection of design, business and technology. Today, that passion drives my work on helping humanity thrives with AI-powered products.
+              </p>
+            </div>
+
+            
           </div>
         </div>
 
         <div
-          className="absolute bottom-0 left-0 w-screen h-[200px] sm:h-[240px] md:h-[265px] border-t border-white/30 z-10"
+          className="absolute bottom-0 left-0 right-0 h-[80px] sm:h-[100px] md:h-[120px] border-t border-white/30 z-10"
           style={{
             backdropFilter: "blur(80px) saturate(80%)",
             WebkitBackdropFilter: "blur(80px) saturate(80%)",
             backgroundColor: "rgba(255, 255, 255, 0.2)",
           }}
         >
-          <div className="flex flex-col sm:flex-row justify-between items-start px-5 sm:px-8 md:px-20 pt-6 sm:pt-10 md:pt-16 gap-4 sm:gap-0">
-            <div className="flex flex-col gap-2 sm:gap-4">
-              <h3 className="font-mazeani text-[#71767D] text-2xl sm:text-3xl md:text-4xl font-normal">
-                Product Designer
-              </h3>
-              <div className="font-montserrat font-medium text-[#71767D] text-sm sm:text-base md:text-lg leading-relaxed">
-                <p className="mb-1">
-                  Designing AI Teammates at{" "}
-                  <a
-                    href="https://asana.com/product/ai/ai-teammates"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold text-[#FF4500] hover:underline transition-all"
-                  >
-                    Asana
-                  </a>
-                </p>
-                <p className="mb-1">
-                  Master's in Design Engineering at{" "}
-                  <a
-                    href="https://mde.harvard.edu/sangyu-xi/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold text-[#FF4500] hover:underline transition-all"
-                  >
-                    Harvard
-                  </a>
-                </p>
-                <p className="mb-0 font-medium hidden sm:block">
-                  Passionate about designing for AI-powered SaaS products
-                </p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 sm:gap-4 md:gap-8 flex-wrap sm:flex-nowrap">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 flex-wrap h-full px-5 sm:px-8 md:px-20">
               {[
                 { src: "recognition1.svg", href: "https://www.designboom.com/technology/sangyu-xi-airy-scoliosis-brace-james-dyson-award-10-10-2022/" },
                 { src: "recognition2.svg", href: "https://designawards.core77.com/health-wellness/112463/Airy-scoliosis-brace" },
@@ -234,17 +250,16 @@ export default function Home() {
                   <img
                     src={item.src}
                     alt={`Recognition ${i + 1}`}
-                    className="w-[32px] sm:w-[40px] md:w-[60px] h-auto object-contain hover:opacity-70 transition-opacity"
+                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[20px] sm:h-[24px] md:h-[30px]"} w-auto object-contain hover:opacity-70 transition-opacity`}
                   />
                 </a>
               ))}
             </div>
-          </div>
         </div>
       </section>
 
       {/* Section 2: Project Preview */}
-      <section className="relative z-10 h-screen snap-start px-5 sm:px-8 md:px-12 lg:px-16 pt-[10vh] md:pt-[12vh] pb-8 md:pb-20">
+      <section id="work" className="relative z-10 h-screen snap-start px-5 sm:px-8 md:px-12 lg:px-16 pt-[10vh] md:pt-[12vh] pb-8 md:pb-20">
 
         <div className="mt-4 md:mt-8 flex flex-col lg:grid h-[calc(100%-1rem)] md:h-[calc(100%-2rem)] gap-4 sm:gap-6 lg:gap-24 lg:grid-cols-[7fr_3fr]">
           <div className="relative h-[45vh] sm:h-[50vh] lg:h-[90%] rounded-sm bg-white/20 shadow-[4px_4px_10px_0px_rgba(171,171,171,0.75)] overflow-hidden order-2 lg:order-1">
@@ -271,7 +286,7 @@ export default function Home() {
               ) : null}
             </div>
             {!displayedProject ? (
-              <div className="absolute inset-0 flex items-center justify-center font-montserrat text-base md:text-xl text-black/35">
+              <div className="absolute inset-0 flex items-center justify-center font-manrope text-base md:text-xl text-black/35">
                 Select a project preview
               </div>
             ) : null}
@@ -294,8 +309,8 @@ export default function Home() {
                     </button>
                     {active ? (
                       <div className="mt-1 space-y-1 sm:space-y-2 lg:space-y-3 text-[#ff5432] transition-all duration-300 hidden lg:block">
-                        <p className="font-montserrat text-lg lg:text-2xl font-semibold">{project.subtitle}</p>
-                        <p className="font-montserrat text-sm lg:text-lg leading-tight max-w-[24rem]">
+                        <p className="font-manrope text-lg lg:text-2xl font-semibold">{project.subtitle}</p>
+                        <p className="font-manrope text-sm lg:text-lg leading-tight max-w-[24rem]">
                           {project.description}
                         </p>
                       </div>
@@ -311,8 +326,8 @@ export default function Home() {
                   if (!active) return null;
                   return (
                     <>
-                      <p className="font-montserrat text-sm sm:text-base font-semibold">{active.subtitle}</p>
-                      <p className="font-montserrat text-xs sm:text-sm leading-tight">{active.description}</p>
+                      <p className="font-manrope text-sm sm:text-base font-semibold">{active.subtitle}</p>
+                      <p className="font-manrope text-xs sm:text-sm leading-tight">{active.description}</p>
                     </>
                   );
                 })()}

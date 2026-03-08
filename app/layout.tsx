@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Montserrat } from "next/font/google";
+import { Playfair_Display, Manrope, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -7,6 +7,12 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const montserrat = Montserrat({
@@ -34,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${montserrat.variable} ${mazeani.variable} antialiased`}
+        className={`${playfair.variable} ${manrope.variable} ${montserrat.variable} ${mazeani.variable} antialiased`}
       >
         {children}
       </body>
