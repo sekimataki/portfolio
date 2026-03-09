@@ -19,21 +19,15 @@ export default function About() {
         <nav className="flex items-center gap-6 sm:gap-8 md:gap-12">
           <a
             href="#work"
-            className="font-manrope text-[#71767D] text-base sm:text-lg md:text-xl font-medium tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+            className="font-manrope text-[#71767D] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
           >
             Work
           </a>
           <Link
-            href="/vibe-coding"
-            className="font-manrope text-[#71767D] text-base sm:text-lg md:text-xl font-medium tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
-          >
-            Vibe-coding
-          </Link>
-          <Link
             href="/about"
-            className="font-manrope text-[#71767D] text-base sm:text-lg md:text-xl font-medium tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+            className="font-manrope text-[#71767D] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
           >
-            Resume
+            About
           </Link>
         </nav>
       </header>

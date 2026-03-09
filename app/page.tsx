@@ -187,7 +187,7 @@ export default function Home() {
               <p className="mb-4">
                 Hello, I&apos;m Sangyu, a product designer with{" "}
                 <a
-                  href="https://www.google.com"
+                  href="https://drive.google.com/file/d/1m6Dl7iCkKMU1fXzKkmmilk1AKGV0Cj8A/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-bold text-[#FE6F61] hover:underline transition-all"
