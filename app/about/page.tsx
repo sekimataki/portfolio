@@ -49,12 +49,6 @@ export default function About() {
             Work
           </Link>
           <Link
-            href="/#featured"
-            className="font-manrope text-[#6c6c6c] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
-          >
-            Featured
-          </Link>
-          <Link
             href="/about"
             className="font-manrope text-[#6c6c6c] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
           >
