@@ -1,38 +1,69 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function About() {
+  const [headerScrolled, setHeaderScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setHeaderScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden" style={{ backgroundColor: "rgba(255, 255, 255, 0.08)" }}>
-      <div className="relative z-10 min-h-screen">
-      <header className="fixed top-0 left-0 right-0 z-20 h-[10vh] md:h-[13vh] flex items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20">
+      <header
+        className={`fixed top-0 left-0 right-0 z-30 flex items-center justify-between px-5 pb-5 pt-10 transition-[background-color,backdrop-filter,border-color] duration-300 sm:px-8 md:px-12 lg:px-20 ${
+          headerScrolled
+            ? "border-b border-black/[0.06] bg-white/75 backdrop-blur-md backdrop-saturate-150"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
         <div className="flex items-center gap-3">
           <Link href="/">
             <h1 className="font-mazeani text-[#71767D] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all uppercase">
               Sangyu Xi
             </h1>
           </Link>
-        </div>
-        <nav className="flex items-center gap-6 sm:gap-8 md:gap-12">
           <a
-            href="#work"
-            className="font-manrope text-[#71767D] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+            href="https://www.linkedin.com/in/sangyuxi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex size-6 shrink-0 items-center hover:opacity-70"
+            aria-label="LinkedIn"
+          >
+            <svg width="24" height="24" fill="#6c6c6c" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
+          </a>
+        </div>
+        <nav className="flex items-center gap-10 capitalize sm:gap-12 md:gap-[60px]">
+          <Link
+            href="/#work"
+            className="font-manrope text-[#6c6c6c] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
           >
             Work
-          </a>
+          </Link>
+          <Link
+            href="/#featured"
+            className="font-manrope text-[#6c6c6c] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+          >
+            Featured
+          </Link>
           <Link
             href="/about"
-            className="font-manrope text-[#71767D] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
+            className="font-manrope text-[#6c6c6c] text-lg sm:text-xl md:text-2xl font-normal tracking-[0.5px] cursor-pointer hover:text-[#000000] hover:opacity-70 transition-all"
           >
             About
           </Link>
         </nav>
       </header>
 
-        <div className="pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-5 sm:px-8 md:px-16 max-w-7xl mx-auto">
+      <div className="relative z-10 min-h-screen pt-24 sm:pt-28 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-5 sm:px-8 md:px-16 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
             <div className="space-y-6 sm:space-y-8 order-2 md:order-1">
               <h2 className="font-mazeani text-[#000000] text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
@@ -157,9 +188,7 @@ export default function About() {
               Copyright &copy; 2026 sangyuxi.com. All rights reserved.
             </p>
           </footer>
-        </div>
       </div>
     </div>
   );
 }
-        
