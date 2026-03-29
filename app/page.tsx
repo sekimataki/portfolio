@@ -172,8 +172,7 @@ export default function Home() {
                   2024 | UX design
                 </p>
                 <p className="font-montserrat text-base font-normal leading-relaxed text-black/45 md:text-lg md:leading-relaxed">
-                  Kickoff the proposal of revamping project settings hub in asana, drove the explorations and align the
-                  leaders in different surfaces to agree on the proposal.
+                Led the proposal to revamp Asana’s project settings hub, driving cross-surface exploration and aligning stakeholders across teams to establish a unified strategic direction.
                 </p>
               </div>
               <a
@@ -206,8 +205,7 @@ export default function Home() {
                   2022 | UX design, strategy
                 </p>
                 <p className="font-montserrat text-base font-normal leading-relaxed text-black/45 md:text-lg md:leading-relaxed">
-                  I came up with the whole physical and digital design of this. Engage Scoliosis patients towards brace
-                  compliance
+                Led the end-to-end design of an integrated physical and digital solution for scoliosis care, driving user engagement and improving brace compliance among patients.
                 </p>
               </div>
             </article>
@@ -227,7 +225,7 @@ export default function Home() {
                   2022 | UX design
                 </p>
                 <p className="font-montserrat text-base font-normal leading-relaxed text-black/45 md:text-lg md:leading-relaxed">
-                  I came up with the design of this. It&apos;s meant to engage exercisers in home fitness
+                Designed an engaging home fitness experience, creating a product concept that motivates and sustains user participation in at-home workouts.
                 </p>
               </div>
             </article>
@@ -247,7 +245,7 @@ export default function Home() {
                   2024 | UX design
                 </p>
                 <p className="font-montserrat text-base font-normal leading-relaxed text-black/45 md:text-lg md:leading-relaxed">
-                  I came up with this idea of AI-powered accessibility assistant.
+                Led the design of an AI-powered accessibility tool, exploring how AI can proactively support users with visual impairments to "see" webpages.
                 </p>
               </div>
             </article>
@@ -274,8 +272,7 @@ export default function Home() {
                   2025 | Vibe coding, UX design
                 </p>
                 <p className="font-montserrat text-base font-normal leading-relaxed text-black/45 md:text-lg md:leading-relaxed">
-                  I came up with this idea of having a group chat between couple and AI to add a third-party neutral
-                  aspect to their argument. I did all the front end through vibe coding
+                Pioneered the concept of an AI-mediated group chat for couples, introducing AI therapist to support healthier communication, and built the front-end experience through Vibe Coding.
                 </p>
               </div>
               <a
