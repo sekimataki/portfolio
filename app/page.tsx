@@ -109,7 +109,7 @@ export default function Home() {
         {/* Hero — top inset ~40px via header pt-10; headline starts ~186px from viewport (reference) */}
         <section className="mx-auto flex max-w-[842px] flex-col items-start gap-10 pt-[112px] sm:pt-[140px] md:gap-[60px] md:pt-[186px]">
           <h2 className="font-mazeani text-[36px] font-normal leading-tight text-[#6c6c6c] sm:text-[48px] md:max-w-[562px] md:text-[64px]">
-            Design for humanity to thrive with AI
+            Design for <span className="italic">humanity</span> to thrive with <span className="italic">AI</span>
           </h2>
           <div className="flex w-full flex-col font-manrope text-base font-normal leading-normal text-[#6c6c6c] sm:text-lg md:text-xl">
             <p>
