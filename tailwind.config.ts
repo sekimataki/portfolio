@@ -12,7 +12,6 @@ const config: Config = {
         playfair: ["var(--font-playfair)", "serif"],
         manrope: ["var(--font-manrope)", "sans-serif"],
         montserrat: ["var(--font-montserrat)", "sans-serif"],
-        mazeani: ["var(--font-mazeani)", "serif"],
       },
     },
   },
