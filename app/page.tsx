@@ -237,6 +237,7 @@ function WorkProjectCard({
   imageSrc,
   imageAlt,
   imageSide,
+  imageHref,
   children,
 }: {
   tag: string;
@@ -246,6 +247,8 @@ function WorkProjectCard({
   imageSrc: string;
   imageAlt: string;
   imageSide: "left" | "right";
+  /** When set, the project image is clickable and navigates to this path (e.g. case study). */
+  imageHref?: string;
   children?: ReactNode;
 }) {
   const { ref, show } = useRevealOnScroll<HTMLElement>();
@@ -264,13 +267,27 @@ function WorkProjectCard({
     </h3>
   );
 
+  const coverImage = (
+    <img
+      src={imageSrc}
+      alt={imageAlt}
+      className="h-full w-full object-cover opacity-100 transition-opacity duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:opacity-70"
+    />
+  );
+
   const imageColumn = (
     <div className="group relative mx-auto aspect-square w-full max-w-[min(100%,280px)] shrink-0 overflow-hidden rounded-2xl sm:max-w-[320px] md:max-w-[400px] lg:mx-0 lg:max-w-[min(623px,72vh)] lg:rounded-[48px]">
-      <img
-        src={imageSrc}
-        alt={imageAlt}
-        className="h-full w-full object-cover opacity-100 transition-opacity duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:opacity-70"
-      />
+      {imageHref ? (
+        <Link
+          href={imageHref}
+          className="block h-full w-full outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black/25"
+          aria-label={`${title} — open case study`}
+        >
+          {coverImage}
+        </Link>
+      ) : (
+        coverImage
+      )}
     </div>
   );
 
@@ -449,6 +466,7 @@ export default function Home() {
             imageSrc="/asana-cover.png"
             imageAlt="Asana project settings"
             imageSide="left"
+            imageHref="/asana"
           />
 
           <WorkProjectCard
