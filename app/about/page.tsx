@@ -78,13 +78,13 @@ export default function About() {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white">
      <header
-        className={`fixed top-0 left-0 right-0 z-30 flex items-start justify-between px-5 pb-5 pt-[39px] transition-[background-color,backdrop-filter,border-color] duration-300 sm:px-8 lg:pl-[54px] lg:pr-[65px] ${
+        className={`fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] transition-[background-color,backdrop-filter,border-color] duration-300 sm:gap-4 sm:pl-8 sm:pr-8 sm:pb-5 lg:pl-[54px] lg:pr-[65px] ${
           headerScrolled
             ? "border-b border-black/[0.06] bg-white/75 backdrop-blur-md backdrop-saturate-150"
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <FadeSlideSegment show={foldShow} index={0} className="flex items-center gap-2">
+        <FadeSlideSegment show={foldShow} index={0} className="flex min-w-0 items-center gap-2">
           <Link href="/" className="transition-opacity hover:opacity-70">
             <h1 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">
               Sangyu Xi
@@ -102,11 +102,11 @@ export default function About() {
             </svg>
           </a>
         </FadeSlideSegment>
-        <nav className="mt-[5px] flex items-center gap-10 capitalize sm:gap-[60px]">
+        <nav className="mt-[5px] flex shrink-0 items-center gap-5 capitalize sm:gap-8 md:gap-10 lg:gap-[60px]">
           <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
             <Link
               href="/#work"
-              className="font-manrope text-[18px] font-normal text-black transition-opacity hover:opacity-70 sm:text-[20px]"
+              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
             >
               Work
             </Link>
@@ -114,7 +114,7 @@ export default function About() {
           <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
             <Link
               href="/about"
-              className="font-manrope text-[18px] font-normal text-black transition-opacity hover:opacity-70 sm:text-[20px]"
+              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
             >
               About
             </Link>
@@ -122,12 +122,12 @@ export default function About() {
         </nav>
       </header>
 
-      <div className="relative z-10 mx-auto min-h-screen max-w-7xl px-5 pb-12 pt-24 sm:px-8 sm:pb-16 sm:pt-28 md:px-16 md:pb-20 md:pt-32">
+      <div className="relative z-10 mx-auto min-h-screen w-full min-w-0 max-w-7xl pb-12 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-[calc(6rem+env(safe-area-inset-top,0px))] sm:pb-16 sm:pl-8 sm:pr-8 sm:pt-28 md:px-16 md:pb-20 md:pt-32">
         <div className="grid grid-cols-1 gap-8 sm:gap-12 md:grid-cols-2 md:gap-16">
           <FadeSlideSegment
             show={foldShow}
             index={3}
-            className="order-1 flex shrink-0 justify-center items-start md:order-2"
+            className="order-1 flex min-w-0 shrink-0 items-start justify-center md:order-2"
           >
             <div className="h-48 w-48 overflow-hidden sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
               <Image
@@ -142,9 +142,9 @@ export default function About() {
             </div>
           </FadeSlideSegment>
 
-          <div className="order-2 space-y-6 sm:space-y-8 md:order-1">
-            <FadeSlideSegment show={foldShow} index={4} className="w-full">
-            <h2 className="font-playfair text-3xl leading-tight text-[#000000] sm:text-4xl md:text-5xl lg:text-6xl">
+          <div className="order-2 min-w-0 space-y-6 sm:space-y-8 md:order-1">
+            <FadeSlideSegment show={foldShow} index={4} className="w-full min-w-0">
+            <h2 className="font-playfair text-3xl leading-tight text-pretty text-[#000000] sm:text-4xl md:text-5xl lg:text-6xl">
                 Hello,
                 <br />
                 I&apos;m <span className="italic">Sangyu</span>
@@ -165,7 +165,7 @@ export default function About() {
 
             <FadeSlideSegment show={foldShow} index={7} className="w-full">
               <p className="font-manrope text-sm leading-relaxed text-[#71767D] sm:text-base">
-                Actively engaged in the intersection among Design, Engineering and Business, I found my way to Master in Design Engineering@Harvard University. At Harvard, I listen, learn and discuss about{" "}
+                Actively engaged in the intersection among Design, Engineering and Business, I found my way to Master in Design Engineering @ Harvard University. At Harvard, I listen, learn and discuss about{" "}
                 <span className="font-bold">Design for Tech</span> at Harvard SEAS and MIT Sloan.
               </p>
             </FadeSlideSegment>
@@ -187,27 +187,27 @@ export default function About() {
 
         <div className="mt-12 space-y-10 sm:mt-16 sm:space-y-12 md:mt-20 md:space-y-16">
           <section>
-            <FadeSlideSegment show={foldShow} index={9} className="w-full">
-              <h3 className="mb-4 font-playfair text-2xl text-[#000000] sm:mb-6 sm:text-3xl">Education</h3>
+            <FadeSlideSegment show={foldShow} index={9} className="w-full min-w-0">
+              <h3 className="mb-4 font-playfair text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Education</h3>
             </FadeSlideSegment>
             <div className="space-y-4 font-manrope text-[#71767D] sm:space-y-6">
               <FadeSlideSegment show={foldShow} index={10} className="w-full">
                 <div>
-                  <h4 className="text-base font-bold sm:text-lg">Harvard - MS. Design Engineering</h4>
+                  <h4 className="break-words text-base font-bold sm:text-lg">Harvard - MS. Design Engineering</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2023 - 2025</p>
                   <p className="text-xs sm:text-sm">Design Strategy, Data Science</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={foldShow} index={11} className="w-full">
                 <div>
-                  <h4 className="text-base font-bold sm:text-lg">MIT Sloan - Cross-registered</h4>
+                  <h4 className="break-words text-base font-bold sm:text-lg">MIT Sloan - Cross-registered</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2024 - 2025</p>
                   <p className="text-xs sm:text-sm">Marketing, Game Theory</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={foldShow} index={12} className="w-full">
                 <div>
-                  <h4 className="text-base font-bold sm:text-lg">University of Cincinnati - BS. Industrial Design</h4>
+                  <h4 className="break-words text-base font-bold sm:text-lg">University of Cincinnati - BS. Industrial Design</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2017 - 2022</p>
                   <p className="text-xs sm:text-sm">Industrial Design, Mechanical engineering, Psychology, Film Art</p>
                 </div>
@@ -216,37 +216,37 @@ export default function About() {
           </section>
 
           <section>
-            <FadeSlideSegment show={foldShow} index={13} className="w-full">
-              <h3 className="mb-4 font-playfair text-2xl text-[#000000] sm:mb-6 sm:text-3xl">Awards & Recognition</h3>
+            <FadeSlideSegment show={foldShow} index={13} className="w-full min-w-0">
+              <h3 className="mb-4 font-playfair text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Awards & Recognition</h3>
             </FadeSlideSegment>
             <div className="space-y-4 font-manrope text-[#71767D]">
               <FadeSlideSegment show={foldShow} index={14} className="w-full">
                 <div>
-                  <h4 className="text-sm font-bold sm:text-base">VP Content & Operations of MIT Product & Tech conference</h4>
+                  <h4 className="break-words text-sm font-bold sm:text-base">VP Content & Operations of MIT Product & Tech conference</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2025 - Worked with a team of 50 to plan a 300+ attendee conference.</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={foldShow} index={15} className="w-full">
                 <div>
-                  <h4 className="text-sm font-bold sm:text-base">Third Place at MIT Product Hackathon</h4>
+                  <h4 className="break-words text-sm font-bold sm:text-base">Third Place at MIT Product Hackathon</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2024 - Placed 3rd place among 30 Harvard and MIT competitive entries. (Sponsored by Google)</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={foldShow} index={16} className="w-full">
                 <div>
-                  <h4 className="text-sm font-bold sm:text-base">Global Grad Show at Dubai Design Week</h4>
+                  <h4 className="break-words text-sm font-bold sm:text-base">Global Grad Show at Dubai Design Week</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2022 - Placed top 100 / 2000 design entries.</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={foldShow} index={17} className="w-full">
                 <div>
-                  <h4 className="text-sm font-bold sm:text-base">James Dyson Award International Winner & Global Top 20</h4>
+                  <h4 className="break-words text-sm font-bold sm:text-base">James Dyson Award International Winner & Global Top 20</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2022 - Placed top 20 / 1650 entries internationally.</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={foldShow} index={18} className="w-full">
                 <div>
-                  <h4 className="text-sm font-bold sm:text-base">Industrial Design Society of America Student Merit Award Winner</h4>
+                  <h4 className="break-words text-sm font-bold sm:text-base">Industrial Design Society of America Student Merit Award Winner</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">
                     2022 - Awarded as one of the top 5 undergraduate design students nationwide for the Class of 2022, representing the Central District of the U.S.
                   </p>
@@ -257,8 +257,8 @@ export default function About() {
         </div>
 
         <footer className="mt-12 border-t border-gray-300 pt-8 sm:mt-16 sm:pt-12 md:mt-20">
-          <div className="flex flex-col items-start justify-between gap-6 sm:gap-8 md:flex-row md:items-center">
-            <FadeSlideSegment show={foldShow} index={19} className="w-full space-y-2 md:max-w-xl">
+          <div className="flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 md:flex-row md:items-start">
+            <FadeSlideSegment show={foldShow} index={19} className="w-full min-w-0 space-y-2 md:max-w-xl">
               <h4 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">Sangyu Xi</h4>
               <p className="font-manrope text-xs text-gray-600 sm:text-sm">
                 Are you an engineer or an entrepreneur?
@@ -270,11 +270,15 @@ export default function About() {
                 <p className="font-manrope text-xs text-[#FF4500] sm:text-sm">Let&apos;s connect!</p>
               </a>
             </FadeSlideSegment>
-            <FadeSlideSegment show={foldShow} index={20} className="w-full space-y-2 md:w-auto">
+            <FadeSlideSegment show={foldShow} index={20} className="w-full min-w-0 space-y-2 md:w-auto md:shrink-0">
               <h4 className="font-manrope text-sm font-bold text-[#71767D] sm:text-base">Email</h4>
-              <p className="font-manrope text-xs text-[#FF4500] sm:text-sm">sangyuxi@gmail.com</p>
+              <p className="break-all font-manrope text-xs text-[#FF4500] sm:text-sm">sangyuxi@gmail.com</p>
               <h4 className="mt-4 font-manrope text-sm font-bold text-[#71767D] sm:text-base">Phone</h4>
-              <p className="font-manrope text-xs text-gray-600 sm:text-sm">5136380161</p>
+              <p className="font-manrope text-xs text-gray-600 sm:text-sm">
+                <a href="tel:+15136380161" className="hover:text-black">
+                  5136380161
+                </a>
+              </p>
             </FadeSlideSegment>
           </div>
           <FadeSlideSegment show={foldShow} index={22} className="mt-6 w-full sm:mt-8">

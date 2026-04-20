@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 
 /** ease-out cubic — all entrance + hover motion */
@@ -91,6 +91,119 @@ function useRevealOnScroll<T extends HTMLElement = HTMLElement>() {
   return { ref, show };
 }
 
+/** Full-bleed hero: warm blobs, cursor-reactive “+” grid, gradient into page white. */
+function HomeHero({ foldShow }: { foldShow: boolean }) {
+  const heroRef = useRef<HTMLElement>(null);
+  const plusGrid = useMemo(() => {
+    const cols = 28;
+    const rows = 16;
+    const cellW = 40;
+    const cellH = 40;
+    const vbW = cols * cellW;
+    const vbH = rows * cellH;
+    const els: ReactNode[] = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const x = c * cellW + cellW / 2;
+        const y = r * cellH + cellH / 2;
+        els.push(
+          <g key={`${r}-${c}`} transform={`translate(${x} ${y})`}>
+            <line x1="-4" y1="0" x2="4" y2="0" stroke="currentColor" strokeWidth="0.5" />
+            <line x1="0" y1="-4" x2="0" y2="4" stroke="currentColor" strokeWidth="0.5" />
+          </g>,
+        );
+      }
+    }
+    return { vbW, vbH, els };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = heroRef.current;
+    if (!el) return;
+    let raf = 0;
+    const move = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        el.style.setProperty("--mx", `${x}%`);
+        el.style.setProperty("--my", `${y}%`);
+      });
+    };
+    const leave = () => {
+      el.style.setProperty("--mx", "70%");
+      el.style.setProperty("--my", "35%");
+    };
+    el.addEventListener("mousemove", move);
+    el.addEventListener("mouseleave", leave);
+    return () => {
+      cancelAnimationFrame(raf);
+      el.removeEventListener("mousemove", move);
+      el.removeEventListener("mouseleave", leave);
+    };
+  }, []);
+
+  return (
+    <section
+      ref={heroRef}
+      className="hero w-full pt-[calc(8.75rem+env(safe-area-inset-top,0px))] pb-16 sm:pt-[calc(11.5rem+env(safe-area-inset-top,0px))] sm:pb-24 md:pt-[calc(12.5rem+env(safe-area-inset-top,0px))] md:pb-[120px] lg:pb-[140px]"
+    >
+      <div className="hero-blob" aria-hidden />
+      <div className="hero-plus-matrix" aria-hidden>
+        <svg preserveAspectRatio="xMidYMid slice" viewBox={`0 0 ${plusGrid.vbW} ${plusGrid.vbH}`}>
+          {plusGrid.els}
+        </svg>
+      </div>
+      <div className="hero-fade-to-white" aria-hidden />
+      <div className="hero-content mx-auto mt-12 w-full min-w-0 max-w-[1440px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:mt-10 sm:pl-8 sm:pr-8 md:mt-12 lg:pl-[54px] lg:pr-[65px]">
+        <FadeSlideSegment show={foldShow} index={3} className="max-w-[768px] min-w-0">
+          <h2 className="font-playfair text-[clamp(1.75rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-tight text-pretty text-black sm:leading-[1.05]">
+            Design for <span className="font-playfair italic">humanity </span>
+            to thrive with AI
+          </h2>
+        </FadeSlideSegment>
+
+        <div className="mt-[18px] max-w-[992px] min-w-0 font-manrope text-base font-normal leading-relaxed text-black sm:text-[18px] sm:leading-normal md:mt-[25px] md:text-[20px] lg:mt-[35px]">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-8">
+            <FadeSlideSegment show={foldShow} index={4} className="min-w-0">
+              <p>
+                Hello, I&apos;m Sangyu, a product designer currently designing AI Teammates at{" "}
+                <a
+                  href="https://asana.com/product/ai/ai-teammates"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-black hover:opacity-70"
+                >
+                  Asana
+                </a>
+                , building the future of multi-agent collaboration.
+              </p>
+            </FadeSlideSegment>
+            <FadeSlideSegment show={foldShow} index={5} className="min-w-0">
+              <p>
+                Graduated from{" "}
+                <a
+                  href="https://mde.harvard.edu/sangyu-xi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-black hover:opacity-70"
+                >
+                  Harvard{" "}
+                </a>
+                Design Engineering, my passion lies at the intersection of design, business and technology. This passion
+                drives my work on helping humanity thrives with AI-powered products.
+              </p>
+            </FadeSlideSegment>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const TEXT = {
   muted: "#000000",
   accent: "#fe6f61",
@@ -138,19 +251,21 @@ function WorkProjectCard({
   const { ref, show } = useRevealOnScroll<HTMLElement>();
 
   const pill = (
-    <div className="inline-flex shrink-0 items-center justify-center self-start rounded-full bg-[#f5f4f1] px-4 py-3">
-      <span className="whitespace-nowrap font-manrope text-base font-medium capitalize text-black">{tag}</span>
+    <div className="inline-flex max-w-full shrink-0 items-center justify-center self-start rounded-full bg-[#f5f4f1] px-3 py-2 sm:px-4 sm:py-3">
+      <span className="text-center font-manrope text-sm font-medium capitalize leading-snug text-black sm:text-base sm:whitespace-nowrap">
+        {tag}
+      </span>
     </div>
   );
 
   const titleBlock = (
-    <h3 className="font-playfair text-[clamp(32px,7vw,48px)] font-medium leading-[1.2] text-black lg:text-[48px] lg:leading-[60px]">
+    <h3 className="font-playfair text-[clamp(1.5rem,6vw,3rem)] font-medium leading-[1.2] text-pretty text-black sm:text-[clamp(1.75rem,7vw,3rem)] lg:text-[48px] lg:leading-[60px]">
       {title}
     </h3>
   );
 
   const imageColumn = (
-    <div className="group relative mx-auto aspect-square w-full max-w-[280px] shrink-0 overflow-hidden rounded-2xl sm:max-w-[320px] md:max-w-[400px] lg:mx-0 lg:max-w-[min(623px,72vh)] lg:rounded-[48px]">
+    <div className="group relative mx-auto aspect-square w-full max-w-[min(100%,280px)] shrink-0 overflow-hidden rounded-2xl sm:max-w-[320px] md:max-w-[400px] lg:mx-0 lg:max-w-[min(623px,72vh)] lg:rounded-[48px]">
       <img
         src={imageSrc}
         alt={imageAlt}
@@ -162,7 +277,7 @@ function WorkProjectCard({
   const textStart = imageSide === "left" ? 1 : 0;
   let ti = textStart;
   const textStack = (
-    <div className="flex w-full min-w-0 flex-col gap-4 lg:max-w-[691px] lg:min-h-[623px]">
+    <div className="flex w-full min-w-0 flex-col gap-4 lg:max-w-[691px] lg:min-h-0 xl:min-h-[623px]">
       <div className="flex flex-col gap-4">
         <FadeSlideSegment show={show} index={ti++} className="w-fit max-w-full">
           {pill}
@@ -202,7 +317,7 @@ function WorkProjectCard({
   return (
     <article
       ref={ref}
-      className="flex w-full flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-[59px]"
+      className="flex w-full min-w-0 flex-col gap-6 sm:gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-[59px]"
     >
       {imageSide === "left" ? (
         <>
@@ -252,13 +367,13 @@ export default function Home() {
     <main className="relative min-h-screen w-full overflow-x-hidden bg-white">
 
       <header
-        className={`fixed top-0 left-0 right-0 z-30 flex items-start justify-between px-5 pb-5 pt-[39px] transition-[background-color,backdrop-filter,border-color] duration-300 sm:px-8 lg:pl-[54px] lg:pr-[65px] ${
+        className={`fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 px-[max(1.25rem,env(safe-area-inset-left))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] pr-[max(1.25rem,env(safe-area-inset-right))] transition-[background-color,backdrop-filter,border-color] duration-300 sm:gap-4 sm:px-8 sm:pb-5 lg:pl-[54px] lg:pr-[65px] ${
           headerScrolled
             ? "border-b border-black/[0.06] bg-white/75 backdrop-blur-md backdrop-saturate-150"
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <FadeSlideSegment show={foldShow} index={0} className="flex items-center gap-2">
+        <FadeSlideSegment show={foldShow} index={0} className="flex min-w-0 items-center gap-2">
           <Link href="/" className="transition-opacity hover:opacity-70">
             <h1 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">
               Sangyu Xi
@@ -276,11 +391,11 @@ export default function Home() {
             </svg>
           </a>
         </FadeSlideSegment>
-        <nav className="mt-[5px] flex items-center gap-10 capitalize sm:gap-[60px]">
+        <nav className="mt-[5px] flex shrink-0 items-center gap-5 capitalize sm:gap-8 md:gap-10 lg:gap-[60px]">
           <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
             <Link
               href="/#work"
-              className="font-manrope text-[18px] font-normal text-black transition-opacity hover:opacity-70 sm:text-[20px]"
+              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
             >
               Work
             </Link>
@@ -288,7 +403,7 @@ export default function Home() {
           <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
             <Link
               href="/about"
-              className="font-manrope text-[18px] font-normal text-black transition-opacity hover:opacity-70 sm:text-[20px]"
+              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
             >
               About
             </Link>
@@ -296,55 +411,13 @@ export default function Home() {
         </nav>
       </header>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-24 sm:px-8 lg:pl-[54px] lg:pr-[65px]">
-        {/* Top hero — matches Figma node 964:70 (spacing from 1440 artboard) */}
-        <section className="relative pt-[200px] sm:pt-[248px] md:pt-[272px]">
-          <FadeSlideSegment show={foldShow} index={3} className="max-w-[768px]">
-            <h2 className="font-playfair text-[clamp(36px,5.5vw,80px)] font-medium leading-[1.05] tracking-tight text-black">
-              Design for <span className="font-playfair italic">humanity </span>
-              to thrive with AI
-            </h2>
-          </FadeSlideSegment>
+      <HomeHero foldShow={foldShow} />
 
-          <div className="mt-[18px] max-w-[992px] font-manrope text-[18px] font-normal leading-normal text-black sm:text-[20px] md:mt-[25px] lg:mt-[35px]">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8">
-              <FadeSlideSegment show={foldShow} index={4} className="min-w-0">
-                <p>
-                  Hello, I&apos;m Sangyu, a product designer currently designing AI Teammates at{" "}
-                  <a
-                    href="https://asana.com/product/ai/ai-teammates"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold text-black hover:opacity-70"
-                  >
-                    Asana
-                  </a>
-                  , building the future of multi-agent collaboration.
-                </p>
-              </FadeSlideSegment>
-              <FadeSlideSegment show={foldShow} index={5} className="min-w-0">
-                <p>
-                  Graduated from{" "}
-                  <a
-                    href="https://mde.harvard.edu/sangyu-xi/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-bold text-black hover:opacity-70"
-                  >
-                    Harvard{" "}
-                  </a>
-                  Design Engineering, my passion lies at the intersection of design, business and technology. This passion
-                  drives my work on helping humanity thrives with AI-powered products.
-                </p>
-              </FadeSlideSegment>
-            </div>
-          </div>
-        </section>
-
+      <div className="relative z-10 mx-auto w-full min-w-0 max-w-[1440px] pb-20 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pb-24 sm:pl-8 sm:pr-8 lg:pl-[54px] lg:pr-[65px]">
         {/* Press / awards logos — Figma 964:79 (no sidebar label) */}
-        <div ref={recReveal.ref} className="mx-auto mt-36 max-w-[826px] md:mt-48 lg:mt-[200px]">
-          <FadeSlideSegment show={recShowDelayed} index={0} className="w-full">
-            <div className="flex flex-wrap items-center justify-center gap-6 md:justify-between md:gap-4">
+        <div ref={recReveal.ref} className="mx-auto mt-6 max-w-[826px] min-w-0 md:mt-10 lg:mt-14">
+          <FadeSlideSegment show={recShowDelayed} index={0} className="w-full min-w-0">
+            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-5 sm:gap-x-6 sm:gap-y-6 md:justify-between md:gap-4">
               {RECOGNITION.map((item, i) => (
                 <a
                   key={`recognition-${i + 1}`}
@@ -356,7 +429,7 @@ export default function Home() {
                   <img
                     src={item.src}
                     alt=""
-                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[20px] sm:h-[24px] md:h-[30px]"} w-auto max-w-[120px] object-contain md:max-w-none`}
+                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-h-8 w-auto max-w-[min(100%,120px)] object-contain sm:max-w-[140px] md:max-w-none`}
                   />
                 </a>
               ))}
@@ -365,7 +438,7 @@ export default function Home() {
         </div>
 
         {/* Work — layout from Figma 964:70 project cards; copy unchanged */}
-        <section id="work" className="mt-14 flex flex-col gap-14 md:mt-16 lg:gap-[60px]">
+        <section id="work" className="mt-20 flex min-w-0 flex-col gap-10 sm:mt-24 sm:gap-14 md:mt-28 lg:mt-32 lg:gap-[60px]">
           <WorkProjectCard
             tag="SaaS product"
             title="Asana project settings"
@@ -428,37 +501,37 @@ export default function Home() {
         <div ref={speakReveal.ref}>
           <section
             id="featured"
-            className="mt-20 flex flex-col gap-8 pt-12 md:mt-24 md:flex-row md:items-center md:justify-between"
+            className="mt-14 flex flex-col gap-6 pt-8 sm:mt-20 sm:gap-8 sm:pt-12 md:mt-24 md:flex-row md:items-center md:justify-between"
           >
-            <FadeSlideSegment show={speakReveal.show} index={0} className="w-full md:w-auto">
-              <p className="font-manrope text-lg font-medium text-[#000000] md:text-xl" style={{ color: TEXT.muted }}>
+            <FadeSlideSegment show={speakReveal.show} index={0} className="w-full min-w-0 md:w-auto">
+              <p className="font-manrope text-base font-medium text-[#000000] sm:text-lg md:text-xl" style={{ color: TEXT.muted }}>
                 Speaking at
               </p>
             </FadeSlideSegment>
-            <FadeSlideSegment show={speakReveal.show} index={1} className="flex flex-wrap items-center gap-6">
+            <FadeSlideSegment show={speakReveal.show} index={1} className="flex min-w-0 flex-wrap items-center gap-4 sm:gap-6">
               {SPEAKING_LOGOS.map((item, i) => (
                 <img
                   key={item.src}
                   src={item.src}
                   alt={item.alt}
-                  className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[20px] sm:h-[24px] md:h-[30px]"} w-auto object-contain`}
+                  className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-w-full w-auto object-contain`}
                 />
               ))}
             </FadeSlideSegment>
           </section>
 
-          <div className="mt-10 flex flex-wrap gap-4 md:gap-6">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-3 sm:gap-4 md:gap-6 lg:grid-cols-5">
             {SPEECH_IMAGES.map((i) => (
               <FadeSlideSegment
                 key={i}
                 show={speakReveal.show}
                 index={2 + i}
-                className="min-w-0 flex-1"
+                className="min-w-0"
               >
                 <img
                   src={`/speech${i}.jpeg`}
                   alt={`Speech${i}`}
-                  className="h-[180px] w-full min-w-[180px] flex-1 rounded-sm object-cover sm:max-w-[221px]"
+                  className="aspect-[221/180] w-full rounded-sm object-cover"
                 />
               </FadeSlideSegment>
             ))}
@@ -467,24 +540,28 @@ export default function Home() {
 
         <footer
           ref={footReveal.ref}
-          className="mt-12 sm:mt-16 md:mt-20 border-t border-gray-300 pt-8 sm:pt-12"
+          className="mt-10 border-t border-gray-300 pt-8 sm:mt-16 sm:pt-12 md:mt-20"
         >
-            <div className="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between">
-              <FadeSlideSegment show={footReveal.show} index={0} className="space-y-2">
+            <div className="flex min-w-0 flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between">
+              <FadeSlideSegment show={footReveal.show} index={0} className="min-w-0 space-y-2 md:max-w-xl">
                 <h4 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">Sangyu Xi</h4>
-                <p className="font-manrope text-xs text-gray-600 sm:text-sm">
+                <p className="font-manrope text-xs leading-relaxed text-gray-600 sm:text-sm">
                   Are you an engineer or an entrepreneur?<br />
                   I always welcome new opportunities to exchange ideas and to explore collaborations.<br />
                 </p>
-                <a href="mailto:sangyuxi@gmail.com">
+                <a href="mailto:sangyuxi@gmail.com" className="inline-flex min-h-11 items-center py-1">
                   <p className="font-manrope text-xs text-[#FF4500] sm:text-sm">Let&apos;s connect!</p>
                 </a>
               </FadeSlideSegment>
-              <FadeSlideSegment show={footReveal.show} index={1} className="space-y-2">
+              <FadeSlideSegment show={footReveal.show} index={1} className="min-w-0 space-y-2 md:shrink-0">
                 <h4 className="font-manrope text-sm font-bold text-[#000000] sm:text-base">Email</h4>
-                <p className="font-manrope text-xs text-[#FF4500] sm:text-sm">sangyuxi@gmail.com</p>
+                <p className="break-all font-manrope text-xs text-[#FF4500] sm:text-sm">sangyuxi@gmail.com</p>
                 <h4 className="mt-4 font-manrope text-sm font-bold text-[#000000] sm:text-base">Phone</h4>
-                <p className="font-manrope text-xs text-gray-600 sm:text-sm">5136380161</p>
+                <p className="font-manrope text-xs text-gray-600 sm:text-sm">
+                  <a href="tel:+15136380161" className="hover:text-black">
+                    5136380161
+                  </a>
+                </p>
               </FadeSlideSegment>
             </div>
             <FadeSlideSegment show={footReveal.show} index={3} className="mt-6 sm:mt-8">

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Manrope, Montserrat } from "next/font/google";
 import "./globals.css";
 
@@ -25,6 +25,12 @@ export const metadata: Metadata = {
   description: "Design AI Teammates at Asana, Master in Design Engineering at Harvard",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfair.variable} ${manrope.variable} ${montserrat.variable} antialiased`}
+        className={`${playfair.variable} ${manrope.variable} ${montserrat.variable} min-h-[100dvh] antialiased`}
       >
         {children}
       </body>
