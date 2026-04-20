@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -64,9 +64,37 @@ function useRevealOnMount() {
   return show;
 }
 
+function useRevealOnScroll<T extends HTMLElement = HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const [show, setShow] = useState(false);
+
+  useLayoutEffect(() => {
+    if (readPrefersReducedMotion()) {
+      setShow(true);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -6% 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return { ref, show };
+}
+
 export default function About() {
   const [headerScrolled, setHeaderScrolled] = useState(false);
   const foldShow = useRevealOnMount();
+  const footReveal = useRevealOnScroll<HTMLElement>();
 
   useEffect(() => {
     const onScroll = () => setHeaderScrolled(window.scrollY > 12);
@@ -152,19 +180,19 @@ export default function About() {
             </FadeSlideSegment>
 
             <FadeSlideSegment show={foldShow} index={5} className="w-full">
-              <p className="font-manrope text-sm leading-relaxed text-[#71767D] sm:text-base">
+              <p className="font-manrope text-sm leading-relaxed text-[#000000] sm:text-base">
                 &ldquo;Sangyu(桑榆)&rdquo; comes from a Chinese ancient poem, meaning &ldquo;Sunset&rdquo;. In the poem, it suggests that if one loses something at the sunrise, she will gain something else at the sunset. Growing up, I embraced an adventurous spirit, always prioritizing the richness of experience of my journey.
               </p>
             </FadeSlideSegment>
 
             <FadeSlideSegment show={foldShow} index={6} className="w-full">
-              <p className="font-manrope text-sm leading-relaxed text-[#71767D] sm:text-base">
+              <p className="font-manrope text-sm leading-relaxed text-[#000000] sm:text-base">
                 Born and raised in China, I worked in Japan in 2019 and have spent the past ten years in the U.S. Passionate about culture and languages, I&apos;ve solo backpacked to 15 countries, fluent in Mandarin, English, and Japanese.
               </p>
             </FadeSlideSegment>
 
             <FadeSlideSegment show={foldShow} index={7} className="w-full">
-              <p className="font-manrope text-sm leading-relaxed text-[#71767D] sm:text-base">
+              <p className="font-manrope text-sm leading-relaxed text-[#000000] sm:text-base">
                 Actively engaged in the intersection among Design, Engineering and Business, I found my way to Master in Design Engineering @ Harvard University. At Harvard, I listen, learn and discuss about{" "}
                 <span className="font-bold">Design for Tech</span> at Harvard SEAS and MIT Sloan.
               </p>
@@ -177,7 +205,7 @@ export default function About() {
                 rel="noopener noreferrer"
                 className="transition-all hover:text-[#000000] hover:opacity-70"
               >
-                <svg className="h-7 w-7 sm:h-8 sm:w-8" fill="#71767D" viewBox="0 0 24 24">
+                <svg className="h-7 w-7 sm:h-8 sm:w-8" fill="#000000" viewBox="0 0 24 24">
                   <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
@@ -190,7 +218,7 @@ export default function About() {
             <FadeSlideSegment show={foldShow} index={9} className="w-full min-w-0">
               <h3 className="mb-4 font-playfair text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Education</h3>
             </FadeSlideSegment>
-            <div className="space-y-4 font-manrope text-[#71767D] sm:space-y-6">
+            <div className="space-y-4 font-manrope text-[#000000] sm:space-y-6">
               <FadeSlideSegment show={foldShow} index={10} className="w-full">
                 <div>
                   <h4 className="break-words text-base font-bold sm:text-lg">Harvard - MS. Design Engineering</h4>
@@ -219,7 +247,7 @@ export default function About() {
             <FadeSlideSegment show={foldShow} index={13} className="w-full min-w-0">
               <h3 className="mb-4 font-playfair text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Awards & Recognition</h3>
             </FadeSlideSegment>
-            <div className="space-y-4 font-manrope text-[#71767D]">
+            <div className="space-y-4 font-manrope text-[#000000]">
               <FadeSlideSegment show={foldShow} index={14} className="w-full">
                 <div>
                   <h4 className="break-words text-sm font-bold sm:text-base">VP Content & Operations of MIT Product & Tech conference</h4>
@@ -256,35 +284,38 @@ export default function About() {
           </section>
         </div>
 
-        <footer className="mt-12 border-t border-gray-300 pt-8 sm:mt-16 sm:pt-12 md:mt-20">
-          <div className="flex min-w-0 flex-col items-start justify-between gap-6 sm:gap-8 md:flex-row md:items-start">
-            <FadeSlideSegment show={foldShow} index={19} className="w-full min-w-0 space-y-2 md:max-w-xl">
-              <h4 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">Sangyu Xi</h4>
-              <p className="font-manrope text-xs text-gray-600 sm:text-sm">
-                Are you an engineer or an entrepreneur?
-                <br />
-                I always welcome new opportunities to exchange ideas and to explore collaborations.
-                <br />
-              </p>
-              <a href="mailto:sangyuxi@gmail.com">
-                <p className="font-manrope text-xs text-[#FF4500] sm:text-sm">Let&apos;s connect!</p>
-              </a>
-            </FadeSlideSegment>
-            <FadeSlideSegment show={foldShow} index={20} className="w-full min-w-0 space-y-2 md:w-auto md:shrink-0">
-              <h4 className="font-manrope text-sm font-bold text-[#71767D] sm:text-base">Email</h4>
-              <p className="break-all font-manrope text-xs text-[#FF4500] sm:text-sm">sangyuxi@gmail.com</p>
-              <h4 className="mt-4 font-manrope text-sm font-bold text-[#71767D] sm:text-base">Phone</h4>
-              <p className="font-manrope text-xs text-gray-600 sm:text-sm">
-                <a href="tel:+15136380161" className="hover:text-black">
-                  5136380161
+        <footer
+          ref={footReveal.ref}
+          className="mt-10 border-t border-gray-300 pt-8 sm:mt-16 sm:pt-12 md:mt-20"
+        >
+            <div className="flex min-w-0 flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between">
+              <FadeSlideSegment show={footReveal.show} index={0} className="min-w-0 space-y-2 md:max-w-xl">
+                <h4 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">Sangyu Xi</h4>
+                <p className="font-manrope text-xs leading-relaxed text-gray-600 sm:text-sm">
+                  Are you an engineer or an entrepreneur?<br />
+                  I always welcome new opportunities to exchange ideas and to explore collaborations.<br />
+                </p>
+                <a href="mailto:sangyuxi@gmail.com" className="inline-flex min-h-11 items-center py-1">
+                  <p className="font-manrope text-xs text-[#FF4500] sm:text-sm">Let&apos;s connect!</p>
                 </a>
+              </FadeSlideSegment>
+              <FadeSlideSegment show={footReveal.show} index={1} className="min-w-0 space-y-2 md:shrink-0">
+                <h4 className="font-manrope text-sm font-bold text-[#000000] sm:text-base">Email</h4>
+                <p className="break-all font-manrope text-xs text-[#FF4500] sm:text-sm">sangyuxi@gmail.com</p>
+                <h4 className="mt-4 font-manrope text-sm font-bold text-[#000000] sm:text-base">Phone</h4>
+                <p className="font-manrope text-xs text-gray-600 sm:text-sm">
+                  <a href="tel:+15136380161" className="hover:text-black">
+                    5136380161
+                  </a>
+                </p>
+              </FadeSlideSegment>
+            </div>
+            <FadeSlideSegment show={footReveal.show} index={3} className="mt-6 sm:mt-8">
+              <p className="font-manrope text-xs text-gray-500">
+                Copyright &copy; 2026 sangyuxi.com. All rights reserved.
               </p>
             </FadeSlideSegment>
-          </div>
-          <FadeSlideSegment show={foldShow} index={22} className="mt-6 w-full sm:mt-8">
-            <p className="font-manrope text-xs text-gray-500">Copyright &copy; 2026 sangyuxi.com. All rights reserved.</p>
-          </FadeSlideSegment>
-        </footer>
+          </footer>
       </div>
     </div>
   );

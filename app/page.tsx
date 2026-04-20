@@ -160,7 +160,7 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
       <div className="hero-fade-to-white" aria-hidden />
       <div className="hero-content mx-auto mt-12 w-full min-w-0 max-w-[1440px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:mt-10 sm:pl-8 sm:pr-8 md:mt-12 lg:pl-[54px] lg:pr-[65px]">
         <FadeSlideSegment show={foldShow} index={3} className="max-w-[768px] min-w-0">
-          <h2 className="font-playfair text-[clamp(1.75rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-tight text-pretty text-black sm:leading-[1.05]">
+          <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-tight text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.05]">
             Design for <span className="font-playfair italic">humanity </span>
             to thrive with AI
           </h2>
@@ -328,11 +328,13 @@ function WorkProjectCard({
         </>
       ) : (
         <>
-          {textStack}
+          <div className="order-2 w-full min-w-0 lg:order-none">
+            {textStack}
+          </div>
           <FadeSlideSegment
             show={show}
             index={imageIndexRight}
-            className="w-full shrink-0 lg:ml-auto lg:w-fit"
+            className="order-1 w-full shrink-0 lg:order-none lg:ml-auto lg:w-fit"
           >
             {imageColumn}
           </FadeSlideSegment>
