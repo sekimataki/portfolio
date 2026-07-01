@@ -161,8 +161,10 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
       <div className="hero-content mx-auto mt-12 w-full min-w-0 max-w-[1440px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:mt-10 sm:pl-8 sm:pr-8 md:mt-12 lg:pl-[54px] lg:pr-[65px]">
         <FadeSlideSegment show={foldShow} index={3} className="max-w-[768px] min-w-0">
           <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-tight text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.05]">
-            Design for <span className="font-playfair italic">humanity </span>
-            to thrive with AI
+            Designing the future of 
+          </h2>
+          <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-tight text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.05]">
+            Human and AI <span className="font-playfair italic">Collaboration</span>
           </h2>
         </FadeSlideSegment>
 
@@ -261,7 +263,17 @@ function WorkProjectCard({
     </div>
   );
 
-  const titleBlock = (
+  const titleBlock = imageHref ? (
+    <Link
+      href={imageHref}
+      className="block text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black/25"
+      aria-label={`${title} — open case study`}
+    >
+      <h3 className="font-playfair text-[clamp(1.5rem,6vw,3rem)] font-medium leading-[1.2] text-pretty text-black sm:text-[clamp(1.75rem,7vw,3rem)] lg:text-[48px] lg:leading-[60px]">
+        {title}
+      </h3>
+    </Link>
+  ) : (
     <h3 className="font-playfair text-[clamp(1.5rem,6vw,3rem)] font-medium leading-[1.2] text-pretty text-black sm:text-[clamp(1.75rem,7vw,3rem)] lg:text-[48px] lg:leading-[60px]">
       {title}
     </h3>
@@ -471,12 +483,13 @@ export default function Home() {
 
           <WorkProjectCard
             tag="Digital health"
-            title="Airy scoliosis monitor"
+            title="Airy scoliosis brace"
             meta="2022 | UX design, strategy"
             description="Led the end-to-end design of an integrated physical and digital solution for scoliosis care, driving user engagement and improving brace compliance among patients."
             imageSrc="/airy-cover.png"
-            imageAlt="Airy scoliosis monitor"
+            imageAlt="Airy scoliosis brace"
             imageSide="right"
+            imageHref="/airy"
           />
 
           <WorkProjectCard
