@@ -159,8 +159,8 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
           {plusGrid.els}
         </svg>
       </div>
-      <div className="hero-content relative z-10 mx-auto w-full min-w-0 px-[clamp(1.5rem,5vw,3.5rem)]">
-      <FadeSlideSegment show={foldShow} index={3} className="max-w-[992px] min-w-0 pl-[clamp(1.5rem,7vw,5.5rem)]">
+      <div className="hero-content relative z-10 mx-auto w-full min-w-0 pl-[clamp(1rem,5vw,3.5rem)] pr-[clamp(1rem,4vw,3.5rem)] sm:pl-[clamp(1.5rem,5vw,3.5rem)] sm:pr-[clamp(1.5rem,5vw,3.5rem)]">
+      <FadeSlideSegment show={foldShow} index={3} className="max-w-[992px] min-w-0 pl-0 md:pl-[clamp(1.5rem,7vw,5.5rem)]">
           <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.5]">
             Designing{" "}
             <span
@@ -178,7 +178,7 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
           </h2>
         </FadeSlideSegment>
 
-        <div className="mt-[18px] max-w-[992px] min-w-0 pl-[clamp(1.5rem,7vw,5.5rem)] font-manrope text-base font-regular leading-relaxed text-black sm:text-[18px] sm:leading-normal md:mt-[25px] md:text-[20px] lg:mt-[35px]">
+        <div className="mt-[18px] max-w-[992px] min-w-0 pl-0 font-manrope text-base font-regular leading-relaxed text-black sm:text-[18px] sm:leading-normal md:mt-[25px] md:pl-[clamp(1.5rem,7vw,5.5rem)] md:text-[20px] lg:mt-[35px]">
           <div className="flex flex-col gap-2 sm:gap-2">
             <FadeSlideSegment show={foldShow} index={4} className="min-w-0">
               <p>
@@ -423,7 +423,7 @@ export default function Home() {
     <main className="relative min-h-screen w-full overflow-x-hidden bg-white">
 
       <header
-        className={`fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 px-[max(1.25rem,env(safe-area-inset-left))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] pr-[max(1.25rem,env(safe-area-inset-right))] transition-[background-color,backdrop-filter,border-color] duration-300 sm:gap-4 sm:px-8 sm:pb-5 lg:px-[6em] ${
+        className={`fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 px-[max(1.25rem,env(safe-area-inset-left))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] pr-[max(1.25rem,env(safe-area-inset-right))] transition-[background-color,backdrop-filter,border-color] duration-300 sm:gap-4 sm:px-8 sm:pb-5 lg:px-[clamp(1.25rem,6vw,6em)] ${
           headerScrolled
             ? "border-b border-black/[0.06] bg-white/75 backdrop-blur-md backdrop-saturate-150"
             : "border-b border-transparent bg-transparent"
@@ -475,7 +475,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <div className="hero-panel relative z-10 mx-[clamp(1.25rem,6em,6em)] mt-[clamp(6.5rem,6em,6em)] mb-[clamp(0.75rem,2.5em,2.5em)] overflow-hidden rounded-[2em] bg-[#F8F7F6]">
+      <div className="hero-panel relative z-10 mx-[clamp(1.25rem,6vw,6em)] mt-[clamp(5.5rem,6vw,6em)] mb-[clamp(0.75rem,2.5em,2.5em)] overflow-hidden rounded-[2em] bg-[#F8F7F6]">
         <HomeHero foldShow={foldShow} />
       </div>
 
