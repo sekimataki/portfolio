@@ -341,13 +341,21 @@ export default function AiryCaseStudyPage() {
         <nav className="mt-[5px] flex shrink-0 items-center gap-5 capitalize sm:gap-8 md:gap-10 lg:gap-[60px]">
           <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
             <Link
-              href="/#work"
+              href="/#asana-project-settings"
               className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
             >
               Work
             </Link>
           </FadeSlideSegment>
           <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
+            <Link
+              href="/#speaking"
+              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
+            >
+              Speaking
+            </Link>
+          </FadeSlideSegment>
+          <FadeSlideSegment show={foldShow} index={3} className="inline-flex">
             <Link
               href="/about"
               className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"

@@ -1,8 +1,9 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { MouseEvent as ReactMouseEvent, ReactNode } from "react";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 /** ease-out cubic — all entrance + hover motion */
 const MOTION_EASE = "cubic-bezier(0.33, 1, 0.68, 1)";
@@ -64,6 +65,39 @@ function useRevealOnMount() {
   return show;
 }
 
+function HomeNavLink({
+  href,
+  className,
+  children,
+}: {
+  href: string;
+  className: string;
+  children: ReactNode;
+}) {
+  const pathname = usePathname();
+  const hashIndex = href.indexOf("#");
+  const path = hashIndex === -1 ? href : href.slice(0, hashIndex) || "/";
+  const hash = hashIndex === -1 ? "" : href.slice(hashIndex);
+
+  const handleClick = (event: ReactMouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== path || !hash) return;
+    event.preventDefault();
+    const target = document.querySelector(hash);
+    if (!target) return;
+    target.scrollIntoView({
+      behavior: readPrefersReducedMotion() ? "auto" : "smooth",
+      block: "start",
+    });
+    window.history.pushState(null, "", hash);
+  };
+
+  return (
+    <Link href={href} className={className} onClick={handleClick}>
+      {children}
+    </Link>
+  );
+}
+
 function useRevealOnScroll<T extends HTMLElement = HTMLElement>() {
   const ref = useRef<T | null>(null);
   const [show, setShow] = useState(false);
@@ -95,10 +129,11 @@ function useRevealOnScroll<T extends HTMLElement = HTMLElement>() {
 function HomeHero({ foldShow }: { foldShow: boolean }) {
   const heroRef = useRef<HTMLElement>(null);
   const plusGrid = useMemo(() => {
-    const cols = 28;
-    const rows = 16;
-    const cellW = 40;
-    const cellH = 40;
+    const cols = 47;
+    const rows = 27;
+    const cellW = 24;
+    const cellH = 24;
+    const plusArm = 3;
     const vbW = cols * cellW;
     const vbH = rows * cellH;
     const els: ReactNode[] = [];
@@ -108,8 +143,8 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
         const y = r * cellH + cellH / 2;
         els.push(
           <g key={`${r}-${c}`} transform={`translate(${x} ${y})`}>
-            <line x1="-4" y1="0" x2="4" y2="0" stroke="currentColor" strokeWidth="0.5" />
-            <line x1="0" y1="-4" x2="0" y2="4" stroke="currentColor" strokeWidth="0.5" />
+            <line x1={-plusArm} y1="0" x2={plusArm} y2="0" stroke="currentColor" strokeWidth="0.5" />
+            <line x1="0" y1={-plusArm} x2="0" y2={plusArm} stroke="currentColor" strokeWidth="0.5" />
           </g>,
         );
       }
@@ -159,44 +194,50 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
       </div>
       <div className="hero-fade-to-white" aria-hidden />
       <div className="hero-content mx-auto mt-12 w-full min-w-0 max-w-[1440px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:mt-10 sm:pl-8 sm:pr-8 md:mt-12 lg:pl-[54px] lg:pr-[65px]">
-        <FadeSlideSegment show={foldShow} index={3} className="max-w-[768px] min-w-0">
-          <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-tight text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.05]">
-            Designing the future of 
+      <FadeSlideSegment show={foldShow} index={3} className="max-w-[992px] min-w-0">
+          <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.5]">
+            Designing{" "}
+            <span
+              className="font-playfair-variable italic"
+              style={{
+                fontVariationSettings: "'opsz' 5, 'wdth' 112.5",
+                letterSpacing: "0.02em",
+              }}
+            >
+              Human*AI
+            </span>
           </h2>
-          <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-tight text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.05]">
-            Human and AI <span className="font-playfair italic">Collaboration</span>
+          <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.05]">
+          collaboration
           </h2>
         </FadeSlideSegment>
 
-        <div className="mt-[18px] max-w-[992px] min-w-0 font-manrope text-base font-normal leading-relaxed text-black sm:text-[18px] sm:leading-normal md:mt-[25px] md:text-[20px] lg:mt-[35px]">
-          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-8">
+        <div className="mt-[18px] max-w-[992px] min-w-0 font-manrope text-base font-regular leading-relaxed text-black sm:text-[18px] sm:leading-normal md:mt-[25px] md:text-[20px] lg:mt-[35px]">
+          <div className="flex flex-col gap-2 sm:gap-2">
             <FadeSlideSegment show={foldShow} index={4} className="min-w-0">
               <p>
-                Hello, I&apos;m Sangyu, a product designer currently designing AI Teammates at{" "}
+              Product designer at {" "}
                 <a
                   href="https://asana.com/product/ai/ai-teammates"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-black hover:opacity-70"
+                  className="font-semibold text-black hover:opacity-70"
                 >
-                  Asana
+                  Asana AI Teammates
                 </a>
-                , building the future of multi-agent collaboration.
               </p>
             </FadeSlideSegment>
             <FadeSlideSegment show={foldShow} index={5} className="min-w-0">
               <p>
-                Graduated from{" "}
+                Harvard{" "}
                 <a
                   href="https://mde.harvard.edu/sangyu-xi/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-black hover:opacity-70"
+                  className="font-semibold text-black hover:opacity-70"
                 >
-                  Harvard{" "}
+                Design Engineering{" "}
                 </a>
-                Design Engineering, my passion lies at the intersection of design, business and technology. This passion
-                drives my work on helping humanity thrives with AI-powered products.
               </p>
             </FadeSlideSegment>
           </div>
@@ -240,6 +281,7 @@ function WorkProjectCard({
   imageAlt,
   imageSide,
   imageHref,
+  anchorId,
   children,
 }: {
   tag: string;
@@ -251,6 +293,8 @@ function WorkProjectCard({
   imageSide: "left" | "right";
   /** When set, the project image is clickable and navigates to this path (e.g. case study). */
   imageHref?: string;
+  /** Optional id for in-page anchor navigation (e.g. nav “Work”). */
+  anchorId?: string;
   children?: ReactNode;
 }) {
   const { ref, show } = useRevealOnScroll<HTMLElement>();
@@ -345,8 +389,9 @@ function WorkProjectCard({
 
   return (
     <article
+      id={anchorId}
       ref={ref}
-      className="flex w-full min-w-0 flex-col gap-6 sm:gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-[59px]"
+      className="flex w-full min-w-0 scroll-mt-28 flex-col gap-6 sm:gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-[59px]"
     >
       {imageSide === "left" ? (
         <>
@@ -394,6 +439,24 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const scrollToHash = () => {
+      const { hash } = window.location;
+      if (!hash) return;
+      const target = document.querySelector(hash);
+      if (!target) return;
+      requestAnimationFrame(() => {
+        target.scrollIntoView({
+          behavior: readPrefersReducedMotion() ? "auto" : "smooth",
+          block: "start",
+        });
+      });
+    };
+    scrollToHash();
+    window.addEventListener("hashchange", scrollToHash);
+    return () => window.removeEventListener("hashchange", scrollToHash);
+  }, []);
+
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-white">
 
@@ -424,17 +487,25 @@ export default function Home() {
         </FadeSlideSegment>
         <nav className="mt-[5px] flex shrink-0 items-center gap-5 capitalize sm:gap-8 md:gap-10 lg:gap-[60px]">
           <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
-            <Link
-              href="/#work"
-              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
+            <HomeNavLink
+              href="/#asana-project-settings"
+              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
             >
               Work
-            </Link>
+            </HomeNavLink>
           </FadeSlideSegment>
           <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
+            <HomeNavLink
+              href="/#speaking"
+              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
+            >
+              Speaking
+            </HomeNavLink>
+          </FadeSlideSegment>
+          <FadeSlideSegment show={foldShow} index={3} className="inline-flex">
             <Link
               href="/about"
-              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
+              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
             >
               About
             </Link>
@@ -455,12 +526,12 @@ export default function Home() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition-opacity hover:opacity-70"
+                  className="group transition-opacity"
                 >
                   <img
                     src={item.src}
                     alt=""
-                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-h-8 w-auto max-w-[min(100%,120px)] object-contain sm:max-w-[140px] md:max-w-none`}
+                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-h-8 w-auto max-w-[min(100%,120px)] object-contain opacity-40 transition-opacity group-hover:opacity-65 sm:max-w-[140px] md:max-w-none`}
                   />
                 </a>
               ))}
@@ -468,9 +539,30 @@ export default function Home() {
           </FadeSlideSegment>
         </div>
 
+        <p className="mt-16 max-w-[880px] font-playfair text-[clamp(1rem,2.8vw,2rem)] font-normal leading-snug text-black sm:mt-20 md:mt-24 lg:mt-28">
+          I design AI systems where{" "}
+          <span
+              className="font-playfair-variable italic"
+              style={{
+                fontVariationSettings: "'opsz' 5",
+              }}
+            >
+               humans
+            </span> and autonomous{" "}
+            <span
+              className="font-playfair-variable italic"
+              style={{
+                fontVariationSettings: "'opsz' 5",
+              }}
+            >
+            agents
+            </span> collaborate, delegate work, build trust, and accomplish more together.
+        </p>
+
         {/* Work — layout from Figma 964:70 project cards; copy unchanged */}
         <section id="work" className="mt-20 flex min-w-0 flex-col gap-10 sm:mt-24 sm:gap-14 md:mt-28 lg:mt-32 lg:gap-[60px]">
           <WorkProjectCard
+            anchorId="asana-project-settings"
             tag="SaaS product"
             title="Asana project settings"
             meta="2024 | UX design"
@@ -531,9 +623,8 @@ export default function Home() {
         </section>
 
         {/* Speaking at + speech gallery — one scroll reveal */}
-        <div ref={speakReveal.ref}>
+        <div id="speaking" ref={speakReveal.ref} className="scroll-mt-28">
           <section
-            id="featured"
             className="mt-14 flex flex-col gap-6 pt-8 sm:mt-20 sm:gap-8 sm:pt-12 md:mt-24 md:flex-row md:items-center md:justify-between"
           >
             <FadeSlideSegment show={speakReveal.show} index={0} className="w-full min-w-0 md:w-auto">

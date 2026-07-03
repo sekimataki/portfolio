@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         playfair: ["var(--font-playfair)", "serif"],
+        "playfair-variable": ["var(--font-playfair-variable)", "serif"],
         manrope: ["var(--font-manrope)", "sans-serif"],
         montserrat: ["var(--font-montserrat)", "sans-serif"],
       },
