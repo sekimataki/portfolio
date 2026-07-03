@@ -190,30 +190,47 @@ export default function About() {
 
             <FadeSlideSegment show={foldShow} index={6} className="w-full">
               <p className="font-manrope text-sm leading-relaxed text-[#000000] sm:text-base">
-              Every major computing shift changes how humans collaborate.
-              Personal computers changed documents.
-              Smartphones changed communication.
-              AI agents will change work itself.
+                Every major computing shift changes how humans collaborate:
+                <br />
+                Personal computers changed documents;
+                <br />
+                Smartphones changed communication;
+                <br />
+                AI agents will change work itself.
               </p>
             </FadeSlideSegment>
-
             <FadeSlideSegment show={foldShow} index={7} className="w-full">
               <p className="font-manrope text-sm leading-relaxed text-[#000000] sm:text-base">
-                {" "}
-                <span className="font-bold">My work explores what that collaboration should feel like.</span>
+               My work explores how{" "}
+                <span
+                  className="font-playfair-variable text-[clamp(.5rem,2vw,1.25rem)] italic"
+                  style={{
+                    fontVariationSettings: "'opsz' 5",
+                  }}
+                >
+                  humans
+                </span>{" "}
+                and autonomous{" "}
+                <span
+                  className="font-playfair-variable text-[clamp(.5rem,2vw,1.25rem)] italic"
+                  style={{
+                    fontVariationSettings: "'opsz' 5",
+                  }}
+                >
+                  agents
+                </span>{" "}
+                collaborate, delegate, build trust, and accomplish more together.
               </p>
             </FadeSlideSegment>
 
-            <FadeSlideSegment show={foldShow} index={8} className="flex items-center gap-8 pt-4">
+            <FadeSlideSegment show={foldShow} index={9} className="pt-4">
               <a
-                href="https://www.linkedin.com/in/sangyuxi/"
+                href="https://drive.google.com/file/d/1iNzWgRB9CnThwg9L5a2vhXtQhlASznpK/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-all hover:text-[#000000] hover:opacity-70"
+                className="inline-flex items-center justify-center rounded-full bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
               >
-                <svg className="h-7 w-7 sm:h-8 sm:w-8" fill="#000000" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
+                Résumé
               </a>
             </FadeSlideSegment>
           </div>
@@ -221,25 +238,25 @@ export default function About() {
 
         <div className="mt-12 space-y-10 sm:mt-16 sm:space-y-12 md:mt-20 md:space-y-16">
           <section>
-            <FadeSlideSegment show={foldShow} index={9} className="w-full min-w-0">
+            <FadeSlideSegment show={foldShow} index={10} className="w-full min-w-0">
               <h3 className="mb-4 font-playfair text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Education</h3>
             </FadeSlideSegment>
             <div className="space-y-4 font-manrope text-[#000000] sm:space-y-6">
-              <FadeSlideSegment show={foldShow} index={10} className="w-full">
+              <FadeSlideSegment show={foldShow} index={11} className="w-full">
                 <div>
                   <h4 className="break-words text-base font-bold sm:text-lg">Harvard - MS. Design Engineering</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2023 - 2025</p>
                   <p className="text-xs sm:text-sm">Design Strategy, Data Science</p>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={foldShow} index={11} className="w-full">
+              <FadeSlideSegment show={foldShow} index={12} className="w-full">
                 <div>
                   <h4 className="break-words text-base font-bold sm:text-lg">MIT Sloan - Cross-registered</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2024 - 2025</p>
                   <p className="text-xs sm:text-sm">Marketing, Game Theory</p>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={foldShow} index={12} className="w-full">
+              <FadeSlideSegment show={foldShow} index={13} className="w-full">
                 <div>
                   <h4 className="break-words text-base font-bold sm:text-lg">University of Cincinnati - BS. Industrial Design</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2017 - 2022</p>
@@ -250,35 +267,35 @@ export default function About() {
           </section>
 
           <section>
-            <FadeSlideSegment show={foldShow} index={13} className="w-full min-w-0">
+            <FadeSlideSegment show={foldShow} index={14} className="w-full min-w-0">
               <h3 className="mb-4 font-playfair text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Awards & Recognition</h3>
             </FadeSlideSegment>
             <div className="space-y-4 font-manrope text-[#000000]">
-              <FadeSlideSegment show={foldShow} index={14} className="w-full">
+              <FadeSlideSegment show={foldShow} index={15} className="w-full">
                 <div>
                   <h4 className="break-words text-sm font-bold sm:text-base">VP Content & Operations of MIT Product & Tech conference</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2025 - Worked with a team of 50 to plan a 300+ attendee conference.</p>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={foldShow} index={15} className="w-full">
+              <FadeSlideSegment show={foldShow} index={16} className="w-full">
                 <div>
                   <h4 className="break-words text-sm font-bold sm:text-base">Third Place at MIT Product Hackathon</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2024 - Placed 3rd place among 30 Harvard and MIT competitive entries. (Sponsored by Google)</p>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={foldShow} index={16} className="w-full">
+              <FadeSlideSegment show={foldShow} index={17} className="w-full">
                 <div>
                   <h4 className="break-words text-sm font-bold sm:text-base">Global Grad Show at Dubai Design Week</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2022 - Placed top 100 / 2000 design entries.</p>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={foldShow} index={17} className="w-full">
+              <FadeSlideSegment show={foldShow} index={18} className="w-full">
                 <div>
                   <h4 className="break-words text-sm font-bold sm:text-base">James Dyson Award International Winner & Global Top 20</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">2022 - Placed top 20 / 1650 entries internationally.</p>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={foldShow} index={18} className="w-full">
+              <FadeSlideSegment show={foldShow} index={19} className="w-full">
                 <div>
                   <h4 className="break-words text-sm font-bold sm:text-base">Industrial Design Society of America Student Merit Award Winner</h4>
                   <p className="text-xs text-gray-600 sm:text-sm">

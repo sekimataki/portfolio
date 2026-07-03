@@ -96,10 +96,10 @@ function useRevealOnScroll<T extends HTMLElement = HTMLElement>() {
 function HomeHero({ foldShow }: { foldShow: boolean }) {
   const heroRef = useRef<HTMLElement>(null);
   const plusGrid = useMemo(() => {
-    const cols = 48;
+    const cols = 40;
     const rows = 32;
-    const cellW = 32;
-    const cellH = 32;
+    const cellW = 36;
+    const cellH = 36;
     const plusArm = 3;
     const vbW = cols * cellW;
     const vbH = rows * cellH;
@@ -151,7 +151,7 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
   return (
     <section
       ref={heroRef}
-      className="hero relative min-h-[min(68vh,760px)] overflow-hidden pb-8 pt-24 sm:min-h-[min(70vh,800px)] sm:pt-28 md:pt-32 md:pb-10"
+      className="hero relative min-h-0 overflow-hidden py-8 sm:min-h-[min(70vh,800px)] sm:py-0 sm:pt-28 sm:pb-8 md:pt-32 md:pb-10"
     >
       <div className="hero-blob" aria-hidden />
       <div className="hero-plus-matrix" aria-hidden>
