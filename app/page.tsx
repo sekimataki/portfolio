@@ -151,7 +151,7 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
   return (
     <section
       ref={heroRef}
-      className="hero relative min-h-0 overflow-hidden py-8 sm:min-h-[min(70vh,800px)] sm:py-0 sm:pt-28 sm:pb-8 md:pt-32 md:pb-10"
+      className="hero relative min-h-[min(40vh,480px)] overflow-hidden py-8 sm:min-h-[min(70vh,800px)] sm:py-0 sm:pt-28 sm:pb-8 md:pt-32 md:pb-10"
     >
       <div className="hero-blob" aria-hidden />
       <div className="hero-plus-matrix" aria-hidden>
