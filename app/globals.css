@@ -41,17 +41,6 @@ body {
   background-color: transparent;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    linear-gradient(to bottom, #ffffff 0%, rgba(255, 255, 255, 0) 80px),
-    linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0) 80px);
-}
-
 .hero-panel {
   isolation: isolate;
 }

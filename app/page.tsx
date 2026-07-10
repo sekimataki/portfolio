@@ -159,13 +159,10 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
           {plusGrid.els}
         </svg>
       </div>
-      <div className="hero-content relative z-10 mx-auto w-full min-w-0 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pl-8 sm:pr-8 lg:pl-[56px] lg:pr-[65px]">
-      <FadeSlideSegment show={foldShow} index={3} className="max-w-[1200px] min-w-0 pl-0">
+      <div className="hero-content relative z-10 mx-auto w-full min-w-0 pl-[clamp(1rem,5vw,3.5rem)] pr-[clamp(1rem,4vw,3.5rem)] sm:pl-[clamp(1.5rem,5vw,3.5rem)] sm:pr-[clamp(1.5rem,5vw,3.5rem)]">
+      <FadeSlideSegment show={foldShow} index={3} className="max-w-[1100px] min-w-0 pl-0">
           <h2 className="font-bangla-mn text-[clamp(1.5rem,4vw,3.5rem)] font-thin leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.5rem,4vw,3.5rem)] sm:leading-[1.5]">
-          Designing the future of
-          </h2>
-          <h2 className="font-bangla-mn text-[clamp(1.5rem,4vw,3.5rem)] font-thin leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.5rem,4vw,3.5rem)] sm:leading-[1.5]">
-            human*AI collaboration 
+          Designing human*AI collaboration for the future of work
           </h2>
         </FadeSlideSegment>
 
@@ -382,11 +379,11 @@ export default function Home() {
     <main className="relative min-h-screen w-full overflow-x-hidden bg-white">
 
       <header
-        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-transparent pb-4 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-[calc(39px+env(safe-area-inset-top,0px))] sm:gap-4 sm:pb-5 sm:pl-8 sm:pr-8 lg:pl-[56px] lg:pr-[65px]"
+        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-transparent pb-4 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-[calc(39px+env(safe-area-inset-top,0px))] mix-blend-difference sm:gap-4 sm:pb-5 sm:pl-8 sm:pr-8 lg:pl-[56px] lg:pr-[65px]"
       >
         <FadeSlideSegment show={foldShow} index={0} className="flex min-w-0 items-center gap-2">
           <Link href="/" className="transition-opacity hover:opacity-70">
-            <h1 className="font-bangla-mn text-[20px] font-medium uppercase text-black sm:text-[24px]">
+            <h1 className="font-bangla-mn text-[20px] font-medium uppercase text-white sm:text-[24px]">
               Sangyu Xi
             </h1>
           </Link>
@@ -395,15 +392,15 @@ export default function Home() {
           <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
             <HomeNavLink
               href="/#asana-project-settings"
-              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px]"
+              className="font-manrope text-base font-medium text-white transition-opacity hover:opacity-70 sm:text-[20px]"
             >
               Work
             </HomeNavLink>
           </FadeSlideSegment>
           <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
             <HomeNavLink
-              href="/#speaking"
-              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px]"
+              href="/#featured-on"
+              className="font-manrope text-base font-medium text-white transition-opacity hover:opacity-70 sm:text-[20px]"
             >
               Featured
             </HomeNavLink>
@@ -411,7 +408,7 @@ export default function Home() {
           <FadeSlideSegment show={foldShow} index={3} className="inline-flex">
             <Link
               href="/about"
-              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px] "
+              className="font-manrope text-base font-medium text-white transition-opacity hover:opacity-70 sm:text-[20px]"
             >
               About
             </Link>
@@ -419,7 +416,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <div className="hero-panel relative z-10 mt-[clamp(7rem,8vw,8em)] w-full overflow-hidden bg-[#ffffff]">
+      <div className="hero-panel relative z-10 full-width-margin mt-[clamp(7rem,8vw,8em)] mb-[clamp(0.75rem,2.5em,2.5em)] overflow-hidden bg-[#ffffff]">
         <HomeHero foldShow={foldShow} />
       </div>
 
