@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { HomeNavLink } from "@/components/HomeNavLink";
 
@@ -92,111 +92,45 @@ function useRevealOnScroll<T extends HTMLElement = HTMLElement>() {
   return { ref, show };
 }
 
-/** Full-bleed hero: warm blobs, cursor-reactive “+” grid, gradient into page white. */
 function HomeHero({ foldShow }: { foldShow: boolean }) {
-  const heroRef = useRef<HTMLElement>(null);
-  const plusGrid = useMemo(() => {
-    const cols = 40;
-    const rows = 32;
-    const cellW = 36;
-    const cellH = 36;
-    const plusArm = 3;
-    const vbW = cols * cellW;
-    const vbH = rows * cellH;
-    const els: ReactNode[] = [];
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const x = c * cellW + cellW / 2;
-        const y = r * cellH + cellH / 2;
-        els.push(
-          <g key={`${r}-${c}`} transform={`translate(${x} ${y})`}>
-            <line x1={-plusArm} y1="0" x2={plusArm} y2="0" stroke="currentColor" strokeWidth="0.5" />
-            <line x1="0" y1={-plusArm} x2="0" y2={plusArm} stroke="currentColor" strokeWidth="0.5" />
-          </g>,
-        );
-      }
-    }
-    return { vbW, vbH, els };
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const el = heroRef.current;
-    if (!el) return;
-    let raf = 0;
-    const move = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        el.style.setProperty("--mx", `${x}%`);
-        el.style.setProperty("--my", `${y}%`);
-      });
-    };
-    const leave = () => {
-      el.style.setProperty("--mx", "70%");
-      el.style.setProperty("--my", "35%");
-    };
-    el.addEventListener("mousemove", move);
-    el.addEventListener("mouseleave", leave);
-    return () => {
-      cancelAnimationFrame(raf);
-      el.removeEventListener("mousemove", move);
-      el.removeEventListener("mouseleave", leave);
-    };
-  }, []);
-
   return (
-    <section
-      ref={heroRef}
-      className="hero relative h-[min(360px,85vw)] overflow-hidden pt-12 pb-8 sm:h-[413px] sm:pt-[61px] sm:pb-10"
-    >
-      <div className="hero-blob" aria-hidden />
-      <div className="hero-plus-matrix" aria-hidden>
-        <svg preserveAspectRatio="xMidYMid slice" viewBox={`0 0 ${plusGrid.vbW} ${plusGrid.vbH}`}>
-          {plusGrid.els}
-        </svg>
-      </div>
-      <div className="hero-content relative z-10 mx-auto w-full min-w-0 pl-[clamp(1rem,5vw,3.5rem)] pr-[clamp(1rem,4vw,3.5rem)] sm:pl-[clamp(1.5rem,5vw,3.5rem)] sm:pr-[clamp(1.5rem,5vw,3.5rem)]">
-      <FadeSlideSegment show={foldShow} index={3} className="max-w-[1100px] min-w-0 pl-0">
-          <h2 className="font-bangla-mn text-[clamp(1.5rem,4vw,3.5rem)] font-thin leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.5rem,4vw,3.5rem)] sm:leading-[1.5]">
+    <section className="relative z-10 max-w-[1200px] pl-[clamp(1rem,5vw,3.5rem)] pr-[clamp(1rem,4vw,3.5rem)] sm:pl-[clamp(1.5rem,5vw,3.5rem)] sm:pr-[clamp(1.5rem,5vw,3.5rem)]">
+      <FadeSlideSegment show={foldShow} index={3}>
+        <h2 className="font-bangla-mn text-[clamp(1.5rem,4vw,3.5rem)] font-thin leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.5rem,4vw,3.5rem)] sm:leading-[1.5]">
           Designing human*AI collaboration for the future of work
-          </h2>
-        </FadeSlideSegment>
+        </h2>
+      </FadeSlideSegment>
 
-        <div className="mt-[18px] max-w-[1200px] min-w-0 pl-0 font-manrope text-base font-regular leading-relaxed text-black sm:text-[18px] sm:leading-normal md:mt-[25px] md:text-[20px] lg:mt-[35px]">
+      <div className="mt-[18px] max-w-[1200px] min-w-0 pl-0 md:mt-[25px] lg:mt-[35px]">
           <div className="flex flex-col gap-2 sm:gap-2">
             <FadeSlideSegment show={foldShow} index={4} className="min-w-0">
-              <p>
+              <p className="font-manrope text-base font-medium text-pretty text-black sm:text-[20px]">
               Product designer at {" "}
                 <a
                   href="https://asana.com/product/ai/ai-teammates"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-black hover:opacity-70"
+                  className="font-medium text-black transition-opacity hover:opacity-70"
                 >
                   Asana AI Teammates
                 </a>
               </p>
             </FadeSlideSegment>
             <FadeSlideSegment show={foldShow} index={5} className="min-w-0">
-              <p>
+              <p className="font-manrope text-base font-medium text-pretty text-black sm:text-[20px]">
                 Harvard{" "}
                 <a
                   href="https://mde.harvard.edu/sangyu-xi/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-black hover:opacity-70"
+                  className="font-medium text-black transition-opacity hover:opacity-70"
                 >
-                Design Engineering{" "}
+                  Design Engineering
                 </a>
               </p>
             </FadeSlideSegment>
           </div>
         </div>
-      </div>
     </section>
   );
 }
@@ -292,7 +226,7 @@ function WorkProjectCard({
   const textStart = imageSide === "left" ? 1 : 0;
   let ti = textStart;
   const textStack = (
-    <div className="flex w-full min-w-0 flex-col gap-4 lg:max-w-[691px]">
+    <div className="flex w-full min-w-0 flex-col gap-4 lg:max-w-[691px] lg:pt-8">
       <FadeSlideSegment show={show} index={ti++} className="w-full">
         {titleBlock}
       </FadeSlideSegment>
@@ -416,7 +350,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <div className="hero-panel relative z-10 full-width-margin mt-[clamp(7rem,8vw,8em)] mb-[clamp(0.75rem,2.5em,2.5em)] overflow-hidden bg-[#ffffff]">
+      <div className="relative z-10 ml-[max(1.25rem,env(safe-area-inset-left))] mr-[max(1.25rem,env(safe-area-inset-right))] mt-[clamp(12rem,16vw,16em)] mb-[clamp(0.75rem,2.5em,2.5em)] sm:ml-8 sm:mr-8 lg:ml-[56px] lg:mr-[65px]">
         <HomeHero foldShow={foldShow} />
       </div>
 
@@ -426,7 +360,7 @@ export default function Home() {
         <WorkProjectCard
             anchorId="asana-ai-teammates"
             title="Asana AI Teammates"
-            description= "Multi-agent collaboration for the future of work"
+            description= "Multi-agent collaboration"
             imageSrc="/ait-motion.gif"
             imageAlt="Asana AI Teammates"
             imageSide="left"
@@ -493,7 +427,7 @@ export default function Home() {
             className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-4 pt-8 sm:mt-20 sm:gap-x-8 sm:pt-12 md:mt-24 lg:flex-nowrap lg:justify-between"
           >
             <FadeSlideSegment show={speakReveal.show} index={0} className="shrink-0">
-              <p className="font-manrope text-base font-medium text-[#6c6c6c] sm:text-lg md:text-xl">
+              <p className="font-manrope text-base font-medium text-[#000000] sm:text-lg md:text-xl">
                 Featured on
               </p>
             </FadeSlideSegment>
@@ -513,7 +447,7 @@ export default function Home() {
                   <img
                     src={item.src}
                     alt=""
-                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-h-8 w-auto max-w-[min(100%,120px)] object-contain opacity-40 transition-opacity group-hover:opacity-65 sm:max-w-[140px] md:max-w-none`}
+                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-h-8 w-auto max-w-[min(100%,120px)] object-contain opacity-100 transition-opacity group-hover:opacity-40 sm:max-w-[140px] md:max-w-none`}
                   />
                 </a>
               ))}
