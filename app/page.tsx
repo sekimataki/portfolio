@@ -457,12 +457,13 @@ export default function Home() {
           <FadeSlideSegment show={speakReveal.show} index={2} className="mt-8 sm:mt-10">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
               {SPEECH_IMAGES.map((i) => (
-                <img
-                  key={i}
-                  src={`/speech${i}.jpeg`}
-                  alt={`Speech${i}`}
-                  className="aspect-[221/180] w-full object-cover"
-                />
+                <div key={i} className="group overflow-hidden">
+                  <img
+                    src={`/speech${i}.jpeg`}
+                    alt={`Speech${i}`}
+                    className="aspect-[221/180] w-full object-cover grayscale transition-[filter] duration-300 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:grayscale-0"
+                  />
+                </div>
               ))}
             </div>
           </FadeSlideSegment>
