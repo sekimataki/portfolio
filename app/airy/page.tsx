@@ -274,7 +274,6 @@ function CompetitorOverviewTabs() {
 }
 
 export default function AiryCaseStudyPage() {
-  const [headerScrolled, setHeaderScrolled] = useState(false);
   const foldShow = useRevealOnMount();
   const footReveal = useRevealOnScroll<HTMLElement>();
   const s1 = useRevealOnScroll<HTMLDivElement>();
@@ -304,25 +303,14 @@ export default function AiryCaseStudyPage() {
   const sShare = useRevealOnScroll<HTMLDivElement>();
   const sMate = useRevealOnScroll<HTMLDivElement>();
 
-  useEffect(() => {
-    const onScroll = () => setHeaderScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white">
       <header
-        className={`fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 px-[max(1.25rem,env(safe-area-inset-left))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] pr-[max(1.25rem,env(safe-area-inset-right))] transition-[background-color,backdrop-filter,border-color] duration-300 sm:gap-4 sm:px-8 sm:pb-5 lg:pl-[54px] lg:pr-[65px] ${
-          headerScrolled
-            ? "border-b border-black/[0.06] bg-white/75 backdrop-blur-md backdrop-saturate-150"
-            : "border-b border-transparent bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-transparent px-[max(1.25rem,env(safe-area-inset-left))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:gap-4 sm:px-8 sm:pb-5 lg:pl-[54px] lg:pr-[65px]"
       >
         <FadeSlideSegment show={foldShow} index={0} className="flex min-w-0 items-center gap-2">
           <Link href="/" className="transition-opacity hover:opacity-70">
-            <h1 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">
+            <h1 className="font-bangla-mn text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">
               Sangyu Xi
             </h1>
           </Link>
@@ -372,7 +360,7 @@ export default function AiryCaseStudyPage() {
           <FadeSlideSegment show={foldShow} index={0} className="mb-6 w-full text-left sm:mb-8">
             <div className="w-full max-w-[820px]">
               <FadeSlideSegment show={foldShow} index={2} className="w-full min-w-0 text-left">
-                <h1 className="font-playfair text-[32px] font-bold leading-[1.15] text-pretty text-black">
+                <h1 className="font-bangla-mn text-[32px] font-bold leading-[1.15] text-pretty text-black">
                   Airy
                 </h1>
               </FadeSlideSegment>
@@ -1308,14 +1296,14 @@ export default function AiryCaseStudyPage() {
               <FadeSlideSegment show={sInsight2.show} index={1} className="w-full">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
                   <div className="rounded-2xl border border-black/[0.08] bg-[#fff5f7] p-6 sm:p-8">
-                    <p className="font-playfair text-4xl font-semibold text-[#e11d48] sm:text-5xl">36%</p>
+                    <p className="font-bangla-mn text-4xl font-semibold text-[#e11d48] sm:text-5xl">36%</p>
                     <p className="mt-3 font-manrope text-sm leading-relaxed text-black/80 sm:text-base">
                       more patients say the Airy app helps their doctors analyze whether a treatment plan adjustment is needed,
                       thanks to better engagement in wear time and exercise tracking.
                     </p>
                   </div>
                   <div className="rounded-2xl border border-black/[0.08] bg-[#fff5f7] p-6 sm:p-8">
-                    <p className="font-playfair text-4xl font-semibold text-[#e11d48] sm:text-5xl">76%</p>
+                    <p className="font-bangla-mn text-4xl font-semibold text-[#e11d48] sm:text-5xl">76%</p>
                     <p className="mt-3 font-manrope text-sm leading-relaxed text-black/80 sm:text-base">
                       of testers could find how to check wear time, access exercise tutorials, and update scoliosis progression
                       within the first three attempts.
@@ -1452,7 +1440,7 @@ export default function AiryCaseStudyPage() {
         >
           <div className="flex min-w-0 flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between">
             <FadeSlideSegment show={footReveal.show} index={0} className="min-w-0 space-y-2 md:max-w-xl">
-              <h4 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">Sangyu Xi</h4>
+              <h4 className="font-bangla-mn text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">Sangyu Xi</h4>
               <p className="font-manrope text-xs leading-relaxed text-gray-600 sm:text-sm">
                 Are you an engineer or an entrepreneur?<br />
                 I always welcome new opportunities to exchange ideas and to explore collaborations.<br />

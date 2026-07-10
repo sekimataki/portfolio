@@ -93,65 +93,42 @@ function useRevealOnScroll<T extends HTMLElement = HTMLElement>() {
 }
 
 export default function About() {
-  const [headerScrolled, setHeaderScrolled] = useState(false);
   const foldShow = useRevealOnMount();
   const footReveal = useRevealOnScroll<HTMLElement>();
 
-  useEffect(() => {
-    const onScroll = () => setHeaderScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white">
-     <header
-        className={`fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] transition-[background-color,backdrop-filter,border-color] duration-300 sm:gap-4 sm:pl-8 sm:pr-8 sm:pb-5 lg:pl-[54px] lg:pr-[65px] ${
-          headerScrolled
-            ? "border-b border-black/[0.06] bg-white/75 backdrop-blur-md backdrop-saturate-150"
-            : "border-b border-transparent bg-transparent"
-        }`}
+      <header
+        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-transparent pb-4 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-[calc(39px+env(safe-area-inset-top,0px))] sm:gap-4 sm:pb-5 sm:pl-8 sm:pr-8 lg:pl-[56px] lg:pr-[65px]"
       >
         <FadeSlideSegment show={foldShow} index={0} className="flex min-w-0 items-center gap-2">
           <Link href="/" className="transition-opacity hover:opacity-70">
-            <h1 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">
+            <h1 className="font-bangla-mn text-[20px] font-medium uppercase text-black sm:text-[24px]">
               Sangyu Xi
             </h1>
           </Link>
-          <a
-            href="https://www.linkedin.com/in/sangyuxi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex size-6 shrink-0 items-center hover:opacity-70"
-            aria-label="LinkedIn"
-          >
-            <svg width="20" height="20" fill="#000000" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-          </a>
         </FadeSlideSegment>
         <nav className="mt-[5px] flex shrink-0 items-center gap-5 capitalize sm:gap-8 md:gap-10 lg:gap-[60px]">
           <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
             <HomeNavLink
               href="/#asana-project-settings"
-              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
+              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px]"
             >
               Work
             </HomeNavLink>
           </FadeSlideSegment>
           <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
             <HomeNavLink
-              href="/#speaking"
-              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
+              href="/#featured-on"
+              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px]"
             >
-              Speaking
+              Featured
             </HomeNavLink>
           </FadeSlideSegment>
           <FadeSlideSegment show={foldShow} index={3} className="inline-flex">
             <Link
               href="/about"
-              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
+              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px] "
             >
               About
             </Link>
@@ -181,7 +158,7 @@ export default function About() {
 
           <div className="order-2 min-w-0 space-y-6 sm:space-y-8 md:order-1">
             <FadeSlideSegment show={foldShow} index={4} className="w-full min-w-0">
-            <h2 className="font-playfair text-3xl leading-tight text-pretty text-[#000000] sm:text-4xl md:text-5xl lg:text-6xl">
+            <h2 className="font-bangla-mn text-3xl leading-tight text-pretty text-[#000000] sm:text-4xl md:text-5xl lg:text-6xl">
                 Hello,
                 <br />
                 I&apos;m <span className="italic">Sangyu</span>
@@ -203,19 +180,13 @@ export default function About() {
               <p className="font-manrope text-sm leading-relaxed text-[#000000] sm:text-base">
                My work explores how{" "}
                 <span
-                  className="font-playfair-variable text-[clamp(.5rem,2vw,1.25rem)] italic"
-                  style={{
-                    fontVariationSettings: "'opsz' 5",
-                  }}
+                  className="font-bangla-mn text-[clamp(.5rem,2vw,1.25rem)] italic"
                 >
                   humans
                 </span>{" "}
                 and autonomous{" "}
                 <span
-                  className="font-playfair-variable text-[clamp(.5rem,2vw,1.25rem)] italic"
-                  style={{
-                    fontVariationSettings: "'opsz' 5",
-                  }}
+                  className="font-bangla-mn text-[clamp(.5rem,2vw,1.25rem)] italic"
                 >
                   agents
                 </span>{" "}
@@ -223,12 +194,20 @@ export default function About() {
               </p>
             </FadeSlideSegment>
 
-            <FadeSlideSegment show={foldShow} index={9} className="pt-4">
+          <FadeSlideSegment show={foldShow} index={9} className="flex gap-2 pt-4">
+          <a
+                href="https://www.linkedin.com/in/sangyuxi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
+              >
+                Linkedin
+              </a>
               <a
                 href="https://drive.google.com/file/d/1iNzWgRB9CnThwg9L5a2vhXtQhlASznpK/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
+                className="inline-flex items-center justify-center bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
               >
                 Résumé
               </a>
@@ -239,7 +218,7 @@ export default function About() {
         <div className="mt-12 space-y-10 sm:mt-16 sm:space-y-12 md:mt-20 md:space-y-16">
           <section>
             <FadeSlideSegment show={foldShow} index={10} className="w-full min-w-0">
-              <h3 className="mb-4 font-playfair text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Education</h3>
+              <h3 className="mb-4 font-bangla-mn text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Education</h3>
             </FadeSlideSegment>
             <div className="space-y-4 font-manrope text-[#000000] sm:space-y-6">
               <FadeSlideSegment show={foldShow} index={11} className="w-full">
@@ -268,7 +247,7 @@ export default function About() {
 
           <section>
             <FadeSlideSegment show={foldShow} index={14} className="w-full min-w-0">
-              <h3 className="mb-4 font-playfair text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Awards & Recognition</h3>
+              <h3 className="mb-4 font-bangla-mn text-2xl text-pretty text-[#000000] sm:mb-6 sm:text-3xl">Awards & Recognition</h3>
             </FadeSlideSegment>
             <div className="space-y-4 font-manrope text-[#000000]">
               <FadeSlideSegment show={foldShow} index={15} className="w-full">
@@ -306,33 +285,34 @@ export default function About() {
             </div>
           </section>
         </div>
-
-        <footer
-          ref={footReveal.ref}
-          className="mt-10 pt-8 sm:mt-16 sm:pt-12 md:mt-20"
-        >
-          <div className="flex flex-col items-center text-center">
-            <FadeSlideSegment show={footReveal.show} index={0}>
-              <p className="max-w-xl font-manrope text-sm leading-relaxed text-gray-500 sm:text-base md:text-lg">
-                Interested in building the future of Human-AI Collaboration together?
-              </p>
-            </FadeSlideSegment>
-            <FadeSlideSegment show={footReveal.show} index={1} className="mt-6 sm:mt-8">
-              <a
-                href="mailto:sangyuxi@gmail.com"
-                className="inline-flex items-center justify-center rounded-full bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
-              >
-                Let&apos;s connect!
-              </a>
-            </FadeSlideSegment>
-            <FadeSlideSegment show={footReveal.show} index={2} className="mt-24 sm:mt-32 md:mt-40">
-              <p className="font-manrope text-xs text-gray-400">
-                Copyright &copy; 2026 sangyu.com All rights reserved.
-              </p>
-            </FadeSlideSegment>
-          </div>
-        </footer>
       </div>
+      <footer
+        ref={footReveal.ref}
+        className="relative z-10 w-full bg-black pb-[93px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
+      >
+        <div className="flex flex-col items-start text-left">
+          <FadeSlideSegment show={footReveal.show} index={0}>
+            <p className="font-bangla-mn text-xl leading-normal text-white sm:text-[24px]">
+              Interested in building together?
+            </p>
+          </FadeSlideSegment>
+          <FadeSlideSegment show={footReveal.show} index={1} className="mt-10 sm:mt-[12px]">
+            <a
+              href="mailto:sangyuxi@gmail.com"
+              className="font-bangla-mn text-xl text-white transition-opacity hover:opacity-80 sm:text-[24px]"
+            >
+              ↳ Let&apos;s connect 
+            </a>
+          </FadeSlideSegment>
+          <FadeSlideSegment show={footReveal.show} index={2} className="mt-16 sm:mt-[84px]">
+            <div className="flex items-center">
+              <p className="font-manrope text-base text-white">
+                Copyright &copy; 2026 sangyuxi.com. All rights reserved.
+              </p>
+            </div>
+          </FadeSlideSegment>
+        </div>
+      </footer>
     </div>
   );
 }

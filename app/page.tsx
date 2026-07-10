@@ -151,7 +151,7 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
   return (
     <section
       ref={heroRef}
-      className="hero relative min-h-[min(40vh,480px)] overflow-hidden py-8 sm:min-h-[min(70vh,800px)] sm:py-0 sm:pt-28 sm:pb-8 md:pt-32 md:pb-10"
+      className="hero relative h-[min(360px,85vw)] overflow-hidden pt-12 pb-8 sm:h-[413px] sm:pt-[61px] sm:pb-10"
     >
       <div className="hero-blob" aria-hidden />
       <div className="hero-plus-matrix" aria-hidden>
@@ -159,26 +159,17 @@ function HomeHero({ foldShow }: { foldShow: boolean }) {
           {plusGrid.els}
         </svg>
       </div>
-      <div className="hero-content relative z-10 mx-auto w-full min-w-0 pl-[clamp(1rem,5vw,3.5rem)] pr-[clamp(1rem,4vw,3.5rem)] sm:pl-[clamp(1.5rem,5vw,3.5rem)] sm:pr-[clamp(1.5rem,5vw,3.5rem)]">
-      <FadeSlideSegment show={foldShow} index={3} className="max-w-[992px] min-w-0 pl-0 md:pl-[clamp(1.5rem,7vw,5.5rem)]">
-          <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.5]">
-            Designing{" "}
-            <span
-              className="font-playfair-variable italic"
-              style={{
-                fontVariationSettings: "'opsz' 5, 'wdth' 112.5",
-                letterSpacing: "0.02em",
-              }}
-            >
-              Human*AI
-            </span>
+      <div className="hero-content relative z-10 mx-auto w-full min-w-0 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pl-8 sm:pr-8 lg:pl-[56px] lg:pr-[65px]">
+      <FadeSlideSegment show={foldShow} index={3} className="max-w-[1200px] min-w-0 pl-0">
+          <h2 className="font-bangla-mn text-[clamp(1.5rem,4vw,3.5rem)] font-thin leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.5rem,4vw,3.5rem)] sm:leading-[1.5]">
+          Designing the future of
           </h2>
-          <h2 className="font-playfair text-[clamp(2rem,5.5vw,5rem)] font-medium leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.75rem,5.5vw,5rem)] sm:leading-[1.05]">
-          collaboration
+          <h2 className="font-bangla-mn text-[clamp(1.5rem,4vw,3.5rem)] font-thin leading-[1.08] tracking-loose text-pretty text-black sm:text-[clamp(1.5rem,4vw,3.5rem)] sm:leading-[1.5]">
+            human*AI collaboration 
           </h2>
         </FadeSlideSegment>
 
-        <div className="mt-[18px] max-w-[992px] min-w-0 pl-0 font-manrope text-base font-regular leading-relaxed text-black sm:text-[18px] sm:leading-normal md:mt-[25px] md:pl-[clamp(1.5rem,7vw,5.5rem)] md:text-[20px] lg:mt-[35px]">
+        <div className="mt-[18px] max-w-[1200px] min-w-0 pl-0 font-manrope text-base font-regular leading-relaxed text-black sm:text-[18px] sm:leading-normal md:mt-[25px] md:text-[20px] lg:mt-[35px]">
           <div className="flex flex-col gap-2 sm:gap-2">
             <FadeSlideSegment show={foldShow} index={4} className="min-w-0">
               <p>
@@ -239,9 +230,7 @@ const SPEECH_IMAGES = [1, 2, 3, 4, 5] as const;
 
 /** Project row — matches Figma 964:70 “project card” frames (969:831, 969:798, …). */
 function WorkProjectCard({
-  tag,
   title,
-  meta,
   description,
   imageSrc,
   imageAlt,
@@ -250,9 +239,7 @@ function WorkProjectCard({
   anchorId,
   children,
 }: {
-  tag: string;
   title: string;
-  meta: string;
   description: string;
   imageSrc: string;
   imageAlt: string;
@@ -265,26 +252,18 @@ function WorkProjectCard({
 }) {
   const { ref, show } = useRevealOnScroll<HTMLElement>();
 
-  const pill = (
-    <div className="inline-flex max-w-full shrink-0 items-center justify-center self-start rounded-full bg-[#f5f4f1] px-3 py-2 sm:px-4 sm:py-3">
-      <span className="text-center font-manrope text-sm font-medium leading-snug text-black sm:text-base sm:whitespace-nowrap">
-        {tag}
-      </span>
-    </div>
-  );
-
   const titleBlock = imageHref ? (
     <Link
       href={imageHref}
       className="block text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black/25"
       aria-label={`${title} — open case study`}
     >
-      <h3 className="font-playfair text-[clamp(1.5rem,6vw,3rem)] font-medium leading-[1.2] text-pretty text-black sm:text-[clamp(1.75rem,7vw,3rem)] lg:text-[48px] lg:leading-[60px]">
+      <h3 className="font-bangla-mn text-[clamp(0.75rem,2.5vw,1.25rem)] font-regular text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
         {title}
       </h3>
     </Link>
   ) : (
-    <h3 className="font-playfair text-[clamp(1.5rem,6vw,3rem)] font-medium leading-[1.2] text-pretty text-black sm:text-[clamp(1.75rem,7vw,3rem)] lg:text-[48px] lg:leading-[60px]">
+    <h3 className="font-bangla-mn text-[clamp(0.75rem,2.5vw,1.25rem)] font-regular text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
       {title}
     </h3>
   );
@@ -298,7 +277,7 @@ function WorkProjectCard({
   );
 
   const imageColumn = (
-    <div className="group relative mx-auto aspect-[4/3] w-full max-w-[min(100%,340px)] shrink-0 overflow-hidden rounded-[2em] sm:max-w-[400px] md:max-w-[520px] lg:mx-0 lg:max-w-[min(720px,55vw)]">
+    <div className="group relative mx-auto aspect-[4/3] w-full max-w-[min(100%,561px)] shrink-0 overflow-hidden sm:max-w-[660px] md:max-w-[858px] lg:mx-0 lg:max-w-[min(1188px,90.75vw)]">
       {imageHref ? (
         <Link
           href={imageHref}
@@ -317,31 +296,19 @@ function WorkProjectCard({
   let ti = textStart;
   const textStack = (
     <div className="flex w-full min-w-0 flex-col gap-4 lg:max-w-[691px]">
-      <FadeSlideSegment show={show} index={ti++} className="w-fit max-w-full">
-        {pill}
+      <FadeSlideSegment show={show} index={ti++} className="w-full">
+        {titleBlock}
       </FadeSlideSegment>
-      <div className="flex flex-col gap-4">
+      <FadeSlideSegment show={show} index={ti++} className="w-full">
+        <p className="font-manrope font-regular text-black/50 sm:text-[18px] sm:leading-normal">
+          {description}
+        </p>
+      </FadeSlideSegment>
+      {children ? (
         <FadeSlideSegment show={show} index={ti++} className="w-full">
-          {titleBlock}
+          {children}
         </FadeSlideSegment>
-        <FadeSlideSegment show={show} index={ti++} className="flex w-full flex-col gap-4">
-          <div className="h-px w-full bg-[#e9e9e9]" aria-hidden />
-          <p className="font-manrope font-regular capitalize text-black sm:text-[18px] sm:leading-normal md:text-[20px]">
-            {meta}
-          </p>
-        </FadeSlideSegment>
-        <FadeSlideSegment show={show} index={ti++} className="flex w-full flex-col gap-4">
-          <div className="h-px w-full bg-[#e9e9e9]" aria-hidden />
-          <p className="font-manrope font-regular text-black/50 sm:text-[18px] sm:leading-normal">
-            {description}
-          </p>
-        </FadeSlideSegment>
-        {children ? (
-          <FadeSlideSegment show={show} index={ti++} className="w-full">
-            {children}
-          </FadeSlideSegment>
-        ) : null}
-      </div>
+      ) : null}
     </div>
   );
 
@@ -351,7 +318,7 @@ function WorkProjectCard({
     <article
       id={anchorId}
       ref={ref}
-      className="flex w-full min-w-0 scroll-mt-28 flex-col gap-6 sm:gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-[59px]"
+      className="flex w-full min-w-0 scroll-mt-28 flex-col gap-4 sm:gap-5 lg:flex-row lg:items-start lg:justify-between lg:gap-8"
     >
       {imageSide === "left" ? (
         <>
@@ -379,7 +346,6 @@ function WorkProjectCard({
 }
 
 export default function Home() {
-  const [headerScrolled, setHeaderScrolled] = useState(false);
   const foldShow = useRevealOnMount();
   const recReveal = useRevealOnScroll<HTMLDivElement>();
   const missionReveal = useRevealOnScroll<HTMLDivElement>();
@@ -393,13 +359,6 @@ export default function Home() {
     const t = setTimeout(() => setRecShowDelayed(true), RECOGNITION_REVEAL_DELAY_MS);
     return () => clearTimeout(t);
   }, [recReveal.show]);
-
-  useEffect(() => {
-    const onScroll = () => setHeaderScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const scrollToHash = () => {
@@ -423,35 +382,20 @@ export default function Home() {
     <main className="relative min-h-screen w-full overflow-x-hidden bg-white">
 
       <header
-        className={`fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 px-[max(1.25rem,env(safe-area-inset-left))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] pr-[max(1.25rem,env(safe-area-inset-right))] transition-[background-color,backdrop-filter,border-color] duration-300 sm:gap-4 sm:px-8 sm:pb-5 lg:px-[clamp(1.25rem,6vw,6em)] ${
-          headerScrolled
-            ? "border-b border-black/[0.06] bg-white/75 backdrop-blur-md backdrop-saturate-150"
-            : "border-b border-transparent bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-transparent pb-4 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-[calc(39px+env(safe-area-inset-top,0px))] sm:gap-4 sm:pb-5 sm:pl-8 sm:pr-8 lg:pl-[56px] lg:pr-[65px]"
       >
         <FadeSlideSegment show={foldShow} index={0} className="flex min-w-0 items-center gap-2">
           <Link href="/" className="transition-opacity hover:opacity-70">
-            <h1 className="font-playfair text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">
+            <h1 className="font-bangla-mn text-[20px] font-medium uppercase text-black sm:text-[24px]">
               Sangyu Xi
             </h1>
           </Link>
-          <a
-            href="https://www.linkedin.com/in/sangyuxi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex size-6 shrink-0 items-center hover:opacity-70"
-            aria-label="LinkedIn"
-          >
-            <svg width="20" height="20" fill="#000000" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-          </a>
         </FadeSlideSegment>
         <nav className="mt-[5px] flex shrink-0 items-center gap-5 capitalize sm:gap-8 md:gap-10 lg:gap-[60px]">
           <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
             <HomeNavLink
               href="/#asana-project-settings"
-              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
+              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px]"
             >
               Work
             </HomeNavLink>
@@ -459,15 +403,15 @@ export default function Home() {
           <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
             <HomeNavLink
               href="/#speaking"
-              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
+              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px]"
             >
-              Speaking
+              Featured
             </HomeNavLink>
           </FadeSlideSegment>
           <FadeSlideSegment show={foldShow} index={3} className="inline-flex">
             <Link
               href="/about"
-              className="font-manrope text-base font-normal text-black/50 transition-colors hover:text-black/90 sm:text-[16px] md:text-[18px]"
+              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px] "
             >
               About
             </Link>
@@ -475,66 +419,17 @@ export default function Home() {
         </nav>
       </header>
 
-      <div className="hero-panel relative z-10 mx-[clamp(1.25rem,6vw,6em)] mt-[clamp(5.5rem,6vw,6em)] mb-[clamp(0.75rem,2.5em,2.5em)] overflow-hidden rounded-[2em] bg-[#F8F7F6]">
+      <div className="hero-panel relative z-10 mt-[clamp(7rem,8vw,8em)] w-full overflow-hidden bg-[#ffffff]">
         <HomeHero foldShow={foldShow} />
       </div>
 
-      <div className="relative z-10 mx-auto w-full min-w-0 max-w-[1440px] pb-20 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pb-24 sm:pl-8 sm:pr-8 lg:pl-[54px] lg:pr-[65px]">
-        <div ref={recReveal.ref} className="mx-auto mt-4 max-w-[826px] min-w-0 md:mt-8 lg:mt-12">
-          <FadeSlideSegment show={recShowDelayed} index={0} className="w-full min-w-0">
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-5 sm:gap-x-6 sm:gap-y-6 md:justify-between md:gap-4">
-              {RECOGNITION.map((item, i) => (
-                <a
-                  key={`recognition-${i + 1}`}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group transition-opacity"
-                >
-                  <img
-                    src={item.src}
-                    alt=""
-                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-h-8 w-auto max-w-[min(100%,120px)] object-contain opacity-40 transition-opacity group-hover:opacity-65 sm:max-w-[140px] md:max-w-none`}
-                  />
-                </a>
-              ))}
-            </div>
-          </FadeSlideSegment>
-        </div>
-        <div ref={missionReveal.ref} className="mt-16 sm:mt-20 md:mt-24 lg:mt-28">
-          <FadeSlideSegment show={missionReveal.show} index={0} className="mx-auto max-w-[880px] text-center">
-            <p className="font-manrope text-[clamp(0.85rem,2.35vw,1.75rem)] font-light leading-snug text-black">
-              I design AI systems where{" "}
-              <span
-                className="font-playfair-variable text-[clamp(1rem,3vw,2rem)] italic leading-[1.15]"
-                style={{
-                  fontVariationSettings: "'opsz' 5",
-                }}
-              >
-                humans
-              </span>{" "}
-              and autonomous{" "}
-              <span
-                className="font-playfair-variable text-[clamp(1rem,3vw,2rem)]  italic leading-[1.15]"
-                style={{
-                  fontVariationSettings: "'opsz' 5",
-                }}
-              >
-                agents
-              </span>{" "}
-              collaborate, delegate, build trust, and accomplish more together.
-            </p>
-          </FadeSlideSegment>
-        </div>
-
+      <div className="relative z-10 w-full min-w-0 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pl-8 sm:pr-8 lg:pl-[56px] lg:pr-[65px]">
         {/* Work — layout from Figma 964:70 project cards; copy unchanged */}
         <section id="work" className="mt-20 flex min-w-0 flex-col gap-10 sm:mt-24 sm:gap-14 md:mt-28 lg:mt-32 lg:gap-[60px]">
         <WorkProjectCard
             anchorId="asana-ai-teammates"
-            tag="AI for Collaboration"
             title="Asana AI Teammates"
-            meta="2026 | Product design"
-            description="Designing multi-agent collaboration for the future of work, from discovery and proactive suggestions to enterprise AI governance."
+            description= "Multi-agent collaboration for the future of work"
             imageSrc="/ait-motion.gif"
             imageAlt="Asana AI Teammates"
             imageSide="left"
@@ -542,10 +437,8 @@ export default function Home() {
 
         <WorkProjectCard
             anchorId="asana-project-settings"
-            tag="SaaS CWM"
             title="Asana project settings"
-            meta="2024 | UX design"
-            description="Led the proposal to revamp Asana’s project settings hub, driving cross-surface exploration and aligning stakeholders across teams to establish a unified strategic direction."
+            description="Revamp Asana’s project settings hub"
             imageSrc="/asana-cover.png"
             imageAlt="Asana project settings"
             imageSide="left"
@@ -553,44 +446,26 @@ export default function Home() {
           />
 
         <WorkProjectCard
-            tag="AI for Health"
             title="Airy scoliosis brace"
-            meta="2022 | UX design, strategy"
-            description="Led the end-to-end design of an integrated physical and digital solution for scoliosis care, driving user engagement and improving brace compliance among patients."
+            description="Integrated physical and digital solution for scoliosis"
             imageSrc="/airy-cover.png"
             imageAlt="Airy scoliosis brace"
             imageSide="left"
             //imageHref="/airy"
           />
-
-          {!showMoreProjects ? (
-            <button
-              type="button"
-              onClick={() => setShowMoreProjects(true)}
-              className="self-start font-manrope text-base font-regular text-black/50 transition-colors hover:text-black/90 md:text-lg"
-            >
-              ↳ View more
-            </button>
-          ) : null}
-
-          {showMoreProjects ? (
-            <>
+          
           <WorkProjectCard
-            tag="AI for Accessibility"
             title="Enlight"
-            meta="2024 | UX design"
-            description='How AI can support visually impaired individuals in a new way to "see" webpages.'
+            description='AI-powered accessibility tool that enables the visually impaired to "see" webpages'
             imageSrc="/enlight-cover.png"
             imageAlt="Enlight"
             imageSide="left"
             //imageHref= "/enlight" // to do in the future
           />
 
-          <WorkProjectCard
-            tag="AI for Relationships"
+            {/*<WorkProjectCard
             title="Amimi"
-            meta="2025 | Vibe coding, UX design"
-            description="Introducing AI therapist to support healthy communication"
+            description="AI relationship coach built from 0 to 1"
             imageSrc="/amimi-cover.png"
             imageAlt="Amimi"
             imageSide="left"
@@ -602,91 +477,94 @@ export default function Home() {
             >
               Try it in Testflight
             </a>
-          </WorkProjectCard>
+          </WorkProjectCard>*/}
 
           <WorkProjectCard
-            tag="Home fitness"
             title="Google Nest Fit"
-            meta="2022 | UX design"
-            description="Designed an engaging home fitness experience, creating a product concept that motivates and sustains user participation in at-home workouts."
+            description="Home fitness experience reimagined"
             imageSrc="/nestfit-cover.jpg"
             imageAlt="Google Nest Fit"
             imageSide="left"
           />
 
-          <button
-            type="button"
-            onClick={() => setShowMoreProjects(false)}
-            className="self-start font-manrope text-base font-bold text-black/50 transition-colors hover:text-black/90 md:text-lg"
-          >
-            Hide 
-          </button>
-            </>
-          ) : null}
         </section>
 
         {/* Speaking at + speech gallery — one scroll reveal */}
-        <div id="speaking" ref={speakReveal.ref} className="scroll-mt-28">
+        <div id="featured-on" ref={speakReveal.ref} className="scroll-mt-28 mb-32">
           <section
-            className="mt-14 flex flex-wrap items-center gap-4 pt-8 sm:mt-20 sm:gap-6 sm:pt-12 md:mt-24"
+            ref={recReveal.ref}
+            className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-4 pt-8 sm:mt-20 sm:gap-x-8 sm:pt-12 md:mt-24 lg:flex-nowrap lg:justify-between"
           >
             <FadeSlideSegment show={speakReveal.show} index={0} className="shrink-0">
-              <p className="font-manrope text-base font-medium text-[#000000] sm:text-lg md:text-xl" style={{ color: TEXT.muted }}>
-                Speaking at
+              <p className="font-manrope text-base font-medium text-[#6c6c6c] sm:text-lg md:text-xl">
+                Featured on
               </p>
             </FadeSlideSegment>
-            <FadeSlideSegment show={speakReveal.show} index={1} className="flex min-w-0 flex-wrap items-center gap-4 sm:gap-6">
-              {SPEAKING_LOGOS.map((item, i) => (
-                <img
-                  key={item.src}
-                  src={item.src}
-                  alt={item.alt}
-                  className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-w-full w-auto object-contain`}
-                />
+            <FadeSlideSegment
+              show={recShowDelayed}
+              index={0}
+              className="flex min-w-0 flex-1 flex-wrap items-center gap-3 sm:gap-x-10 md:flex-nowrap md:justify-left md:gap-x-6 lg:gap-x-8"
+            >
+              {RECOGNITION.map((item, i) => (
+                <a
+                  key={`recognition-${i + 1}`}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group shrink-0 transition-opacity"
+                >
+                  <img
+                    src={item.src}
+                    alt=""
+                    className={`${i < 2 ? "h-[10px] sm:h-[12px] md:h-[15px]" : "h-[18px] sm:h-[24px] md:h-[30px]"} max-h-8 w-auto max-w-[min(100%,120px)] object-contain opacity-40 transition-opacity group-hover:opacity-65 sm:max-w-[140px] md:max-w-none`}
+                  />
+                </a>
               ))}
             </FadeSlideSegment>
           </section>
 
           <FadeSlideSegment show={speakReveal.show} index={2} className="mt-8 sm:mt-10">
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-3 md:gap-4 lg:grid-cols-5">
+            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-1 md:gap-2 lg:grid-cols-5">
               {SPEECH_IMAGES.map((i) => (
                 <img
                   key={i}
                   src={`/speech${i}.jpeg`}
                   alt={`Speech${i}`}
-                  className="aspect-[221/180] w-full rounded-[.5em] object-cover"
+                  className="aspect-[221/180] w-full object-cover"
                 />
               ))}
             </div>
           </FadeSlideSegment>
         </div>
-
-        <footer
-          ref={footReveal.ref}
-          className="mt-10 pt-8 sm:mt-16 sm:pt-12 md:mt-20"
-        >
-          <div className="flex flex-col items-center text-center">
-            <FadeSlideSegment show={footReveal.show} index={0}>
-              <p className="max-w-xl font-manrope text-sm leading-relaxed text-gray-500 sm:text-base md:text-lg">
-                Interested in building the future of Human-AI Collaboration together?
-              </p>
-            </FadeSlideSegment>
-            <FadeSlideSegment show={footReveal.show} index={1} className="mt-6 sm:mt-8">
-              <a
-                href="mailto:sangyuxi@gmail.com"
-                className="inline-flex items-center justify-center rounded-full bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
-              >
-                Let&apos;s connect!
-              </a>
-            </FadeSlideSegment>
-            <FadeSlideSegment show={footReveal.show} index={2} className="mt-24 sm:mt-32 md:mt-40">
-              <p className="font-manrope text-xs text-gray-400">
-                Copyright &copy; 2026 sangyu.com All rights reserved.
-              </p>
-            </FadeSlideSegment>
-          </div>
-        </footer>
       </div>
+
+      <footer
+        ref={footReveal.ref}
+        className="relative z-10 w-full bg-black pb-[93px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
+      >
+        <div className="flex flex-col items-start text-left">
+          <FadeSlideSegment show={footReveal.show} index={0}>
+            <p className="font-bangla-mn text-xl leading-normal text-white sm:text-[24px]">
+              Interested in building together?
+            </p>
+          </FadeSlideSegment>
+          <FadeSlideSegment show={footReveal.show} index={1} className="mt-10 sm:mt-[12px]">
+            <a
+              href="mailto:sangyuxi@gmail.com"
+              className="font-bangla-mn text-xl text-white transition-opacity hover:opacity-80 sm:text-[24px]"
+            >
+              ↳ Let&apos;s connect 
+            </a>
+          </FadeSlideSegment>
+          <FadeSlideSegment show={footReveal.show} index={2} className="mt-16 sm:mt-[84px]">
+            <div className="flex items-center">
+              <p className="font-manrope text-base text-white">
+                Copyright &copy; 2026 sangyuxi.com. All rights reserved.
+              </p>
+            </div>
+          </FadeSlideSegment>
+        </div>
+      </footer>
     </main>
   );
 }

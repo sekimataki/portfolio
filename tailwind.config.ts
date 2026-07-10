@@ -9,8 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        playfair: ["var(--font-playfair)", "serif"],
-        "playfair-variable": ["var(--font-playfair-variable)", "serif"],
+        "bangla-mn": ['"Bangla MN"', '"BanglaMN"', "serif"],
         manrope: ["var(--font-manrope)", "sans-serif"],
         montserrat: ["var(--font-montserrat)", "sans-serif"],
       },
