@@ -189,12 +189,12 @@ function WorkProjectCard({
       className="block text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black/25"
       aria-label={`${title} — open case study`}
     >
-      <h3 className="font-manrope text-[clamp(0.75rem,2.5vw,1.25rem)] font-semibold text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
+      <h3 className="font-bangla-mn text-[clamp(0.75rem,2.5vw,1.25rem)] font-semibold text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
         {title}
       </h3>
     </Link>
   ) : (
-    <h3 className="font-manrope text-[clamp(0.75rem,2.5vw,1.25rem)] font-medium text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
+    <h3 className="font-bangla-mn text-[clamp(0.75rem,2.5vw,1.25rem)] font-medium text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
       {title}
     </h3>
   );
