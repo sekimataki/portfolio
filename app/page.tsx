@@ -189,12 +189,12 @@ function WorkProjectCard({
       className="block text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black/25"
       aria-label={`${title} — open case study`}
     >
-      <h3 className="font-bangla-mn text-[clamp(0.75rem,2.5vw,1.25rem)] font-regular text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
+      <h3 className="font-manrope text-[clamp(0.75rem,2.5vw,1.25rem)] font-semibold text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
         {title}
       </h3>
     </Link>
   ) : (
-    <h3 className="font-bangla-mn text-[clamp(0.75rem,2.5vw,1.25rem)] font-regular text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
+    <h3 className="font-manrope text-[clamp(0.75rem,2.5vw,1.25rem)] font-medium text-pretty text-black sm:text-[clamp(0.75rem,2.5vw,1.25rem)] lg:text-[22px] lg:leading-[28px]">
       {title}
     </h3>
   );
@@ -455,7 +455,7 @@ export default function Home() {
           </section>
 
           <FadeSlideSegment show={speakReveal.show} index={2} className="mt-8 sm:mt-10">
-            <div className="grid grid-cols-2 gap-1 sm:grid-cols-3 sm:gap-1 md:gap-2 lg:grid-cols-5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
               {SPEECH_IMAGES.map((i) => (
                 <img
                   key={i}
@@ -471,7 +471,7 @@ export default function Home() {
 
       <footer
         ref={footReveal.ref}
-        className="relative z-10 w-full bg-black pb-[93px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
+        className="relative z-10 w-full bg-black pb-[80px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
       >
         <div className="flex flex-col items-start text-left">
           <FadeSlideSegment show={footReveal.show} index={0}>

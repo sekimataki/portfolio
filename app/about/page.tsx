@@ -288,7 +288,7 @@ export default function About() {
       </div>
       <footer
         ref={footReveal.ref}
-        className="relative z-10 w-full bg-black pb-[93px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
+        className="relative z-10 w-full bg-black pb-[80px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
       >
         <div className="flex flex-col items-start text-left">
           <FadeSlideSegment show={footReveal.show} index={0}>
