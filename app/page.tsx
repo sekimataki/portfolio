@@ -365,7 +365,7 @@ export default function Home() {
             anchorId="asana-project-settings"
             title="Asana project settings"
             description="Revamp Asana’s project settings hub"
-            imageSrc="/asana-cover.png"
+            imageSrc="/asana-cover.gif"
             imageAlt="Asana project settings"
             imageSide="left"
             //imageHref="/asana"
