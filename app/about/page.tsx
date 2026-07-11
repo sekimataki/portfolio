@@ -20,17 +20,21 @@ function FadeSlideSegment({
   show,
   index,
   className,
+  slideFrom = "bottom",
   children,
 }: {
   show: boolean;
   index: number;
   className?: string;
+  slideFrom?: "bottom" | "top";
   children: ReactNode;
 }) {
   const [noMotion, setNoMotion] = useState(false);
   useLayoutEffect(() => {
     setNoMotion(readPrefersReducedMotion());
   }, []);
+
+  const hiddenOffset = slideFrom === "top" ? "-28px" : "28px";
 
   if (noMotion) {
     return <div className={className}>{children}</div>;
@@ -40,7 +44,7 @@ function FadeSlideSegment({
       className={className}
       style={{
         opacity: show ? 1 : 0,
-        transform: show ? "translate3d(0,0,0)" : "translate3d(0,28px,0)",
+        transform: show ? "translate3d(0,0,0)" : `translate3d(0,${hiddenOffset},0)`,
         transitionProperty: "opacity, transform",
         transitionDuration: `${REVEAL_DURATION_MS}ms`,
         transitionTimingFunction: MOTION_EASE,
@@ -98,37 +102,37 @@ export default function About() {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white">
-      <header
-        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-transparent pb-4 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-[calc(39px+env(safe-area-inset-top,0px))] sm:gap-4 sm:pb-5 sm:pl-8 sm:pr-8 lg:pl-[56px] lg:pr-[65px]"
+            <header
+        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-white pb-4 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-[calc(39px+env(safe-area-inset-top,0px))] sm:gap-4 sm:pb-5 sm:pl-8 sm:pr-8 lg:bg-transparent lg:mix-blend-difference lg:pl-[56px] lg:pr-[65px]"
       >
-        <FadeSlideSegment show={foldShow} index={0} className="flex min-w-0 items-center gap-2">
+        <FadeSlideSegment show={foldShow} index={0} slideFrom="top" className="flex min-w-0 items-center gap-2">
           <Link href="/" className="transition-opacity hover:opacity-70">
-            <h1 className="font-bangla-mn text-[20px] font-medium uppercase text-black sm:text-[24px]">
+            <h1 className="font-bangla-mn text-[20px] font-medium uppercase text-black sm:text-[24px] lg:text-white">
               Sangyu Xi
             </h1>
           </Link>
         </FadeSlideSegment>
         <nav className="mt-[5px] flex shrink-0 items-center gap-5 capitalize sm:gap-8 md:gap-10 lg:gap-[60px]">
-          <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
+          <FadeSlideSegment show={foldShow} index={1} slideFrom="top" className="hidden lg:inline-flex">
             <HomeNavLink
-              href="/#asana-project-settings"
-              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px]"
+              href="/#ai-teammates"
+              className="font-manrope text-base font-medium text-black transition-opacity hover:opacity-70 sm:text-[20px] lg:text-white"
             >
               Work
             </HomeNavLink>
           </FadeSlideSegment>
-          <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
+          <FadeSlideSegment show={foldShow} index={2} slideFrom="top" className="inline-flex">
             <HomeNavLink
               href="/#featured-on"
-              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px]"
+              className="font-manrope text-base font-medium text-black transition-opacity hover:opacity-70 sm:text-[20px] lg:text-white"
             >
               Featured
             </HomeNavLink>
           </FadeSlideSegment>
-          <FadeSlideSegment show={foldShow} index={3} className="inline-flex">
+          <FadeSlideSegment show={foldShow} index={3} slideFrom="top" className="inline-flex">
             <Link
               href="/about"
-              className="font-manrope text-base font-medium text-black transition-colors hover:text-black/90 sm:text-[20px] "
+              className="font-manrope text-base font-medium text-black transition-opacity hover:opacity-70 sm:text-[20px] lg:text-white"
             >
               About
             </Link>
@@ -161,7 +165,7 @@ export default function About() {
             <h2 className="font-bangla-mn text-3xl leading-tight text-pretty text-[#000000] sm:text-4xl md:text-5xl lg:text-6xl">
                 Hello,
                 <br />
-                I&apos;m <span className="italic">Sangyu</span>
+                I&apos;m Sangyu
               </h2>
             </FadeSlideSegment>
 
@@ -180,13 +184,13 @@ export default function About() {
               <p className="font-manrope text-sm leading-relaxed text-[#000000] sm:text-base">
                My work explores how{" "}
                 <span
-                  className="font-bangla-mn text-[clamp(.5rem,2vw,1.25rem)] italic"
+                  className="font-bangla-mn italic"
                 >
                   humans
                 </span>{" "}
                 and autonomous{" "}
                 <span
-                  className="font-bangla-mn text-[clamp(.5rem,2vw,1.25rem)] italic"
+                  className="font-bangla-mn italic"
                 >
                   agents
                 </span>{" "}
@@ -194,22 +198,25 @@ export default function About() {
               </p>
             </FadeSlideSegment>
 
-          <FadeSlideSegment show={foldShow} index={9} className="flex gap-2 pt-4">
-          <a
-                href="https://www.linkedin.com/in/sangyuxi/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
-              >
-                Linkedin
-              </a>
+          <FadeSlideSegment show={foldShow} index={9} className="flex items-center gap-8 pt-4">
               <a
                 href="https://drive.google.com/file/d/1iNzWgRB9CnThwg9L5a2vhXtQhlASznpK/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
+                className="inline-flex items-center rounded-full justify-center bg-black px-8 py-3 font-manrope text-sm font-medium text-white transition-opacity hover:opacity-80 sm:px-10 sm:py-3.5 sm:text-base"
               >
                 Résumé
+              </a>
+              <a
+                href="https://www.linkedin.com/in/sangyuxi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex size-6 shrink-0 items-center transition-opacity hover:opacity-70"
+                aria-label="LinkedIn"
+              >
+                <svg width="24" height="24" fill="#000000" viewBox="0 0 24 24" aria-hidden>
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
               </a>
             </FadeSlideSegment>
           </div>
@@ -288,7 +295,7 @@ export default function About() {
       </div>
       <footer
         ref={footReveal.ref}
-        className="relative z-10 w-full bg-black pb-[80px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
+        className="relative z-10 w-full bg-black pb-[40px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
       >
         <div className="flex flex-col items-start text-left">
           <FadeSlideSegment show={footReveal.show} index={0}>
@@ -296,12 +303,12 @@ export default function About() {
               Interested in building together?
             </p>
           </FadeSlideSegment>
-          <FadeSlideSegment show={footReveal.show} index={1} className="mt-10 sm:mt-[12px]">
+          <FadeSlideSegment show={footReveal.show} index={1} className="mt-4 sm:mt-2">
             <a
               href="mailto:sangyuxi@gmail.com"
-              className="font-bangla-mn text-xl text-white transition-opacity hover:opacity-80 sm:text-[24px]"
+              className="font-bangla-mn text-xl text-white underline underline-offset-8 transition-opacity hover:opacity-80 sm:text-[24px]"
             >
-              ↳ Let&apos;s connect 
+              Let&apos;s connect 
             </a>
           </FadeSlideSegment>
           <FadeSlideSegment show={footReveal.show} index={2} className="mt-16 sm:mt-[84px]">
