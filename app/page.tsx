@@ -437,7 +437,7 @@ export default function Home() {
         <WorkProjectCard
             title="Airy scoliosis brace"
             description="Integrated physical and digital solution for scoliosis"
-            imageSrc="/airy-cover.png"
+            imageSrc="/airy-cover.gif"
             imageAlt="Airy scoliosis brace"
             imageSide="left"
             //imageHref="/airy"
