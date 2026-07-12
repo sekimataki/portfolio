@@ -431,7 +431,7 @@ export default function Home() {
             imageSrc="/asana-cover.gif"
             imageAlt="Asana project settings"
             imageSide="left"
-            //imageHref="/asana"
+            imageHref="/asana"
           />
 
         <WorkProjectCard
@@ -462,7 +462,7 @@ export default function Home() {
           >
             <a
               href="https://www.amimi.ai/"
-              className="mt-2 font-manrope text-base font-bold text-black/50 transition-colors hover:text-black/90 md:text-lg"
+              className="mt-2 font-bangla-mn underline underline-offset-8 text-base font-medium text-black transition-colors hover:text-black/50 md:text-lg"
             >
               Try in App store
             </a>
