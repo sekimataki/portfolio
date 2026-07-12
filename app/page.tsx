@@ -255,7 +255,7 @@ function WorkProjectCard({
       className="block text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black/25"
       aria-label={`${title} — open case study`}
     >
-      <h3 className="font-bangla-mn font-semibold text-pretty text-black sm:text-[24px] sm:leading-normal">
+      <h3 className="font-bangla-mn font-medium text-pretty text-black sm:text-[24px] sm:leading-normal">
         {title}
       </h3>
     </Link>

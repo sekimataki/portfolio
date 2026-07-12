@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { HomeNavLink } from "@/components/HomeNavLink";
 
 /** Same motion tokens as `app/page.tsx` */
 const MOTION_EASE = "cubic-bezier(0.33, 1, 0.68, 1)";
@@ -19,17 +20,21 @@ function FadeSlideSegment({
   show,
   index,
   className,
+  slideFrom = "bottom",
   children,
 }: {
   show: boolean;
   index: number;
   className?: string;
+  slideFrom?: "bottom" | "top";
   children: ReactNode;
 }) {
   const [noMotion, setNoMotion] = useState(false);
   useLayoutEffect(() => {
     setNoMotion(readPrefersReducedMotion());
   }, []);
+
+  const hiddenOffset = slideFrom === "top" ? "-28px" : "28px";
 
   if (noMotion) {
     return <div className={className}>{children}</div>;
@@ -39,7 +44,7 @@ function FadeSlideSegment({
       className={className}
       style={{
         opacity: show ? 1 : 0,
-        transform: show ? "translate3d(0,0,0)" : "translate3d(0,28px,0)",
+        transform: show ? "translate3d(0,0,0)" : `translate3d(0,${hiddenOffset},0)`,
         transitionProperty: "opacity, transform",
         transitionDuration: `${REVEAL_DURATION_MS}ms`,
         transitionTimingFunction: MOTION_EASE,
@@ -306,47 +311,36 @@ export default function AiryCaseStudyPage() {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white">
       <header
-        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-transparent px-[max(1.25rem,env(safe-area-inset-left))] pb-4 pt-[calc(39px+env(safe-area-inset-top,0px))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:gap-4 sm:px-8 sm:pb-5 lg:pl-[54px] lg:pr-[65px]"
+        className="fixed top-0 left-0 right-0 z-30 flex min-w-0 items-start justify-between gap-3 bg-white pb-4 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-[calc(39px+env(safe-area-inset-top,0px))] sm:gap-4 sm:pb-5 sm:pl-8 sm:pr-8 lg:bg-transparent lg:mix-blend-difference lg:pl-[56px] lg:pr-[65px]"
       >
-        <FadeSlideSegment show={foldShow} index={0} className="flex min-w-0 items-center gap-2">
+        <FadeSlideSegment show={foldShow} index={0} slideFrom="top" className="flex min-w-0 items-center gap-2">
           <Link href="/" className="transition-opacity hover:opacity-70">
-            <h1 className="font-bangla-mn text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">
+            <h1 className="font-bangla-mn text-[20px] font-medium uppercase text-black sm:text-[24px] lg:text-white">
               Sangyu Xi
             </h1>
           </Link>
-          <a
-            href="https://www.linkedin.com/in/sangyuxi/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex size-6 shrink-0 items-center hover:opacity-70"
-            aria-label="LinkedIn"
-          >
-            <svg width="20" height="20" fill="#000000" viewBox="0 0 24 24">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-          </a>
         </FadeSlideSegment>
         <nav className="mt-[5px] flex shrink-0 items-center gap-5 capitalize sm:gap-8 md:gap-10 lg:gap-[60px]">
-          <FadeSlideSegment show={foldShow} index={1} className="inline-flex">
-            <Link
-              href="/#asana-project-settings"
-              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
+          <FadeSlideSegment show={foldShow} index={1} slideFrom="top" className="hidden lg:inline-flex">
+            <HomeNavLink
+              href="/#ai-teammates"
+              className="font-manrope text-base font-medium text-black transition-opacity hover:opacity-70 sm:text-[20px] lg:text-white"
             >
               Work
-            </Link>
+            </HomeNavLink>
           </FadeSlideSegment>
-          <FadeSlideSegment show={foldShow} index={2} className="inline-flex">
-            <Link
-              href="/#speaking"
-              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
+          <FadeSlideSegment show={foldShow} index={2} slideFrom="top" className="inline-flex">
+            <HomeNavLink
+              href="/#featured-on"
+              className="font-manrope text-base font-medium text-black transition-opacity hover:opacity-70 sm:text-[20px] lg:text-white"
             >
-              Speaking
-            </Link>
+              Featured
+            </HomeNavLink>
           </FadeSlideSegment>
-          <FadeSlideSegment show={foldShow} index={3} className="inline-flex">
+          <FadeSlideSegment show={foldShow} index={3} slideFrom="top" className="inline-flex">
             <Link
               href="/about"
-              className="font-manrope text-base font-normal text-black transition-opacity hover:opacity-70 sm:text-[18px] md:text-[20px]"
+              className="font-manrope text-base font-medium text-black transition-opacity hover:opacity-70 sm:text-[20px] lg:text-white"
             >
               About
             </Link>
@@ -360,26 +354,23 @@ export default function AiryCaseStudyPage() {
           <FadeSlideSegment show={foldShow} index={0} className="mb-6 w-full text-left sm:mb-8">
             <div className="w-full max-w-[820px]">
               <FadeSlideSegment show={foldShow} index={2} className="w-full min-w-0 text-left">
-                <h1 className="font-bangla-mn text-[32px] font-bold leading-[1.15] text-pretty text-black">
-                  Airy
+              <h1 className="font-bangla-mn font-medium text-pretty text-black sm:text-[24px] sm:leading-normal">
+              Airy - Manage Scoliosis Health
                 </h1>
               </FadeSlideSegment>
               <FadeSlideSegment show={foldShow} index={3} className="mt-4 w-full text-left">
-                <p className="font-manrope text-[clamp(1.25rem,3vw,1.75rem)] font-medium leading-snug text-black sm:text-2xl">
-                  Manage scoliosis health
-                </p>
-                <p className="mt-4 font-manrope text-lg font-normal leading-snug text-black/80 sm:text-xl">
-                  A companion app for brace wear time, progress, and rehabilitation—aligned with how patients, parents, and
+              <p className="font-manrope font-regular text-black/50 sm:text-[18px] sm:leading-normal">
+              A companion app for brace wear time, progress, and rehabilitation—aligned with how patients, parents, and
                   clinicians actually coordinate care.
                 </p>
               </FadeSlideSegment>
             </div>
           </FadeSlideSegment>
 
-          <div className="relative w-full overflow-hidden rounded-lg sm:rounded-[16px] lg:rounded-[24px]">
+          <div className="relative w-full overflow-hidden">
             <div className="relative aspect-[16/10] w-full max-h-[min(85vh,720px)]">
               <Image
-                src="/airy-project12.png"
+                src="/airy-cover.png"
                 alt="Airy app — manage scoliosis health, case study hero"
                 fill
                 priority
@@ -396,19 +387,19 @@ export default function AiryCaseStudyPage() {
           >
             <div className="grid w-full min-w-0 grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-0 md:gap-x-10 lg:gap-x-14 xl:gap-x-20 [&>*]:min-w-0">
               <FadeSlideSegment show={sg.show} index={0} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">Project Context</h2>
+                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">Project Context</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>2022 Academic Capstone</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={sg.show} index={1} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">My Role</h2>
+                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">My Role</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>Sole UX Designer</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={sg.show} index={2} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">Methodologies</h2>
+                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">Methodologies</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>User interview</p>
                   <p>Wireframes</p>
@@ -429,7 +420,7 @@ export default function AiryCaseStudyPage() {
               <FadeSlideSegment show={s1.show} index={0} className="md:pt-1">
                 <h2
                   id="airy-context-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   The context
                 </h2>
@@ -481,7 +472,7 @@ export default function AiryCaseStudyPage() {
               <FadeSlideSegment show={s2.show} index={0} className="md:pt-1">
                 <h2
                   id="airy-secondary-research-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Secondary research
                 </h2>
@@ -519,7 +510,7 @@ export default function AiryCaseStudyPage() {
               <div className="grid grid-cols-[minmax(0,220px)_repeat(3,minmax(0,1fr))] gap-x-8 gap-y-5">
                 <h2
                   id="airy-challenges-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black lg:col-start-1 lg:row-start-1 lg:pt-1 sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black lg:col-start-1 lg:row-start-1 lg:pt-1 sm:text-2xl"
                 >
                   The Challenges
                 </h2>
@@ -610,7 +601,7 @@ export default function AiryCaseStudyPage() {
 
             {/* Mobile: stacked columns with same copy as desktop */}
             <FadeSlideSegment show={sp.show} index={1} className="lg:hidden">
-              <h2 className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl">The Challenges</h2>
+              <h2 className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl">The Challenges</h2>
               <p className="mt-4 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
                 However, I found that there are 3 challenges hindering the effectiveness of scoliosis brace.
               </p>
@@ -697,7 +688,7 @@ export default function AiryCaseStudyPage() {
               <FadeSlideSegment show={sGoals.show} index={0} className="min-w-0 text-left">
                 <h2
                   id="airy-design-goals-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Design Goals
                 </h2>
@@ -792,7 +783,7 @@ export default function AiryCaseStudyPage() {
               <FadeSlideSegment show={sf.show} index={2} className="min-w-0 text-left">
                 <h2
                   id="airy-final-design-heading"
-                  className="font-manrope text-xl font-semibold leading-snug text-[#C9A590] sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-[#C9A590] sm:text-2xl"
                 >
                   Onboarding Prelude
                 </h2>
@@ -817,7 +808,7 @@ export default function AiryCaseStudyPage() {
                 <FadeSlideSegment show={sPam.show} index={0} className="w-full">
                   <h2
                     id="airy-onboarding-heading"
-                    className="font-manrope text-xl font-bold leading-snug text-[#fe6f61] sm:text-2xl"
+                    className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
                   >
                     Onboarding
                   </h2>
@@ -850,7 +841,7 @@ export default function AiryCaseStudyPage() {
             <FadeSlideSegment show={sPset.show} index={0} className="w-full max-w-[820px] text-left">
               <h2
                 id="airy-onboarding-tutorial-heading"
-                className="font-manrope text-xl font-bold leading-snug text-[#fe6f61] sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
               >
                 Onboarding — tutorial
               </h2>
@@ -881,7 +872,7 @@ export default function AiryCaseStudyPage() {
             <FadeSlideSegment show={sShare.show} index={0} className="w-full max-w-[820px] text-left">
               <h2
                 id="airy-boost-compliance-heading"
-                className="font-manrope text-xl font-bold leading-snug text-[#fe6f61] sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
               >
                 Boost compliance
               </h2>
@@ -916,7 +907,7 @@ export default function AiryCaseStudyPage() {
               <div className="min-w-0 text-left">
                 <h2
                   id="airy-who-users-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Persona
                 </h2>
@@ -943,7 +934,7 @@ export default function AiryCaseStudyPage() {
               <div className="min-w-0 text-left">
                 <h2
                   id="airy-competitor-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Competitor Overview
                 </h2>
@@ -967,7 +958,7 @@ export default function AiryCaseStudyPage() {
           <FadeSlideSegment show={sSol.show} index={0} className="w-full max-w-[920px] text-left">
             <h2
               id="airy-define-solutions-heading"
-              className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+              className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
             >
               Rehab exercises
             </h2>
@@ -1000,7 +991,7 @@ export default function AiryCaseStudyPage() {
               <div className="min-w-0 text-left">
                 <h2
                   id="airy-ai-assistant-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   AI personal assistant
                 </h2>
@@ -1033,7 +1024,7 @@ export default function AiryCaseStudyPage() {
               <div className="min-w-0 text-left">
                 <h2
                   id="airy-after-research-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   After the research, I conceptualized the design…
                 </h2>
@@ -1096,7 +1087,7 @@ export default function AiryCaseStudyPage() {
             <FadeSlideSegment show={sIA.show} index={0} className="md:pt-1">
               <h2
                 id="airy-information-architecture-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Information Architecture
               </h2>
@@ -1136,7 +1127,7 @@ export default function AiryCaseStudyPage() {
             <FadeSlideSegment show={sModalDirections.show} index={0} className="md:pt-1">
               <h2
                 id="airy-modal-directions-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Style guide
               </h2>
@@ -1191,7 +1182,7 @@ export default function AiryCaseStudyPage() {
               <div className="min-w-0 text-left">
                 <h2
                   id="airy-usability-test-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Usability test 1.0
                 </h2>
@@ -1232,7 +1223,7 @@ export default function AiryCaseStudyPage() {
             <FadeSlideSegment show={sInsight1.show} index={0} className="flex flex-col gap-2 md:pt-1">
               <h2
                 id="airy-midfi-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Mid-fi prototype
               </h2>
@@ -1287,7 +1278,7 @@ export default function AiryCaseStudyPage() {
             <FadeSlideSegment show={sInsight2.show} index={0} className="flex flex-col gap-2 md:pt-1">
               <h2
                 id="airy-impact-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 The impact
               </h2>
@@ -1343,7 +1334,7 @@ export default function AiryCaseStudyPage() {
             <FadeSlideSegment show={sInsight3.show} index={0} className="flex flex-col gap-2 md:pt-1">
               <h2
                 id="airy-usability-2-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Usability test 2.0
               </h2>
@@ -1382,14 +1373,14 @@ export default function AiryCaseStudyPage() {
 
         <section
           ref={sTakeaways.ref}
-          className="mt-16 mb-10 w-full min-w-0 sm:mt-20 md:mt-24"
+          className="mt-16 mb-24 w-full min-w-0 sm:mt-20 sm:mb-32 md:mt-24 md:mb-40"
           aria-labelledby="airy-takeaways-heading"
         >
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
             <FadeSlideSegment show={sTakeaways.show} index={0} className="md:pt-1">
               <h2
                 id="airy-takeaways-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Takeaways
               </h2>
@@ -1433,40 +1424,35 @@ export default function AiryCaseStudyPage() {
             </div>
           </div>
         </section>
+      </main>
 
-        <footer
-          ref={footReveal.ref}
-          className="border-t border-gray-300 pt-8 pb-20 sm:pt-12 md:pt-16"
-        >
-          <div className="flex min-w-0 flex-col gap-6 sm:gap-8 md:flex-row md:items-start md:justify-between">
-            <FadeSlideSegment show={footReveal.show} index={0} className="min-w-0 space-y-2 md:max-w-xl">
-              <h4 className="font-bangla-mn text-[20px] font-bold uppercase leading-none text-black sm:text-[24px]">Sangyu Xi</h4>
-              <p className="font-manrope text-xs leading-relaxed text-gray-600 sm:text-sm">
-                Are you an engineer or an entrepreneur?<br />
-                I always welcome new opportunities to exchange ideas and to explore collaborations.<br />
-              </p>
-              <a href="mailto:sangyuxi@gmail.com" className="inline-flex min-h-11 items-center py-1">
-                <p className="font-manrope text-xs text-[#FF4500] sm:text-sm">Let&apos;s connect!</p>
-              </a>
-            </FadeSlideSegment>
-            <FadeSlideSegment show={footReveal.show} index={1} className="min-w-0 space-y-2 md:shrink-0">
-              <h4 className="font-manrope text-sm font-bold text-[#000000] sm:text-base">Email</h4>
-              <p className="break-all font-manrope text-xs text-[#FF4500] sm:text-sm">sangyuxi@gmail.com</p>
-              <h4 className="mt-4 font-manrope text-sm font-bold text-[#000000] sm:text-base">Phone</h4>
-              <p className="font-manrope text-xs text-gray-600 sm:text-sm">
-                <a href="tel:+15136380161" className="hover:text-black">
-                  5136380161
-                </a>
-              </p>
-            </FadeSlideSegment>
-          </div>
-          <FadeSlideSegment show={footReveal.show} index={3} className="mt-6 sm:mt-8">
-            <p className="font-manrope text-xs text-gray-500">
-              Copyright &copy; 2026 sangyuxi.com. All rights reserved.
+      <footer
+        ref={footReveal.ref}
+        className="relative z-10 w-full bg-black pb-[40px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
+      >
+        <div className="flex flex-col items-start text-left">
+          <FadeSlideSegment show={footReveal.show} index={0}>
+            <p className="font-bangla-mn text-xl leading-normal text-white sm:text-[24px]">
+              Interested in building together?
             </p>
           </FadeSlideSegment>
-        </footer>
-      </main>
+          <FadeSlideSegment show={footReveal.show} index={1} className="mt-4 sm:mt-2">
+            <a
+              href="mailto:sangyuxi@gmail.com"
+              className="font-bangla-mn text-xl text-white underline underline-offset-8 transition-opacity hover:opacity-80 sm:text-[24px]"
+            >
+              Let&apos;s connect 
+            </a>
+          </FadeSlideSegment>
+          <FadeSlideSegment show={footReveal.show} index={2} className="mt-16 sm:mt-[84px]">
+            <div className="flex items-center">
+              <p className="font-manrope text-base text-white">
+                Copyright &copy; 2026 sangyuxi.com. All rights reserved.
+              </p>
+            </div>
+          </FadeSlideSegment>
+        </div>
+      </footer>
     </div>
   );
 }

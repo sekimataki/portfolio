@@ -110,7 +110,7 @@ function CaseSection({
   return (
     <section className="space-y-4 sm:space-y-5">
       <FadeSlideSegment show={reveal.show} index={baseIndex} className="w-full min-w-0">
-        <h2 className="font-bangla-mn text-2xl text-pretty text-black sm:text-3xl">{title}</h2>
+        <h2 className="font-bangla-mn text-2xl font-medium text-pretty text-black sm:text-3xl">{title}</h2>
       </FadeSlideSegment>
       <div className="space-y-4 font-manrope text-sm leading-relaxed text-black/80 sm:text-base">
         {children}
@@ -417,21 +417,21 @@ export default function AsanaCaseStudyPage() {
           >
             <div className="grid w-full min-w-0 grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-0 md:gap-x-10 lg:gap-x-14 xl:gap-x-20 [&>*]:min-w-0">
               <FadeSlideSegment show={sg.show} index={0} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">Project Context</h2>
+                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">Project Context</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>FY25 Roadmap</p>
                   <p>Sharing &amp; Permission team</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={sg.show} index={1} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">My Role</h2>
+                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">My Role</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>Product Designer</p>
                   <p>(UX + PM)</p>
                 </div>
               </FadeSlideSegment>
               <FadeSlideSegment show={sg.show} index={2} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">Methodologies</h2>
+                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">Methodologies</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>Data science reports</p>
                   <p>Product specification</p>
@@ -452,7 +452,7 @@ export default function AsanaCaseStudyPage() {
               <FadeSlideSegment show={s1.show} index={0} className="md:pt-1">
                 <h2
                   id="asana-overview-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Overview
                 </h2>
@@ -493,7 +493,7 @@ export default function AsanaCaseStudyPage() {
               <FadeSlideSegment show={sp.show} index={0} className="md:pt-1">
                 <h2
                   id="asana-problem-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Problem statement
                 </h2>
@@ -546,7 +546,7 @@ export default function AsanaCaseStudyPage() {
           >
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:grid-cols-4 lg:gap-8 xl:gap-12">
               <FadeSlideSegment show={sGoals.show} index={0} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">
+                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">
                   Design Goals <span aria-hidden>🎯</span>
                 </h2>
                 <p className="mt-3 max-w-[18rem] font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
@@ -588,7 +588,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sf.show} index={0} className="w-full max-w-[820px] text-left">
               <h2
                 id="asana-final-design-heading"
-                className="font-manrope text-xl font-bold leading-snug text-[#fe6f61] sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
               >
                 Final design
               </h2>
@@ -620,7 +620,7 @@ export default function AsanaCaseStudyPage() {
                 <FadeSlideSegment show={sPam.show} index={0} className="w-full">
                   <h2
                     id="asana-project-action-menu-heading"
-                    className="font-manrope text-xl font-bold leading-snug text-[#fe6f61] sm:text-2xl"
+                    className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
                   >
                     Project action menu
                   </h2>
@@ -656,7 +656,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sPset.show} index={0} className="w-full max-w-[820px] text-left">
               <h2
                 id="asana-project-settings-heading"
-                className="font-manrope text-xl font-bold leading-snug text-[#fe6f61] sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
               >
                 Project settings
               </h2>
@@ -688,7 +688,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sShare.show} index={0} className="w-full max-w-[820px] text-left">
               <h2
                 id="asana-share-settings-heading"
-                className="font-manrope text-xl font-bold leading-snug text-[#fe6f61] sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
               >
                 Share settings
               </h2>
@@ -722,7 +722,7 @@ export default function AsanaCaseStudyPage() {
               <div className="min-w-0 text-left">
                 <h2
                   id="asana-who-users-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Who are our users?
                 </h2>
@@ -747,7 +747,7 @@ export default function AsanaCaseStudyPage() {
               <div className="min-w-0 text-left">
                 <h2
                   id="asana-competitor-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Competitor Overview
                 </h2>
@@ -771,7 +771,7 @@ export default function AsanaCaseStudyPage() {
           <FadeSlideSegment show={sSol.show} index={0} className="w-full max-w-[920px] text-left">
             <h2
               id="asana-define-solutions-heading"
-              className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+              className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
             >
               Define the solutions
             </h2>
@@ -900,7 +900,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sIA.show} index={0} className="md:pt-1">
               <h2
                 id="asana-information-architecture-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Information Architecture
               </h2>
@@ -939,7 +939,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sModalDirections.show} index={0} className="md:pt-1">
               <h2
                 id="asana-modal-directions-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 2 Directions For Settings Modal
               </h2>
@@ -976,7 +976,7 @@ export default function AsanaCaseStudyPage() {
               <div className="min-w-0 text-left">
                 <h2
                   id="asana-usability-test-heading"
-                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
                 >
                   Usability Test
                 </h2>
@@ -1017,7 +1017,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sInsight1.show} index={0} className="flex flex-col gap-2 md:pt-1">
               <h2
                 id="asana-usability-insight-1-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Usability Test Insight #1
               </h2>
@@ -1075,7 +1075,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sInsight2.show} index={0} className="flex flex-col gap-2 md:pt-1">
               <h2
                 id="asana-usability-insight-2-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Usability Test Insight #2
               </h2>
@@ -1135,7 +1135,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sInsight3.show} index={0} className="flex flex-col gap-2 md:pt-1">
               <h2
                 id="asana-usability-insight-3-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Usability Test Insight #3
               </h2>
@@ -1200,7 +1200,7 @@ export default function AsanaCaseStudyPage() {
             <FadeSlideSegment show={sTakeaways.show} index={0} className="md:pt-1">
               <h2
                 id="asana-takeaways-heading"
-                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
               >
                 Takeaways
               </h2>
