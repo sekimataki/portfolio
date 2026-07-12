@@ -452,10 +452,10 @@ export default function Home() {
             //imageHref= "/enlight" // to do in the future
           />
 
-            {/*<WorkProjectCard
+            <WorkProjectCard
             title="Amimi"
             description="AI relationship coach built from 0 to 1"
-            imageSrc="/amimi-cover.png"
+            imageSrc="/amimi-cover.gif"
             imageAlt="Amimi"
             imageSide="left"
             //imageHref= "/amimi" // to do in the future
@@ -464,9 +464,9 @@ export default function Home() {
               href="https://www.amimi.ai/"
               className="mt-2 font-manrope text-base font-bold text-black/50 transition-colors hover:text-black/90 md:text-lg"
             >
-              Try it in Testflight
+              Try in App store
             </a>
-          </WorkProjectCard>*/}
+          </WorkProjectCard>
 
           <WorkProjectCard
             title="Google Nest Fit"
