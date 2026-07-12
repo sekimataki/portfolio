@@ -33,28 +33,71 @@ body {
 }
 
 /* Home hero — layered blobs, cursor-reactive “+” matrix inside rounded panel */
+.hero-panel {
+  position: relative;
+  z-index: 10;
+  isolation: isolate;
+  margin-top: clamp(10rem, 10vw, 10em);
+  margin-bottom: clamp(0.75rem, 2.5em, 2.5em);
+  margin-left: max(1.25rem, env(safe-area-inset-left));
+  margin-right: max(1.25rem, env(safe-area-inset-right));
+  overflow: hidden;
+  border-radius: 24px;
+  background-color: #f9f8f7;
+}
+
+@media (min-width: 640px) {
+  .hero-panel {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-panel {
+    margin-left: 56px;
+    margin-right: 65px;
+  }
+}
+
 .hero {
   position: relative;
   overflow: hidden;
+  height: min(560px, 92vw);
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
   --mx: 70%;
   --my: 35%;
   background-color: transparent;
 }
 
-.hero-panel {
-  isolation: isolate;
+@media (min-width: 640px) {
+  .hero {
+    height: 480px;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.hero-blob-box {
+  position: absolute;
+  inset: 2rem;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  pointer-events: none;
+  filter: blur(20px);
+  transform: translateZ(0);
 }
 
 .hero-blob {
   position: absolute;
-  inset: -120px;
-  z-index: 0;
+  inset: -40px;
   pointer-events: none;
   background:
-    radial-gradient(40% 60% at 90% 48%, rgba(229, 134, 112, 0.5) 0%, rgba(149, 78, 62, 0) 65%),
-    radial-gradient(75% 60% at 80% 75%, rgba(240, 175, 115, 0.5) 0%, rgba(214, 151, 93, 0) 65%),
-    radial-gradient(55% 45% at 62% 55%, rgba(255, 204, 123, 0.5) 0%, rgba(179, 147, 92, 0) 65%);
-  filter: blur(50px);
+    radial-gradient(80% 70% at 85% 40%, rgba(229, 147, 112, 0.5) 0%, rgba(149, 78, 62, 0) 45%),
+    radial-gradient(80% 70% at 80% 60%, rgba(240, 163, 115, 0.5) 0%, rgba(214, 151, 93, 0) 80%),
+    radial-gradient(60% 55% at 55% 65%, rgba(255, 204, 123, 0.5) 0%, rgba(179, 147, 92, 0) 55%);
 }
 
 .hero-plus-matrix {
@@ -63,12 +106,12 @@ body {
   z-index: 1;
   pointer-events: none;
   -webkit-mask-image: radial-gradient(
-    circle 520px at var(--mx) var(--my),
+    circle 280px at var(--mx) var(--my),
     rgba(0, 0, 0, 1) 0%,
     rgba(0, 0, 0, 0.2) 100%
   );
   mask-image: radial-gradient(
-    circle 520px at var(--mx) var(--my),
+    circle 280px at var(--mx) var(--my),
     rgba(0, 0, 0, 1) 0%,
     rgba(0, 0, 0, 0.2) 100%
   );
@@ -86,17 +129,101 @@ body {
 .hero-content {
   position: relative;
   z-index: 10;
+  margin-inline: auto;
+  width: 100%;
+  min-width: 0;
+  padding-left: clamp(1rem, 5vw, 3.5rem);
+  padding-right: clamp(1rem, 4vw, 3.5rem);
+}
+
+@media (min-width: 640px) {
+  .hero-content {
+    padding-left: clamp(1.5rem, 5vw, 3.5rem);
+    padding-right: clamp(1.5rem, 5vw, 3.5rem);
+  }
+}
+
+.hero-headline-wrap {
+  max-width: 1100px;
+  min-width: 0;
+  padding-left: 0;
+}
+
+.hero-headline {
+  font-family: "Bangla MN", "BanglaMN", serif;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 100;
+  line-height: 1.35;
+  letter-spacing: 0.025em;
+  text-wrap: pretty;
+  color: #000000;
+}
+
+@media (min-width: 640px) {
+  .hero-headline {
+    line-height: 1.65;
+  }
+}
+
+.hero-subtext {
+  margin-top: 18px;
+  max-width: 1200px;
+  min-width: 0;
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-subtext {
+    margin-top: 25px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-subtext {
+    margin-top: 35px;
+  }
+}
+
+.hero-subtext-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hero-subtext-line {
+  min-width: 0;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-wrap: pretty;
+  color: #000000;
+}
+
+@media (min-width: 640px) {
+  .hero-subtext-line {
+    font-size: 20px;
+  }
+}
+
+.hero-link {
+  font-weight: 500;
+  color: #000000;
+  transition: opacity 150ms ease;
+}
+
+.hero-link:hover {
+  opacity: 0.7;
 }
 
 @media (max-width: 639px) {
   .hero-plus-matrix {
     -webkit-mask-image: radial-gradient(
-      circle min(78vw, 300px) at var(--mx) var(--my),
+      circle min(50vw, 180px) at var(--mx) var(--my),
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.2) 100%
     );
     mask-image: radial-gradient(
-      circle min(78vw, 300px) at var(--mx) var(--my),
+      circle min(50vw, 180px) at var(--mx) var(--my),
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.2) 100%
     );
@@ -107,12 +234,12 @@ body {
   .hero-plus-matrix {
     transition: none;
     -webkit-mask-image: radial-gradient(
-      circle 520px at 70% 35%,
+      circle 280px at 70% 35%,
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.35) 100%
     );
     mask-image: radial-gradient(
-      circle 520px at 70% 35%,
+      circle 280px at 70% 35%,
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.35) 100%
     );
@@ -122,12 +249,12 @@ body {
 @media (prefers-reduced-motion: reduce) and (max-width: 639px) {
   .hero-plus-matrix {
     -webkit-mask-image: radial-gradient(
-      circle min(78vw, 300px) at 70% 35%,
+      circle min(50vw, 180px) at 70% 35%,
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.35) 100%
     );
     mask-image: radial-gradient(
-      circle min(78vw, 300px) at 70% 35%,
+      circle min(50vw, 180px) at 70% 35%,
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0.35) 100%
     );
