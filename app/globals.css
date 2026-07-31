@@ -37,7 +37,7 @@ body {
   position: relative;
   z-index: 10;
   isolation: isolate;
-  margin-top: clamp(7rem, 8vw, 8em);
+  margin-top: clamp(10rem, 10vw, 10em);
   margin-bottom: clamp(0.75rem, 2.5em, 2.5em);
   margin-left: max(1.25rem, env(safe-area-inset-left));
   margin-right: max(1.25rem, env(safe-area-inset-right));

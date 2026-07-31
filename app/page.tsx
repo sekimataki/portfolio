@@ -234,6 +234,7 @@ function WorkProjectCard({
   imageSide,
   imageHref,
   anchorId,
+  regularTitle = false,
   children,
 }: {
   title: string;
@@ -245,9 +246,16 @@ function WorkProjectCard({
   imageHref?: string;
   /** Optional id for in-page anchor navigation (e.g. nav “Work”). */
   anchorId?: string;
+  regularTitle?: boolean;
   children?: ReactNode;
 }) {
   const { ref, show } = useRevealOnScroll<HTMLElement>();
+
+  const titleWeightClass = regularTitle
+    ? "font-normal"
+    : imageHref
+      ? "font-semibold"
+      : "font-medium";
 
   const titleBlock = imageHref ? (
     <Link
@@ -255,12 +263,12 @@ function WorkProjectCard({
       className="block text-inherit no-underline outline-offset-4 transition-opacity hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-black/25"
       aria-label={`${title} — open case study`}
     >
-      <h3 className="font-bangla-mn font-medium text-pretty text-black sm:text-[24px] sm:leading-normal">
+      <h3 className={`font-bangla-mn text-pretty text-black sm:text-[24px] sm:leading-normal ${titleWeightClass}`}>
         {title}
       </h3>
     </Link>
   ) : (
-    <h3 className="font-bangla-mn font-medium text-pretty text-black sm:text-[24px] sm:leading-normal">
+    <h3 className={`font-bangla-mn text-pretty text-black sm:text-[24px] sm:leading-normal ${titleWeightClass}`}>
       {title}
     </h3>
   );
@@ -432,6 +440,7 @@ export default function Home() {
             imageAlt="Asana project settings"
             imageSide="left"
             imageHref="/asana"
+            regularTitle
           />
 
         <WorkProjectCard
@@ -440,7 +449,8 @@ export default function Home() {
             imageSrc="/airy-cover.gif"
             imageAlt="Airy scoliosis brace"
             imageSide="left"
-            //imageHref="/airy"
+            imageHref="/airy"
+            regularTitle
           />
           
           <WorkProjectCard

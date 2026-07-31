@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { HomeNavLink } from "@/components/HomeNavLink";
@@ -280,33 +280,24 @@ function CompetitorOverviewTabs() {
 
 export default function AiryCaseStudyPage() {
   const foldShow = useRevealOnMount();
-  const footReveal = useRevealOnScroll<HTMLElement>();
-  const s1 = useRevealOnScroll<HTMLDivElement>();
-  const sUsers = useRevealOnScroll<HTMLDivElement>();
-  const sComp = useRevealOnScroll<HTMLDivElement>();
-  const sSol = useRevealOnScroll<HTMLDivElement>();
-  const sHubs = useRevealOnScroll<HTMLDivElement>();
-  const sHubs2 = useRevealOnScroll<HTMLDivElement>();
-  const sHubs3 = useRevealOnScroll<HTMLDivElement>();
-  const sIA = useRevealOnScroll<HTMLDivElement>();
-  const sModalDirections = useRevealOnScroll<HTMLDivElement>();
-  const sUsability = useRevealOnScroll<HTMLDivElement>();
-  const sInsight1 = useRevealOnScroll<HTMLDivElement>();
-  const sInsight2 = useRevealOnScroll<HTMLDivElement>();
-  const sInsight3 = useRevealOnScroll<HTMLDivElement>();
-  const sWhatsNext = useRevealOnScroll<HTMLDivElement>();
-  const sTakeaways = useRevealOnScroll<HTMLDivElement>();
-  const s2 = useRevealOnScroll<HTMLDivElement>();
-  const s3 = useRevealOnScroll<HTMLDivElement>();
-  const s4 = useRevealOnScroll<HTMLDivElement>();
-  const sp = useRevealOnScroll<HTMLDivElement>();
-  const sg = useRevealOnScroll<HTMLDivElement>();
-  const sGoals = useRevealOnScroll<HTMLDivElement>();
-  const sf = useRevealOnScroll<HTMLDivElement>();
-  const sPam = useRevealOnScroll<HTMLDivElement>();
-  const sPset = useRevealOnScroll<HTMLDivElement>();
-  const sShare = useRevealOnScroll<HTMLDivElement>();
-  const sMate = useRevealOnScroll<HTMLDivElement>();
+  const { ref: footRevealRef, show: footRevealShow } = useRevealOnScroll<HTMLElement>();
+  const { ref: s1Ref, show: s1Show } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sUsersRef, show: sUsersShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sCompRef, show: sCompShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sHubs2Ref, show: sHubs2Show } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sIARef, show: sIAShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sModalDirectionsRef, show: sModalDirectionsShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sUsabilityRef, show: sUsabilityShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sInsight1Ref, show: sInsight1Show } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sInsight2Ref, show: sInsight2Show } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sTakeawaysRef, show: sTakeawaysShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: s2Ref, show: s2Show } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: s3Ref, show: s3Show } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: spRef, show: spShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sgRef, show: sgShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sGoalsRef, show: sGoalsShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sfRef, show: sfShow } = useRevealOnScroll<HTMLDivElement>();
+  const { ref: sPsetRef, show: sPsetShow } = useRevealOnScroll<HTMLDivElement>();
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-white">
@@ -349,28 +340,31 @@ export default function AiryCaseStudyPage() {
       </header>
 
 
-      <main className="relative z-10 mx-auto w-full min-w-0 max-w-[1440px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pl-8 sm:pr-8 lg:pl-[54px] lg:pr-[65px]">
+      <main className="relative z-10 mx-auto w-full min-w-0 max-w-[1440px] pb-24 pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] sm:pb-32 sm:pl-8 sm:pr-8 md:pb-40 lg:pl-[54px] lg:pr-[65px]">
         <div className="pt-[calc(6.5rem+env(safe-area-inset-top,0px))] pb-20 sm:pt-28 md:pt-32 md:pb-24">
           <FadeSlideSegment show={foldShow} index={0} className="mb-6 w-full text-left sm:mb-8">
             <div className="w-full max-w-[820px]">
               <FadeSlideSegment show={foldShow} index={2} className="w-full min-w-0 text-left">
-              <h1 className="font-bangla-mn font-medium text-pretty text-black sm:text-[24px] sm:leading-normal">
-              Airy - Manage Scoliosis Health
+                <h1 className="font-bangla-mn text-[32px] font-regular leading-[1.15] text-pretty text-black">
+                  Airy
                 </h1>
               </FadeSlideSegment>
               <FadeSlideSegment show={foldShow} index={3} className="mt-4 w-full text-left">
-              <p className="font-manrope font-regular text-black/50 sm:text-[18px] sm:leading-normal">
-              A companion app for brace wear time, progress, and rehabilitation—aligned with how patients, parents, and
+                <p className="font-manrope text-[clamp(1.25rem,3vw,1.75rem)] font-medium leading-snug text-black sm:text-2xl">
+                  Manage scoliosis health
+                </p>
+                <p className="mt-4 font-manrope text-lg font-normal leading-snug text-black/80 sm:text-xl">
+                  A companion app for brace wear time, progress, and rehabilitation—aligned with how patients, parents, and
                   clinicians actually coordinate care.
                 </p>
               </FadeSlideSegment>
             </div>
           </FadeSlideSegment>
 
-          <div className="relative w-full overflow-hidden">
+          <div className="relative w-full overflow-hidden rounded-lg sm:rounded-[16px] lg:rounded-[24px]">
             <div className="relative aspect-[16/10] w-full max-h-[min(85vh,720px)]">
               <Image
-                src="/airy-cover.png"
+                src="/airy-project12.png"
                 alt="Airy app — manage scoliosis health, case study hero"
                 fill
                 priority
@@ -381,25 +375,25 @@ export default function AiryCaseStudyPage() {
           </div>
 
           <section
-            ref={sg.ref}
+            ref={sgRef}
             className="mt-8 w-full min-w-0 sm:mt-10 md:mt-12"
             aria-label="Project context, role, and methodologies"
           >
             <div className="grid w-full min-w-0 grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-x-8 sm:gap-y-0 md:gap-x-10 lg:gap-x-14 xl:gap-x-20 [&>*]:min-w-0">
-              <FadeSlideSegment show={sg.show} index={0} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">Project Context</h2>
+              <FadeSlideSegment show={sgShow} index={0} className="flex min-w-0 flex-col items-start text-left">
+                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">Project Context</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>2022 Academic Capstone</p>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={sg.show} index={1} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">My Role</h2>
+              <FadeSlideSegment show={sgShow} index={1} className="flex min-w-0 flex-col items-start text-left">
+                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">My Role</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>Sole UX Designer</p>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={sg.show} index={2} className="flex min-w-0 flex-col items-start text-left">
-                <h2 className="font-manrope text-lg font-medium leading-snug text-black sm:text-xl">Methodologies</h2>
+              <FadeSlideSegment show={sgShow} index={2} className="flex min-w-0 flex-col items-start text-left">
+                <h2 className="font-manrope text-lg font-bold leading-snug text-black sm:text-xl">Methodologies</h2>
                 <div className="mt-3 space-y-1 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
                   <p>User interview</p>
                   <p>Wireframes</p>
@@ -412,27 +406,27 @@ export default function AiryCaseStudyPage() {
           </section>
 
           <section
-            ref={s1.ref}
+            ref={s1Ref}
             className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
             aria-labelledby="airy-context-heading"
           >
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-              <FadeSlideSegment show={s1.show} index={0} className="md:pt-1">
+              <FadeSlideSegment show={s1Show} index={0} className="md:pt-1">
                 <h2
                   id="airy-context-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
                 >
                   The context
                 </h2>
               </FadeSlideSegment>
               <div className="min-w-0 space-y-6 sm:space-y-8">
-                <FadeSlideSegment show={s1.show} index={1} className="w-full">
+                <FadeSlideSegment show={s1Show} index={1} className="w-full">
                   <p className="font-manrope text-sm leading-relaxed text-black/90 sm:text-base">
                     Scoliosis is a lateral curvature of the spine affecting about 7 million people in the US today. About
                     80% of patients are female. If left untreated, it can lead to back pain and potentially require surgery.
                   </p>
                 </FadeSlideSegment>
-                <FadeSlideSegment show={s1.show} index={2} className="w-full">
+                <FadeSlideSegment show={s1Show} index={2} className="w-full">
                   <p className="font-manrope text-sm font-semibold text-black sm:text-base">The standard treatment involves:</p>
                   <ol className="mt-3 list-decimal space-y-2 pl-5 font-manrope text-sm leading-relaxed text-black/90 sm:text-base">
                     <li>
@@ -447,7 +441,7 @@ export default function AiryCaseStudyPage() {
                     This design project aims to support effective scoliosis treatment and management.
                   </p>
                 </FadeSlideSegment>
-                <FadeSlideSegment show={s1.show} index={4} className="w-full">
+                <FadeSlideSegment show={s1Show} index={4} className="w-full">
                   <div className="overflow-hidden rounded-2xl">
                     <Image
                       src="/airy-project24.png"
@@ -464,26 +458,26 @@ export default function AiryCaseStudyPage() {
           </section>
 
           <section
-            ref={s2.ref}
+            ref={s2Ref}
             className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
             aria-labelledby="airy-secondary-research-heading"
           >
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-              <FadeSlideSegment show={s2.show} index={0} className="md:pt-1">
+              <FadeSlideSegment show={s2Show} index={0} className="md:pt-1">
                 <h2
                   id="airy-secondary-research-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
                 >
                   Secondary research
                 </h2>
               </FadeSlideSegment>
               <div className="min-w-0 space-y-6 sm:space-y-8">
-                <FadeSlideSegment show={s2.show} index={1} className="w-full">
+                <FadeSlideSegment show={s2Show} index={1} className="w-full">
                   <p className="font-manrope text-sm leading-relaxed text-black/90 sm:text-base">
                     &ldquo;Only 10% of guardian knows their child&apos;s actual brace wearing time.&rdquo;
                   </p>
                 </FadeSlideSegment>
-                <FadeSlideSegment show={s2.show} index={2} className="w-full">
+                <FadeSlideSegment show={s2Show} index={2} className="w-full">
                   <div className="overflow-hidden rounded-2xl">
                     <Image
                       src="/airy-project23.gif"
@@ -501,107 +495,177 @@ export default function AiryCaseStudyPage() {
           </section>
 
           <section
-            ref={sp.ref}
-            className="mt-14 w-full min-w-0 sm:mt-16 md:mt-20"
+            ref={s3Ref}
+            className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
+            aria-labelledby="airy-persona"
+          >
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
+              <FadeSlideSegment show={s3Show} index={0} className="md:pt-1">
+                <h2
+                  id="airy-persona"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                >
+                  Persona
+                </h2>
+              </FadeSlideSegment>
+              <div className="min-w-0 space-y-6 sm:space-y-8">
+                <FadeSlideSegment show={s3Show} index={1} className="w-full">
+                  <p className="font-manrope text-sm leading-relaxed text-black/90 sm:text-base">
+                    I contacted 6 scoliosis patients online who had worn brace and now in 3 different stages of
+                    treatment from scoliosis support group. Then I distilled their complaints for scoliosis
+                    management service into 1 persona shown below.
+                  </p>
+                </FadeSlideSegment>
+                <Image src="/airy-project17.png" alt="Airy user persona: scoliosis patient" width={7680} height={2436} unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 6rem), 1200px" className="h-auto w-full object-contain" />
+              </div>
+            </div>
+          </section>
+
+          <section
+            ref={sCompRef}
+            className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
+            aria-labelledby="airy-competitor-heading"
+          >
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
+              <FadeSlideSegment show={sCompShow} index={0} className="md:pt-1">
+                <h2
+                  id="airy-competitor-heading"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                >
+                  Competitor overview
+                </h2>
+              </FadeSlideSegment>
+              <div className="min-w-0 space-y-6 sm:space-y-8">
+                <FadeSlideSegment show={sCompShow} index={1} className="w-full">
+                  <p className="font-manrope text-sm leading-relaxed text-black/90 sm:text-base">
+                    I did the user experience analysis to 3 competitors, to understand their capabilities,
+                    challenges, and opportunities for improvement. This helped me to identify market gaps and
+                    potential opportunities.
+                  </p>
+                </FadeSlideSegment>
+                <FadeSlideSegment show={sCompShow} index={2} className="w-full">
+                  <div className="overflow-hidden">
+                    <Image
+                      src="/airy-project14.png"
+                      alt="Competitor overview analysis"
+                      width={7680}
+                      height={2436}
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 6rem), 1200px"
+                      className="h-auto w-full object-contain"
+                    />
+                  </div>
+                </FadeSlideSegment>
+              </div>
+            </div>
+          </section>
+
+          <section
+            ref={spRef}
+            className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
             aria-labelledby="airy-challenges-heading"
           >
             {/* Desktop / large tablet: matches Figma — sidebar + 3 columns, “If Challenges…” aligned with consequence row */}
-            <FadeSlideSegment show={sp.show} index={0} className="hidden w-full lg:block">
-              <div className="grid grid-cols-[minmax(0,220px)_repeat(3,minmax(0,1fr))] gap-x-8 gap-y-5">
-                <h2
-                  id="airy-challenges-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black lg:col-start-1 lg:row-start-1 lg:pt-1 sm:text-2xl"
-                >
-                  The Challenges
-                </h2>
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base lg:col-span-3 lg:col-start-2 lg:row-start-1">
-                  However, I found that there are 3 challenges hindering the effectiveness of scoliosis brace.
-                </p>
-
-                <div className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-2xl bg-neutral-100 lg:col-start-2 lg:row-start-2">
-                  <Image
-                    src="/airy-project28.jpg"
-                    alt="Patient and parent: emotional weight of tracking brace compliance"
-                    fill
-                    sizes="25vw"
-                    className="object-cover"
-                  />
+            <FadeSlideSegment show={spShow} index={0} className="hidden w-full lg:block">
+              <div className="grid grid-cols-[minmax(0,200px)_1fr] items-stretch gap-x-12 gap-y-5 lg:gap-x-16 xl:gap-x-24">
+                <div className="flex flex-col">
+                  <h2
+                    id="airy-challenges-heading"
+                    className="pt-1 font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                  >
+                    The Challenges
+                  </h2>
+                  <h3 className="mt-auto max-w-[12rem] pt-0.5 font-manrope text-xl font-bold leading-snug text-black sm:text-2xl">
+                    If Challenges is unresolved...
+                  </h3>
                 </div>
-                <div className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-2xl bg-neutral-100 lg:col-start-3 lg:row-start-2">
-                  <Image
-                    src="/airy-project27.png"
-                    alt="Clinical check-up: doctor examining patient wearing a scoliosis brace"
-                    fill
-                    sizes="25vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-2xl bg-neutral-100 lg:col-start-4 lg:row-start-2">
-                  <Image
-                    src="/airy-project26.png"
-                    alt="Rehab and muscle activation: spine health after bracing"
-                    fill
-                    sizes="25vw"
-                    className="object-cover"
-                  />
-                </div>
-
-                <h3 className="font-manrope text-base font-bold leading-snug text-black sm:text-lg lg:col-start-2 lg:row-start-3">
-                  Track Compliance
-                </h3>
-                <h3 className="font-manrope text-base font-bold leading-snug text-black sm:text-lg lg:col-start-3 lg:row-start-3">
-                  Few Check-Ups
-                </h3>
-                <h3 className="font-manrope text-base font-bold leading-snug text-black sm:text-lg lg:col-start-4 lg:row-start-3">
-                  Rehab Routine
-                </h3>
-
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px] lg:col-start-2 lg:row-start-4">
-                  No better way for patients and parents to track brace time that uncovers compliance issue.
-                </p>
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px] lg:col-start-3 lg:row-start-4">
-                  Patients are disconnected from doctors until few months later to report compliance issue.
-                </p>
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px] lg:col-start-4 lg:row-start-4">
-                  Maintaining the routine to activate muscle post-bracing can be challenging.
-                </p>
-
-                <h3 className="max-w-[12rem] font-manrope text-xl font-bold leading-snug text-black sm:text-2xl lg:col-start-1 lg:row-start-5 lg:pt-0.5">
-                  If Challenges is unresolved...
-                </h3>
-                <div className="min-w-0 space-y-2 lg:col-start-2 lg:row-start-5">
-                  <p className="font-manrope text-sm font-bold leading-snug text-black sm:text-[15px]">
-                    Failure to recognize compliance issues as they emerge can:
+                <div className="min-w-0 grid grid-cols-3 gap-x-8 gap-y-5">
+                  <p className="col-span-3 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
+                    However, I found that there are 3 challenges hindering the effectiveness of scoliosis brace.
                   </p>
-                  <ul className="list-disc space-y-1 pl-5 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
-                    <li>Impact life quality due to pain</li>
-                    <li>Psychological distress</li>
-                  </ul>
-                </div>
-                <div className="min-w-0 space-y-2 lg:col-start-3 lg:row-start-5">
-                  <p className="font-manrope text-sm font-bold leading-snug text-black sm:text-[15px]">
-                    Failure to report and address compliance issues can:
+
+                  <div className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-2xl bg-neutral-100">
+                    <Image
+                      src="/airy-project28.jpg"
+                      alt="Patient and parent: emotional weight of tracking brace compliance"
+                      fill
+                      sizes="25vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-2xl bg-neutral-100">
+                    <Image
+                      src="/airy-project18.jpg"
+                      alt="Clinical check-up: doctor examining patient wearing a scoliosis brace"
+                      fill
+                      sizes="25vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="relative aspect-[4/3] w-full min-h-0 overflow-hidden rounded-2xl bg-neutral-100">
+                    <Image
+                      src="/airy-project25.jpg"
+                      alt="Rehab and muscle activation: spine health after bracing"
+                      fill
+                      sizes="25vw"
+                      className="object-cover"
+                    />
+                  </div>
+
+                  <h3 className="font-manrope text-base font-bold leading-snug text-black sm:text-lg">
+                    Track Compliance
+                  </h3>
+                  <h3 className="font-manrope text-base font-bold leading-snug text-black sm:text-lg">
+                    Few Check-Ups
+                  </h3>
+                  <h3 className="font-manrope text-base font-bold leading-snug text-black sm:text-lg">
+                    Rehab Routine
+                  </h3>
+
+                  <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
+                    No better way for patients and parents to track brace time that uncovers compliance issue.
                   </p>
-                  <ul className="list-disc space-y-1 pl-5 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
-                    <li>Reduce brace effectiveness</li>
-                    <li>Increase the risk of surgery</li>
-                  </ul>
-                </div>
-                <div className="min-w-0 space-y-2 lg:col-start-4 lg:row-start-5">
-                  <p className="font-manrope text-sm font-bold leading-snug text-black sm:text-[15px]">
-                    Failure to maintain a rehabilitation routine can lead to:
+                  <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
+                    Patients are disconnected from doctors until few months later to report compliance issue.
                   </p>
-                  <ul className="list-disc space-y-1 pl-5 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
-                    <li>Weaken muscles</li>
-                    <li>Reduce brace effectiveness</li>
-                  </ul>
+                  <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
+                    Maintaining the routine to activate muscle post-bracing can be challenging.
+                  </p>
+
+                  <div className="min-w-0 space-y-2">
+                    <p className="font-manrope text-sm font-bold leading-snug text-black sm:text-[15px]">
+                      Failure to recognize compliance issues as they emerge can:
+                    </p>
+                    <ul className="list-disc space-y-1 pl-5 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
+                      <li>Impact life quality due to pain</li>
+                      <li>Psychological distress</li>
+                    </ul>
+                  </div>
+                  <div className="min-w-0 space-y-2">
+                    <p className="font-manrope text-sm font-bold leading-snug text-black sm:text-[15px]">
+                      Failure to report and address compliance issues can:
+                    </p>
+                    <ul className="list-disc space-y-1 pl-5 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
+                      <li>Reduce brace effectiveness</li>
+                      <li>Increase the risk of surgery</li>
+                    </ul>
+                  </div>
+                  <div className="min-w-0 space-y-2">
+                    <p className="font-manrope text-sm font-bold leading-snug text-black sm:text-[15px]">
+                      Failure to maintain a rehabilitation routine can lead to:
+                    </p>
+                    <ul className="list-disc space-y-1 pl-5 font-manrope text-sm leading-relaxed text-[#666666] sm:text-[15px]">
+                      <li>Weaken muscles</li>
+                      <li>Reduce brace effectiveness</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </FadeSlideSegment>
 
             {/* Mobile: stacked columns with same copy as desktop */}
-            <FadeSlideSegment show={sp.show} index={1} className="lg:hidden">
-              <h2 className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl">The Challenges</h2>
+            <FadeSlideSegment show={spShow} index={1} className="lg:hidden">
+              <h2 className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl">The Challenges</h2>
               <p className="mt-4 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
                 However, I found that there are 3 challenges hindering the effectiveness of scoliosis brace.
               </p>
@@ -680,15 +744,15 @@ export default function AiryCaseStudyPage() {
           </section>
 
           <section
-            ref={sGoals.ref}
+            ref={sGoalsRef}
             className="mt-14 w-full min-w-0 sm:mt-16 md:mt-20"
             aria-labelledby="airy-design-goals-heading"
           >
             <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,280px)_1fr] lg:gap-16 xl:gap-20">
-              <FadeSlideSegment show={sGoals.show} index={0} className="min-w-0 text-left">
+              <FadeSlideSegment show={sGoalsShow} index={0} className="min-w-0 text-left">
                 <h2
                   id="airy-design-goals-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
                 >
                   Design Goals
                 </h2>
@@ -697,7 +761,7 @@ export default function AiryCaseStudyPage() {
                 </p>
               </FadeSlideSegment>
               <div className="grid min-w-0 grid-cols-1 gap-12 sm:grid-cols-3 sm:gap-10 lg:gap-12">
-                <FadeSlideSegment show={sGoals.show} index={1} className="flex min-w-0 flex-col items-center text-center">
+                <FadeSlideSegment show={sGoalsShow} index={1} className="flex min-w-0 flex-col items-center text-center">
                   <div className="mx-auto flex h-20 w-20 shrink-0 items-center justify-center sm:h-24 sm:w-24">
                     <Image
                       src="/airy-project1.png"
@@ -713,7 +777,7 @@ export default function AiryCaseStudyPage() {
                     Encourage better brace-wearing habits in users
                   </p>
                 </FadeSlideSegment>
-                <FadeSlideSegment show={sGoals.show} index={2} className="flex min-w-0 flex-col items-center text-center">
+                <FadeSlideSegment show={sGoalsShow} index={2} className="flex min-w-0 flex-col items-center text-center">
                   <div className="mx-auto flex h-20 w-20 shrink-0 items-center justify-center sm:h-24 sm:w-24">
                     <Image
                       src="/airy-project2.png"
@@ -729,7 +793,7 @@ export default function AiryCaseStudyPage() {
                     Report and address compliance issues efficiently
                   </p>
                 </FadeSlideSegment>
-                <FadeSlideSegment show={sGoals.show} index={3} className="flex min-w-0 flex-col items-center text-center">
+                <FadeSlideSegment show={sGoalsShow} index={3} className="flex min-w-0 flex-col items-center text-center">
                   <div className="mx-auto flex h-20 w-20 shrink-0 items-center justify-center sm:h-24 sm:w-24">
                     <Image
                       src="/airy-project3.png"
@@ -750,11 +814,11 @@ export default function AiryCaseStudyPage() {
           </section>
 
           <section
-            ref={sf.ref}
-            className="relative left-1/2 mt-14 w-screen max-w-[100vw] -translate-x-1/2 bg-[#F2EEE9] px-[max(1.25rem,env(safe-area-inset-left))] py-14 sm:mt-16 sm:px-8 sm:py-16 md:mt-20 md:py-20 lg:px-[54px] lg:pr-[65px]"
-            aria-labelledby="airy-final-design-heading"
+            ref={sfRef}
+            className="relative left-1/2 mt-14 w-screen max-w-[100vw] -translate-x-1/2 bg-[#E6E1DB] px-[max(1.25rem,env(safe-area-inset-left))] py-14 sm:mt-16 sm:px-8 sm:py-16 md:mt-20 md:py-20 lg:px-[54px] lg:pr-[65px]"
+            aria-label="Final design showcase"
           >
-            <FadeSlideSegment show={sf.show} index={0} className="mx-auto w-full max-w-[1200px]">
+            <FadeSlideSegment show={sfShow} index={0} className="mx-auto w-full max-w-[1200px]">
               <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-center sm:gap-6">
                 <Image
                   src="/airy-project13.png"
@@ -767,9 +831,13 @@ export default function AiryCaseStudyPage() {
               </div>
             </FadeSlideSegment>
 
-            <div className="mx-auto mt-12 grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 lg:mt-16 lg:grid-cols-2 lg:gap-14 xl:gap-20">
-              <FadeSlideSegment show={sf.show} index={1} className="relative min-w-0">
-                <div className="overflow-hidden rounded-[24px] shadow-[0_8px_40px_rgba(0,0,0,0.06)]">
+            <FadeSlideSegment
+              show={sfShow}
+              index={1}
+              className="mx-auto mt-[7.5rem] grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 lg:mt-40 lg:grid-cols-2 lg:gap-14 xl:gap-20"
+            >
+              <div className="relative min-w-0">
+                <div className="overflow-hidden">
                   <Image
                     src="/airy-project8.png"
                     alt="Airy product packaging with QR code inviting users to join the Airy community for scoliosis management"
@@ -779,80 +847,191 @@ export default function AiryCaseStudyPage() {
                     className="h-auto w-full object-contain"
                   />
                 </div>
-              </FadeSlideSegment>
-              <FadeSlideSegment show={sf.show} index={2} className="min-w-0 text-left">
+              </div>
+              <div className="min-w-0 text-left">
                 <h2
-                  id="airy-final-design-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-[#C9A590] sm:text-2xl"
+                  className="font-manrope text-lg font-semibold leading-snug text-[#E3A48A] sm:text-xl"
                 >
                   Onboarding Prelude
                 </h2>
-                <p className="mt-6 font-manrope text-sm leading-relaxed text-neutral-900 sm:text-base">
+                <p className="mt-8 font-manrope text-[clamp(.75rem,1.5vw,1.5rem)] font-normal leading-[1.35] text-black sm:leading-[1.4]">
                   User journey begins with the initial touch point - packaging.
-                </p>
-                <p className="mt-4 font-manrope text-sm leading-relaxed text-neutral-900 sm:text-base">
                   A QR code prompts user to download the Airy app, creating the expectation of a transformative and empowering
                   journey.
                 </p>
-              </FadeSlideSegment>
-            </div>
-          </section>
-
-          <section
-            ref={sPam.ref}
-            className="mt-14 w-full min-w-0 sm:mt-16 md:mt-20"
-            aria-labelledby="airy-onboarding-heading"
-          >
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:items-start lg:gap-12 xl:gap-16">
-              <div className="min-w-0 space-y-4 text-left lg:max-w-[440px]">
-                <FadeSlideSegment show={sPam.show} index={0} className="w-full">
-                  <h2
-                    id="airy-onboarding-heading"
-                    className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
-                  >
-                    Onboarding
-                  </h2>
-                  <p className="mt-4 font-manrope text-sm leading-relaxed text-black/80 sm:text-base">
-                    Launch screens collect information with four optimized questions for precise personalization, while
-                    guiding users to the home screen quickly to minimize drop-off.
-                  </p>
-                </FadeSlideSegment>
               </div>
-              <FadeSlideSegment show={sPam.show} index={1} className="min-w-0 w-full">
-                <div className="overflow-hidden rounded-2xl">
+            </FadeSlideSegment>
+
+            <FadeSlideSegment
+              show={sfShow}
+              index={1}
+              className="mx-auto mt-[7.5rem] grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 lg:mt-40 lg:grid-cols-2 lg:gap-14 xl:gap-20"
+            >
+              <div className="relative min-w-0">
+                <div className="overflow-hidden">
                   <Image
-                    src="/airy-project25.jpg"
-                    alt="Airy onboarding: personalized questions and path to home"
-                    width={11568}
-                    height={3728}
-                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    src="/airy-project6.png"
+                    alt="Airy product packaging with QR code inviting users to join the Airy community for scoliosis management"
+                    width={3096}
+                    height={2552}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="h-auto w-full object-contain"
                   />
                 </div>
-              </FadeSlideSegment>
-            </div>
+              </div>
+              <div className="min-w-0 text-left">
+                <h2
+                  className="font-manrope text-lg font-semibold leading-snug text-[#E3A48A] sm:text-xl"
+                >
+                  Onboarding
+                </h2>
+                <p className="mt-8 font-manrope text-[clamp(.75rem,1.5vw,1.5rem)] font-normal leading-[1.35] text-black sm:leading-[1.4]">
+                The launch screens collect user information with four optimized questions for precise personalization, while also guiding user to home screen quickly to minimize the risk of dropoff.
+                </p>
+              </div>
+            </FadeSlideSegment>
+
+            <FadeSlideSegment
+              show={sfShow}
+              index={1}
+              className="mx-auto mt-[7.5rem] grid w-full max-w-[min(100%,1400px)] grid-cols-1 items-center gap-10 lg:mt-40 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,0.75fr)] lg:gap-10 xl:gap-14"
+            >
+              <div className="relative min-w-0 lg:-ml-[10em]">
+                <div className="overflow-visible">
+                  <Image
+                    src="/airy-project11.png"
+                    alt="Airy onboarding tutorial screens introducing the application"
+                    width={3096}
+                    height={2552}
+                    sizes="(max-width: 1024px) 100vw, 65vw"
+                    className="h-auto w-full min-w-[min(100%,42rem)] max-w-none object-contain lg:min-w-0 lg:w-[103.5%] lg:max-w-[103.5%]"
+                  />
+                </div>
+              </div>
+              <div className="min-w-0 text-left lg:max-w-[22rem] lg:justify-self-end xl:max-w-[26rem]">
+                <h2
+                  className="font-manrope text-lg font-semibold leading-snug text-[#E3A48A] sm:text-xl"
+                >
+                  Onboarding
+                </h2>
+                <p className="mt-8 font-manrope text-[clamp(.75rem,1.5vw,1.5rem)] font-normal leading-[1.35] text-black sm:leading-[1.4]">
+                Tutorial screens
+                provide the user with an introduction to the application and increases the level of trust in it
+                </p>
+              </div>
+            </FadeSlideSegment>
+
+            <FadeSlideSegment
+              show={sfShow}
+              index={1}
+              className="mx-auto mt-[7.5rem] grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 lg:mt-40 lg:grid-cols-2 lg:gap-14 xl:gap-20"
+            >
+              <div className="relative min-w-0">
+                <div className="overflow-hidden">
+                  <Image
+                    src="/airy-project9.gif"
+                    alt="Airy product packaging with QR code inviting users to join the Airy community for scoliosis management"
+                    width={3096}
+                    height={2552}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="h-auto w-full object-contain"
+                  />
+                </div>
+              </div>
+              <div className="min-w-0 text-left">
+                <h2
+                  className="font-manrope text-lg font-semibold leading-snug text-[#E3A48A] sm:text-xl"
+                >
+                  Boost Compliance
+                </h2>
+                <p className="mt-8 font-manrope text-[clamp(.75rem,1.5vw,1.5rem)] font-normal leading-[1.35] text-black sm:leading-[1.4]">
+                Welcome users with an encouraging message, display their current wearing progress and achievements to boost engagement. Then conclude with a call to action to start rehab exercises today
+                </p>
+              </div>
+            </FadeSlideSegment>
+
+            <FadeSlideSegment
+              show={sfShow}
+              index={1}
+              className="mx-auto mt-[7.5rem] grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 lg:mt-40 lg:grid-cols-2 lg:gap-14 xl:gap-20"
+            >
+              <div className="relative min-w-0">
+                <div className="overflow-hidden">
+                  <Image
+                    src="/airy-project7.png"
+                    alt="Airy product packaging with QR code inviting users to join the Airy community for scoliosis management"
+                    width={3096}
+                    height={2552}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="h-auto w-full object-contain"
+                  />
+                </div>
+              </div>
+              <div className="min-w-0 text-left">
+                <h2
+                  className="font-manrope text-lg font-semibold leading-snug text-[#E3A48A] sm:text-xl"
+                >
+                  Rehab exercises
+                </h2>
+                <p className="mt-8 font-manrope text-[clamp(.75rem,1.5vw,1.5rem)] font-normal leading-[1.35] text-black sm:leading-[1.4]">
+                Algorithm matches exercises to user based on profile information, saving the abandon rate associated with exercise planning
+                </p>
+                <p className="mt-8 font-manrope text-[clamp(.75rem,1.5vw,1.5rem)] font-normal leading-[1.35] text-black sm:leading-[1.4]">
+                When reaching a specific milestone, encouragement message pops up to enhance engagement both during and after the exercise
+                </p>
+              </div>
+            </FadeSlideSegment>
+
+            <FadeSlideSegment
+              show={sfShow}
+              index={1}
+              className="mx-auto mt-[7.5rem] grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 lg:mt-40 lg:grid-cols-2 lg:gap-14 xl:gap-20"
+            >
+              <div className="relative min-w-0">
+                <div className="overflow-hidden">
+                  <Image
+                    src="/airy-project22.gif"
+                    alt="Airy product packaging with QR code inviting users to join the Airy community for scoliosis management"
+                    width={3096}
+                    height={2552}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="h-auto w-full object-contain"
+                  />
+                </div>
+              </div>
+              <div className="min-w-0 text-left">
+                <h2
+                  className="font-manrope text-lg font-semibold leading-snug text-[#E3A48A] sm:text-xl"
+                >
+                  AI personal assistant
+                </h2>
+                <p className="mt-8 font-manrope text-[clamp(.75rem,1.5vw,1.5rem)] font-normal leading-[1.35] text-black sm:leading-[1.4]">
+                The AI personal assistant promptly identifies and resolves compliance issues, addressing user concerns and easing the workload for clinicians
+                </p>
+              </div>
+            </FadeSlideSegment>
           </section>
 
           <section
-            ref={sPset.ref}
-            className="mt-14 w-full min-w-0 sm:mt-16 md:mt-20"
+            ref={sPsetRef}
+            className="mt-[8.75rem] w-full min-w-0 sm:mt-40 md:mt-[12.5rem]"
             aria-labelledby="airy-onboarding-tutorial-heading"
           >
-            <FadeSlideSegment show={sPset.show} index={0} className="w-full max-w-[820px] text-left">
+            <FadeSlideSegment show={sPsetShow} index={0} className="w-full max-w-[820px] text-left">
               <h2
                 id="airy-onboarding-tutorial-heading"
-                className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
+                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
               >
-                Onboarding — tutorial
+               After the research, I conceptualized the design...
               </h2>
               <p className="mt-3 font-manrope text-sm leading-relaxed text-black/80 sm:text-base">
-                Tutorial screens introduce the application and increase trust before users commit to daily tracking.
+              I started with sketch on paper, then developed concepts based on the features hierarchy, the user flow that I wish users to follow. Then I created mid-fi prototypes based on the paper sketch.
               </p>
             </FadeSlideSegment>
-            <FadeSlideSegment show={sPset.show} index={1} className="mt-8 w-full sm:mt-10">
+            <FadeSlideSegment show={sPsetShow} index={1} className="mt-20 w-full sm:mt-[6.25rem]">
               <div className="overflow-hidden rounded-2xl">
                 <Image
-                  src="/airy-project23.gif"
+                  src="/airy-project26.png"
                   alt="Airy onboarding tutorial walkthrough screens"
                   width={1920}
                   height={741}
@@ -865,284 +1044,306 @@ export default function AiryCaseStudyPage() {
           </section>
 
           <section
-            ref={sShare.ref}
-            className="mt-14 w-full min-w-0 sm:mt-16 md:mt-20"
-            aria-labelledby="airy-boost-compliance-heading"
+            ref={sIARef}
+            className="mt-[8.75rem] w-full min-w-0 sm:mt-40 md:mt-[12.5rem]"
+            aria-labelledby="airy-information-architecture-heading"
           >
-            <FadeSlideSegment show={sShare.show} index={0} className="w-full max-w-[820px] text-left">
-              <h2
-                id="airy-boost-compliance-heading"
-                className="font-manrope text-xl font-medium leading-snug text-[#fe6f61] sm:text-2xl"
-              >
-                Boost compliance
-              </h2>
-              <p className="mt-3 font-manrope text-sm leading-relaxed text-black/80 sm:text-base">
-                Welcome users with an encouraging message, show current wearing progress and achievements to boost
-                engagement, then conclude with a call to action to start rehab exercises today.
-              </p>
-            </FadeSlideSegment>
-            <FadeSlideSegment show={sShare.show} index={1} className="mt-8 w-full sm:mt-10">
-              <div className="overflow-hidden rounded-2xl">
-                <Image
-                  src="/airy-project22.gif"
-                  alt="Airy home: wear progress, achievements, and motivation to complete hours and rehab"
-                  width={1920}
-                  height={930}
-                  unoptimized
-                  sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                  className="h-auto w-full object-contain"
-                />
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
+              <FadeSlideSegment show={sIAShow} index={0} className="md:pt-1">
+                <h2
+                  id="airy-information-architecture-heading"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                >
+                  Information architecture
+                </h2>
+              </FadeSlideSegment>
+              <div className="min-w-0 space-y-6 sm:space-y-8">
+                <FadeSlideSegment show={sIAShow} index={1} className="w-full">
+                  <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
+                  Building information architecture helped organizing my logic, provided a framework for the information I intend to include. It notably eliminate redundant repetition in information for later stages.
+
+I made Home, Exercise, and Message to be in the sticky bottom menu, because they are the most important features that should be easily accessible and consistently visible across various screens. While Profile stays on the right top corner due to less frequent interaction and logical separation.</p>
+                </FadeSlideSegment>
+                <FadeSlideSegment show={sIAShow} index={2} className="w-full">
+                  <div className="overflow-hidden rounded-2xl">
+                    <Image
+                      src="/airy-project4.png"
+                      alt="Information architecture: brace, app, and care touchpoints with hierarchy and tradeoffs"
+                      width={7424}
+                      height={3664}
+                      unoptimized
+                      sizes="(max-width: 768px) 80vw, (max-width: 1440px) calc((100vw - 2.5rem) * 0.8), 1152px"
+                      className="mx-auto h-auto w-[80%] object-contain"
+                    />
+                  </div>
+                </FadeSlideSegment>
               </div>
-            </FadeSlideSegment>
+            </div>
+          </section>
+
+          <section
+            ref={sUsabilityRef}
+            className="mt-[8.75rem] w-full min-w-0 sm:mt-40 md:mt-[12.5rem]"
+            aria-labelledby="airy-usability-test-1-heading"
+          >
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
+              <FadeSlideSegment show={sUsabilityShow} index={0} className="md:pt-1">
+                <h2
+                  id="airy-usability-test-1-heading"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                >
+                  Usability test 1.0
+                </h2>
+              </FadeSlideSegment>
+              <div className="min-w-0 space-y-6 sm:space-y-8">
+                <FadeSlideSegment show={sUsabilityShow} index={1} className="w-full">
+                  <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
+                  I conducted a usability test with 3 designer friends on the first version of design, and they pointed out the following problems. Taking their feedback into consideration, I created the second version.</p>
+                </FadeSlideSegment>
+                <FadeSlideSegment show={sUsabilityShow} index={2} className="w-full">
+                  <div className="overflow-hidden rounded-2xl">
+                    <Image
+                      src="/airy-project29.png"
+                      alt="Information architecture: brace, app, and care touchpoints with hierarchy and tradeoffs"
+                      width={7424}
+                      height={3664}
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
+                      className="h-auto w-full object-contain"
+                    />
+                  </div>
+                </FadeSlideSegment>
+              </div>
+            </div>
           </section>
         </div>
 
         <section
-          ref={sUsers.ref}
+          ref={sUsersRef}
           className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
           aria-labelledby="airy-who-users-heading"
         >
-          <FadeSlideSegment show={sUsers.show} index={0} className="w-full">
+          <FadeSlideSegment show={sUsersShow} index={0} className="w-full">
             <div className="grid w-full min-w-0 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start lg:gap-10 xl:gap-14">
               <div className="min-w-0 text-left">
                 <h2
                   id="airy-who-users-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
                 >
-                  Persona
+                  Mid-fi prototype
                 </h2>
-                <p className="mt-3 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  Based on 6 interviewees: I contacted six scoliosis patients online who had worn a brace and were in three
-                  different stages of treatment from a scoliosis support group. I distilled their complaints into one persona
-                  shown in the tabs.
+                <Image
+                  src="/airy-icon1.png"
+                  alt="Airy mid-fi prototype"
+                  width={742}
+                  height={366}
+                  unoptimized
+                  sizes="(min-width: 640px) 72px, 48px"
+                  className="mt-1 h-12 w-12 object-contain sm:h-[96px] sm:w-[96px]"
+                />
+                <p className="mt-1 font-manrope text-sm leading-relaxed text-[#666666] sm:mt-1.5 sm:text-base">
+                  The launch screens collect user&apos;s information with minimally 4 questions, which are user&apos;s name, age, curvature degree and brace type.
                 </p>
               </div>
-              <div className="min-w-0">
-                <HowILandedUsersTabs />
-              </div>
+              <Image src="/airy-project5.png" alt="Airy mid-fi prototype" width={7424} height={3664} unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px" className="h-auto w-full object-contain" />
             </div>
           </FadeSlideSegment>
-        </section>
 
-        <section
-          ref={sComp.ref}
-          className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
-          aria-labelledby="airy-competitor-heading"
-        >
-          <FadeSlideSegment show={sComp.show} index={0} className="w-full">
+          <FadeSlideSegment show={sUsersShow} index={1} className="mt-16 w-full sm:mt-20 md:mt-24">
             <div className="grid w-full min-w-0 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start lg:gap-10 xl:gap-14">
               <div className="min-w-0 text-left">
-                <h2
-                  id="airy-competitor-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
-                >
-                  Competitor Overview
-                </h2>
-                <p className="mt-3 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  I analyzed the user experience of three competitors to understand their capabilities, challenges, and
-                  opportunities for improvement—helping identify market gaps and where Airy could differentiate.
+                <Image
+                  src="/airy-icon2.png"
+                  alt="Home"
+                  width={742}
+                  height={366}
+                  unoptimized
+                  sizes="(min-width: 640px) 72px, 48px"
+                  className="mt-1 h-12 w-12 object-contain sm:mt-1.5 sm:h-[48px] sm:w-[48px]"
+                />
+                <p className="mt-3 font-manrope text-sm leading-relaxed text-[#666666] sm:mt-4 sm:text-base">
+                  To reduce churn rate, it&apos;s crucial to foster positive emotions and motivation in users. An intuitive,
+                  simple home page can ease cognitive load, especially when users are already dealing with brace-wearing
+                  challenges. It needs to be:
+                </p>
+                <ol className="mt-3 list-decimal space-y-2 pl-5 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
+                  <li>Clear display of wear time progress.</li>
+                  <li>Incentives to complete required wearing hours.</li>
+                  <li>Motivation to start today&apos;s exercise.</li>
+                </ol>
+                <p className="mt-6 font-manrope text-sm leading-relaxed text-[#666666] sm:mt-8 sm:text-base">
+                  I used conversational UX to encourage brace-wearing continuity. Additionally, I placed the exercise
+                  schedule on the home page, hooking users to engage with the app beyond just monitoring data.
                 </p>
               </div>
-              <div className="min-w-0">
-                <CompetitorOverviewTabs />
-              </div>
+              <Image src="/airy-project10.png" alt="Airy mid-fi prototype" width={7424} height={3664} unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px" className="h-auto w-full object-contain" />
             </div>
           </FadeSlideSegment>
-        </section>
 
-        <section
-          ref={sSol.ref}
-          className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
-          aria-labelledby="airy-define-solutions-heading"
-        >
-          <FadeSlideSegment show={sSol.show} index={0} className="w-full max-w-[920px] text-left">
-            <h2
-              id="airy-define-solutions-heading"
-              className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
-            >
-              Rehab exercises
-            </h2>
-            <p className="mt-4 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-              An algorithm matches exercises to the user based on profile information, reducing the abandon rate associated
-              with planning. Milestone moments surface encouragement during and after exercise to keep engagement high.
-            </p>
-          </FadeSlideSegment>
-          <FadeSlideSegment show={sSol.show} index={1} className="mt-8 w-full sm:mt-10">
-            <div className="overflow-hidden rounded-2xl">
-              <Image
-                src="/airy-project13.png"
-                alt="Airy rehab exercises: personalized recommendations and milestone encouragement"
-                width={7680}
-                height={2376}
-                sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1200px"
-                className="h-auto w-full object-contain"
-              />
-            </div>
-          </FadeSlideSegment>
-        </section>
-
-        <section
-          ref={sHubs.ref}
-          className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
-          aria-labelledby="airy-ai-assistant-heading"
-        >
-          <FadeSlideSegment show={sHubs.show} index={0} className="w-full">
-            <div className="grid w-full min-w-0 grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start lg:gap-8 xl:gap-10 [&>*]:min-w-0">
+          <FadeSlideSegment show={sUsersShow} index={2} className="mt-16 w-full sm:mt-20 md:mt-24">
+            <div className="grid w-full min-w-0 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start lg:gap-10 xl:gap-14">
               <div className="min-w-0 text-left">
-                <h2
-                  id="airy-ai-assistant-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
-                >
-                  AI personal assistant
-                </h2>
-                <p className="mt-3 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  The assistant identifies and resolves compliance issues, addresses user concerns, and eases workload for
-                  clinicians by handling outsourceable questions—such as discomfort that may need brace adjustments.
+                <Image
+                  src="/airy-icon3.png"
+                  alt="Exercise"
+                  width={742}
+                  height={366}
+                  unoptimized
+                  sizes="(min-width: 640px) 72px, 48px"
+                  className="mt-1 h-12 w-12 object-contain sm:mt-1.5 sm:h-[48px] sm:w-[48px]"
+                />
+                <p className="mt-3 font-manrope text-sm leading-relaxed text-[#666666] sm:mt-4 sm:text-base">
+                Rehab exercises are vital for scoliosis management, yet often overlooked in related apps. During my interviews with orthopedists, they highlighted these exercises in preventing muscle weakening and scoliosis relapse due to bracing. Therefore, I designed the app&apos;s exercise section to provide personalized exercise recommendations through an algorithm and motivational prompts to increase user engagement.
                 </p>
               </div>
-              <div className="overflow-hidden rounded-2xl">
-                <Image
-                  src="/airy-project12.png"
-                  alt="Airy AI assistant: compliance prompts and supportive guidance"
-                  width={2054}
-                  height={1152}
-                  sizes="(max-width: 1024px) 100vw, 75vw"
-                  className="h-auto w-full object-contain"
-                />
-              </div>
+              <Image src="/airy-project21.png" alt="Airy mid-fi prototype" width={7424} height={3664} unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px" className="h-auto w-full object-contain" />
             </div>
           </FadeSlideSegment>
-        </section>
 
-        <section
-          ref={sHubs2.ref}
-          className="mt-12 w-full min-w-0 sm:mt-14 md:mt-16"
-          aria-labelledby="airy-after-research-heading"
-        >
-          <FadeSlideSegment show={sHubs2.show} index={0} className="w-full">
-            <div className="grid w-full min-w-0 grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start lg:gap-8 xl:gap-10 [&>*]:min-w-0">
+          <FadeSlideSegment show={sUsersShow} index={3} className="mt-16 w-full sm:mt-20 md:mt-24">
+            <div className="grid w-full min-w-0 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start lg:gap-10 xl:gap-14">
               <div className="min-w-0 text-left">
+                <Image
+                  src="/airy-icon4.png"
+                  alt="AI assistant"
+                  width={742}
+                  height={366}
+                  unoptimized
+                  sizes="(min-width: 640px) 72px, 48px"
+                  className="mt-1 h-12 w-12 object-contain sm:mt-1.5 sm:h-[48px] sm:w-[48px]"
+                />
+                <p className="mt-3 font-manrope text-sm leading-relaxed text-[#666666] sm:mt-4 sm:text-base">
+                Orthopedists have limited availability, resulting in delays addressing patient compliance issues with braces until appointment several month later, which can be too late. I was inspired by Lemonade app, to implement an AI assistant to help address outsourceable compliance problems, such as needing brace modifications due to discomfort.</p>
+              </div>
+              <Image src="/airy-project15.png" alt="Airy mid-fi prototype" width={7424} height={3664} unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px" className="h-auto w-full object-contain" />
+            </div>
+          </FadeSlideSegment>
+
+          <FadeSlideSegment show={sUsersShow} index={4} className="mt-16 w-full sm:mt-20 md:mt-24">
+            <div className="grid w-full min-w-0 grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start lg:gap-10 xl:gap-14">
+              <div className="min-w-0 text-left">
+                <Image
+                  src="/airy-icon5.png"
+                  alt="Profile"
+                  width={742}
+                  height={366}
+                  unoptimized
+                  sizes="(min-width: 640px) 72px, 48px"
+                  className="mt-1 h-12 w-12 object-contain sm:mt-1.5 sm:h-[48px] sm:w-[48px]"
+                />
+                <p className="mt-3 font-manrope text-sm leading-relaxed text-[#666666] sm:mt-4 sm:text-base">
+                The profile page displays a user&apos;s information and allows sharing compliance diagnostic reports with guardians. Users can select in 3 privacy preferences when sending the reports.
+                </p>              </div>
+              <Image src="/airy-project20.png" alt="Airy mid-fi prototype" width={7424} height={3664} unoptimized sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px" className="h-auto w-full object-contain" />
+            </div>
+          </FadeSlideSegment>
+        </section>
+
+        <section
+            ref={sInsight1Ref}
+            className="mt-[8.75rem] w-full min-w-0 sm:mt-40 md:mt-[12.5rem]"
+            aria-labelledby="airy-style-guide-heading"
+          >
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
+              <FadeSlideSegment show={sInsight1Show} index={0} className="md:pt-1">
                 <h2
-                  id="airy-after-research-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
+                  id="airy-style-guide-heading"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
                 >
-                  After the research, I conceptualized the design…
+                  Style guide
                 </h2>
-                <p className="mt-3 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  I started with sketches on paper, developed concepts from feature hierarchy and the user flow I wanted
-                  people to follow, then moved into mid-fidelity prototypes.
-                </p>
-              </div>
-              <div className="overflow-hidden rounded-2xl">
-                <Image
-                  src="/airy-project11.png"
-                  alt="Airy early sketches and concept development from research to mid-fi"
-                  width={2098}
-                  height={1256}
-                  sizes="(max-width: 1024px) 100vw, 75vw"
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-            </div>
-          </FadeSlideSegment>
-        </section>
-
-        <section
-          ref={sHubs3.ref}
-          className="mt-12 w-full min-w-0 sm:mt-14 md:mt-16"
-          aria-label="Mid-fi home and exercise highlights"
-        >
-          <FadeSlideSegment show={sHubs3.show} index={0} className="w-full">
-            <div className="grid w-full min-w-0 grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)] lg:items-start lg:gap-8 xl:gap-10 [&>*]:min-w-0">
-              <div className="overflow-hidden rounded-2xl">
-                <Image
-                  src="/airy-project1.png"
-                  alt="Airy mid-fi: simplified home layout and exercise entry"
-                  width={1492}
-                  height={685}
-                  sizes="(max-width: 1024px) 100vw, 25vw"
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-              <div className="overflow-hidden rounded-2xl">
-                <Image
-                  src="/airy-project10.png"
-                  alt="Airy mid-fi: exercise scheduling and engagement on the home surface"
-                  width={1790}
-                  height={1406}
-                  sizes="(max-width: 1024px) 100vw, 75vw"
-                  className="h-auto w-full object-contain"
-                />
-              </div>
-            </div>
-          </FadeSlideSegment>
-        </section>
-
-        <section
-          ref={sIA.ref}
-          className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
-          aria-labelledby="airy-information-architecture-heading"
-        >
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-            <FadeSlideSegment show={sIA.show} index={0} className="md:pt-1">
-              <h2
-                id="airy-information-architecture-heading"
-                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
-              >
-                Information Architecture
-              </h2>
-            </FadeSlideSegment>
-            <div className="min-w-0 space-y-6 sm:space-y-8">
-              <FadeSlideSegment show={sIA.show} index={1} className="w-full">
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  Building information architecture organized the logic and gave a framework for the information I wanted to
-                  include—reducing redundant repetition in later stages. I placed Home, Exercise, and Message in a sticky
-                  bottom menu because they are the most important features and should stay visible across screens. Profile stays
-                  in the top-right corner for less frequent tasks and clear separation.
-                </p>
               </FadeSlideSegment>
-              <FadeSlideSegment show={sIA.show} index={2} className="w-full">
-                <div className="overflow-hidden rounded-2xl">
-                  <Image
-                    src="/airy-project9.gif"
-                    alt="Information architecture: brace, app, and care touchpoints with hierarchy and tradeoffs"
-                    width={7424}
-                    height={3664}
-                    unoptimized
-                    sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                    className="h-auto w-full object-contain"
-                  />
-                </div>
-              </FadeSlideSegment>
+              <div className="min-w-0 space-y-6 sm:space-y-8">
+                <FadeSlideSegment show={sInsight1Show} index={1} className="w-full">
+                  <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
+                  I employed a rose pink hue as the primary color to create a calming visual experience, helping users distance themselves from the struggles of scoliosis. Gradient pop colors highlight important information or titles.
+                  </p>
+                  </FadeSlideSegment>
+                <FadeSlideSegment show={sInsight1Show} index={2} className="w-full">
+                  <div className="overflow-hidden rounded-2xl">
+                    <Image
+                      src="/airy-project27.png"
+                      alt="Information architecture: brace, app, and care touchpoints with hierarchy and tradeoffs"
+                      width={7424}
+                      height={3664}
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
+                      className="h-auto w-full object-contain"
+                    />
+                  </div>
+                </FadeSlideSegment>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+
+          <section
+            ref={sHubs2Ref}
+            className="mt-[8.75rem] w-full min-w-0 sm:mt-40 md:mt-[12.5rem]"
+            aria-labelledby="airy-midfi-highfi-heading"
+          >
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
+              <FadeSlideSegment show={sHubs2Show} index={0} className="md:pt-1">
+                <h2
+                  id="airy-midfi-highfi-heading"
+                  className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
+                >
+                  Mid-fi to High-fi Prototype
+                </h2>
+              </FadeSlideSegment>
+              <div className="min-w-0 space-y-6 sm:space-y-8">
+                <FadeSlideSegment show={sHubs2Show} index={1} className="w-full">
+                  <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
+                  I identified the different styles from the mid-fi prototype and created a visual guide for the app interface design. While applying the visual design, I optimized the layout, utilized margin spaces, adjusted font and component sizes and color to highlight the information hierarchy. </p>
+                  </FadeSlideSegment>
+                <FadeSlideSegment show={sHubs2Show} index={2} className="w-full">
+                  <div className="overflow-hidden rounded-2xl">
+                    <Image
+                      src="/airy-project19.gif"
+                      alt="Information architecture: brace, app, and care touchpoints with hierarchy and tradeoffs"
+                      width={7424}
+                      height={3664}
+                      unoptimized
+                      sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
+                      className="h-auto w-full object-contain"
+                    />
+                  </div>
+                </FadeSlideSegment>
+              </div>
+            </div>
+          </section>
 
         <section
-          ref={sModalDirections.ref}
+          ref={sModalDirectionsRef}
           className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
           aria-labelledby="airy-modal-directions-heading"
         >
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-            <FadeSlideSegment show={sModalDirections.show} index={0} className="md:pt-1">
+            <FadeSlideSegment show={sModalDirectionsShow} index={0} className="md:pt-1">
               <h2
                 id="airy-modal-directions-heading"
-                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
               >
-                Style guide
+                Usability test 2.0
               </h2>
             </FadeSlideSegment>
             <div className="min-w-0 space-y-6 sm:space-y-8">
-              <FadeSlideSegment show={sModalDirections.show} index={1} className="w-full">
+              <FadeSlideSegment show={sModalDirectionsShow} index={1} className="w-full">
                 <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  I used a rose pink hue as the primary color to create a calming visual experience, helping users distance
-                  themselves from the stress of scoliosis. Gradient accent colors highlight important information and titles.
+                  I conducted a usability test of the high fidelity prototype in maze.co with a group of 8 users. I found that:
                 </p>
+                <ol className="mt-3 list-decimal space-y-2 pl-5 font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
+                  <li>
+                    Users miss &apos;notification&apos; when it is under irrelevant UX script, &apos;privacy setting&apos;.
+                  </li>
+                  <li>
+                    Onboarding pages are crucial at helping user understand the app&apos;s purpose. Without it, almost no user can determine the app&apos;s purpose at first glance.
+                  </li>
+                </ol>
               </FadeSlideSegment>
-              <FadeSlideSegment show={sModalDirections.show} index={2} className="w-full">
+              <FadeSlideSegment show={sModalDirectionsShow} index={2} className="w-full">
                 <div className="overflow-hidden rounded-2xl">
                   <Image
-                    src="/airy-project14.png"
+                    src="/airy-project16.png"
                     alt="Airy style guide: rose primary palette and gradient accents"
                     width={5760}
                     height={3240}
@@ -1151,150 +1352,36 @@ export default function AiryCaseStudyPage() {
                   />
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={sModalDirections.show} index={3} className="w-full space-y-3">
-                <h3 className="font-manrope text-lg font-bold text-black sm:text-xl">Mid-fi to high-fi prototype</h3>
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  I identified the different styles from the mid-fi prototype and created a visual guide for the interface.
-                  While applying visual design, I optimized layout, margins, type sizes, and color to reinforce hierarchy.
-                </p>
-                <div className="overflow-hidden rounded-2xl">
-                  <Image
-                    src="/airy-project8.png"
-                    alt="Airy mid-fi to high-fi: visual refinement and component hierarchy"
-                    width={5760}
-                    height={3240}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                    className="h-auto w-full object-contain"
-                  />
-                </div>
-              </FadeSlideSegment>
             </div>
           </div>
         </section>
 
         <section
-          ref={sUsability.ref}
-          className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
-          aria-labelledby="airy-usability-test-heading"
-        >
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-            <FadeSlideSegment show={sUsability.show} index={0} className="md:pt-1">
-              <div className="min-w-0 text-left">
-                <h2
-                  id="airy-usability-test-heading"
-                  className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
-                >
-                  Usability test 1.0
-                </h2>
-                <p className="mt-2 font-manrope text-sm text-[#666666] sm:text-[15px]">
-                  First version tested with three designer peers
-                </p>
-              </div>
-            </FadeSlideSegment>
-            <div className="min-w-0 space-y-6 sm:space-y-8">
-              <FadeSlideSegment show={sUsability.show} index={1} className="w-full">
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  I conducted a usability test with three designer friends on the first version of the design. They surfaced
-                  issues with navigation and clarity; I incorporated their feedback into the second version.
-                </p>
-              </FadeSlideSegment>
-              <FadeSlideSegment show={sUsability.show} index={2} className="w-full">
-                <div className="overflow-hidden rounded-2xl">
-                  <Image
-                    src="/airy-project7.png"
-                    alt="Airy usability test 1.0: synthesis of designer feedback and iteration themes"
-                    width={5768}
-                    height={1584}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                    className="h-auto w-full object-contain"
-                  />
-                </div>
-              </FadeSlideSegment>
-            </div>
-          </div>
-        </section>
-
-        <section
-          ref={sInsight1.ref}
-          className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
-          aria-labelledby="airy-midfi-heading"
-        >
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-            <FadeSlideSegment show={sInsight1.show} index={0} className="flex flex-col gap-2 md:pt-1">
-              <h2
-                id="airy-midfi-heading"
-                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
-              >
-                Mid-fi prototype
-              </h2>
-              <Image
-                src="/airy-project5.png"
-                alt="Airy mid-fi: launch questions and personalized onboarding fields"
-                width={2304}
-                height={1012}
-                sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                className="h-auto w-full object-contain"
-              />
-            </FadeSlideSegment>
-            <div className="min-w-0 space-y-6 sm:space-y-8">
-              <FadeSlideSegment show={sInsight1.show} index={1} className="w-full">
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  Launch screens collect minimally four questions—name, age, curvature degree, and brace type. To reduce
-                  churn, it is crucial to foster positive emotion and motivation. An intuitive, simple home eases cognitive load
-                  when users are already managing brace wear: clear wear-time progress, incentives to complete required hours,
-                  and motivation to start today&apos;s exercise.
-                </p>
-              </FadeSlideSegment>
-              <FadeSlideSegment show={sInsight1.show} index={2} className="w-full">
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  I used conversational UX to encourage continuity. Placing the exercise schedule on the home page hooks
-                  engagement beyond monitoring data alone. Rehab exercises are vital yet often missing in related apps;
-                  orthopedists highlighted their role in preventing muscle weakening and relapse—so the exercise section delivers
-                  personalized recommendations and motivational prompts.
-                </p>
-              </FadeSlideSegment>
-              <FadeSlideSegment show={sInsight1.show} index={3} className="w-full">
-                <div className="overflow-hidden rounded-2xl">
-                  <Image
-                    src="/airy-project6.png"
-                    alt="Airy mid-fi: home experience with wear progress, incentives, and exercise entry"
-                    width={6384}
-                    height={3796}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                    className="h-auto w-full object-contain"
-                  />
-                </div>
-              </FadeSlideSegment>
-            </div>
-          </div>
-        </section>
-
-        <section
-          ref={sInsight2.ref}
+          ref={sInsight2Ref}
           className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
           aria-labelledby="airy-impact-heading"
         >
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-            <FadeSlideSegment show={sInsight2.show} index={0} className="flex flex-col gap-2 md:pt-1">
+            <FadeSlideSegment show={sInsight2Show} index={0} className="flex flex-col gap-2 md:pt-1">
               <h2
                 id="airy-impact-heading"
-                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
               >
                 The impact
               </h2>
             </FadeSlideSegment>
             <div className="min-w-0 space-y-8 sm:space-y-10">
-              <FadeSlideSegment show={sInsight2.show} index={1} className="w-full">
+              <FadeSlideSegment show={sInsight2Show} index={1} className="w-full">
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
-                  <div className="rounded-2xl border border-black/[0.08] bg-[#fff5f7] p-6 sm:p-8">
-                    <p className="font-bangla-mn text-4xl font-semibold text-[#e11d48] sm:text-5xl">36%</p>
+                  <div className="rounded-2xl bg-[#F5F3F1] p-6 sm:p-8">
+                    <p className="font-manrope text-2xl font-semibold text-[#D5A287] sm:text-5xl">36%</p>
                     <p className="mt-3 font-manrope text-sm leading-relaxed text-black/80 sm:text-base">
                       more patients say the Airy app helps their doctors analyze whether a treatment plan adjustment is needed,
                       thanks to better engagement in wear time and exercise tracking.
                     </p>
                   </div>
-                  <div className="rounded-2xl border border-black/[0.08] bg-[#fff5f7] p-6 sm:p-8">
-                    <p className="font-bangla-mn text-4xl font-semibold text-[#e11d48] sm:text-5xl">76%</p>
+                  <div className="rounded-2xl bg-[#F5F3F1] p-6 sm:p-8">
+                    <p className="font-manrope text-2xl font-semibold text-[#D5A287] sm:text-5xl">76%</p>
                     <p className="mt-3 font-manrope text-sm leading-relaxed text-black/80 sm:text-base">
                       of testers could find how to check wear time, access exercise tutorials, and update scoliosis progression
                       within the first three attempts.
@@ -1302,95 +1389,30 @@ export default function AiryCaseStudyPage() {
                   </div>
                 </div>
               </FadeSlideSegment>
-              <FadeSlideSegment show={sInsight2.show} index={2} className="w-full">
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  Orthopedists have limited availability, which delays addressing brace compliance until appointments months
-                  later—often too late. Inspired by apps like Lemonade, I explored an AI assistant to resolve outsourceable
-                  compliance issues such as discomfort that may require brace modifications.
-                </p>
-              </FadeSlideSegment>
-              <FadeSlideSegment show={sInsight2.show} index={3} className="w-full">
-                <div className="overflow-hidden rounded-2xl">
-                  <Image
-                    src="/airy-project4.png"
-                    alt="Airy profile and sharing compliance reports with guardian privacy options"
-                    width={2304}
-                    height={1012}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                    className="h-auto w-full object-contain"
-                  />
-                </div>
-              </FadeSlideSegment>
             </div>
           </div>
         </section>
 
         <section
-          ref={sInsight3.ref}
-          className="mt-16 w-full min-w-0 sm:mt-20 md:mt-24"
-          aria-labelledby="airy-usability-2-heading"
-        >
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-            <FadeSlideSegment show={sInsight3.show} index={0} className="flex flex-col gap-2 md:pt-1">
-              <h2
-                id="airy-usability-2-heading"
-                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
-              >
-                Usability test 2.0
-              </h2>
-              <Image
-                src="/airy-project3.png"
-                alt="Airy maze.co usability study for the high-fidelity prototype"
-                width={1659}
-                height={2394}
-                sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                className="h-auto w-full object-contain"
-              />
-            </FadeSlideSegment>
-            <div className="min-w-0 space-y-6 sm:space-y-8">
-              <FadeSlideSegment show={sInsight3.show} index={1} className="w-full">
-                <p className="font-manrope text-sm leading-relaxed text-[#666666] sm:text-base">
-                  I tested the high-fidelity prototype in maze.co with eight users. Key findings: (1) users missed
-                  &ldquo;notification&rdquo; when it lived under an unrelated script like privacy settings; (2) onboarding
-                  pages were essential—without them, almost no one could infer the app&apos;s purpose at first glance.
-                </p>
-              </FadeSlideSegment>
-              <FadeSlideSegment show={sInsight3.show} index={2} className="w-full">
-                <div className="overflow-hidden rounded-2xl">
-                  <Image
-                    src="/airy-project2.png"
-                    alt="Airy usability test 2.0: findings on notifications, onboarding, and discoverability"
-                    width={5024}
-                    height={2952}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1440px) calc(100vw - 2.5rem), 1440px"
-                    className="h-auto w-full object-contain"
-                  />
-                </div>
-              </FadeSlideSegment>
-            </div>
-          </div>
-        </section>
-
-        <section
-          ref={sTakeaways.ref}
-          className="mt-16 mb-24 w-full min-w-0 sm:mt-20 sm:mb-32 md:mt-24 md:mb-40"
+          ref={sTakeawaysRef}
+          className="mt-16 mb-10 w-full min-w-0 sm:mt-20 md:mt-24"
           aria-labelledby="airy-takeaways-heading"
         >
           <div className="grid grid-cols-1 gap-8 md:grid-cols-[minmax(0,200px)_1fr] md:items-start md:gap-12 lg:gap-16 xl:gap-24">
-            <FadeSlideSegment show={sTakeaways.show} index={0} className="md:pt-1">
+            <FadeSlideSegment show={sTakeawaysShow} index={0} className="md:pt-1">
               <h2
                 id="airy-takeaways-heading"
-                className="font-manrope text-xl font-medium leading-snug text-black sm:text-2xl"
+                className="font-manrope text-xl font-bold leading-snug text-black sm:text-2xl"
               >
                 Takeaways
               </h2>
             </FadeSlideSegment>
             <div className="min-w-0 space-y-8 sm:space-y-10">
-              <FadeSlideSegment show={sTakeaways.show} index={1} className="w-full space-y-3">
+              <FadeSlideSegment show={sTakeawaysShow} index={1} className="w-full space-y-3">
                 <p className="font-manrope text-base font-semibold leading-snug text-black sm:text-lg">
                   Experience starts earlier than I thought
                 </p>
-                <p className="font-manrope text-sm italic leading-relaxed text-black/85 sm:text-base">
+                <p className="font-manrope text-sm leading-relaxed text-black/85 sm:text-base">
                   I once believed the user experience started with the launch screen of an app, but it truly begins much
                   earlier. It can be the first advertisement seen, initial website search, or unboxing a product. Even
                   packaging that entices users with a seamless onboarding process shapes expectations. Considering the entire
@@ -1399,22 +1421,22 @@ export default function AiryCaseStudyPage() {
                   about the screens.
                 </p>
               </FadeSlideSegment>
-              <FadeSlideSegment show={sTakeaways.show} index={2} className="w-full space-y-3">
+              <FadeSlideSegment show={sTakeawaysShow} index={2} className="w-full space-y-3">
                 <p className="font-manrope text-base font-semibold leading-snug text-black sm:text-lg">
                   Experience design follows design intent
                 </p>
-                <p className="font-manrope text-sm italic leading-relaxed text-black/85 sm:text-base">
+                <p className="font-manrope text-sm leading-relaxed text-black/85 sm:text-base">
                   I realize that the interface serves as a vehicle for communicating information efficiently and guiding user
                   actions in a clear, intuitive manner given hardware constraints. The goal is to direct users down a desired
                   path by prioritizing calls to action. Designers must thoughtfully utilize limited screen space to optimize
                   this experience.
                 </p>
               </FadeSlideSegment>
-              <FadeSlideSegment show={sTakeaways.show} index={3} className="w-full space-y-3">
+              <FadeSlideSegment show={sTakeawaysShow} index={3} className="w-full space-y-3">
                 <p className="font-manrope text-base font-semibold leading-snug text-black sm:text-lg">
                   Typographic consistency across all interfaces
                 </p>
-                <p className="font-manrope text-sm italic leading-relaxed text-black/85 sm:text-base">
+                <p className="font-manrope text-sm leading-relaxed text-black/85 sm:text-base">
                   Typography hierarchies are constrained by space and accessibility. Designers must analyze a system&apos;s
                   type usage holistically to communicate informational importance at first view. Merely using the largest type
                   on a page does not guarantee consistent hierarchy across interfaces. Establishing typographic guidelines
@@ -1427,16 +1449,16 @@ export default function AiryCaseStudyPage() {
       </main>
 
       <footer
-        ref={footReveal.ref}
+        ref={footRevealRef}
         className="relative z-10 w-full bg-black pb-[40px] pl-[max(1.25rem,env(safe-area-inset-left))] pr-[max(1.25rem,env(safe-area-inset-right))] pt-16 sm:pl-8 sm:pr-8 sm:pt-[107px] lg:pl-[74px] lg:pr-[min(427px,28vw)]"
       >
         <div className="flex flex-col items-start text-left">
-          <FadeSlideSegment show={footReveal.show} index={0}>
+          <FadeSlideSegment show={footRevealShow} index={0}>
             <p className="font-bangla-mn text-xl leading-normal text-white sm:text-[24px]">
               Interested in building together?
             </p>
           </FadeSlideSegment>
-          <FadeSlideSegment show={footReveal.show} index={1} className="mt-4 sm:mt-2">
+          <FadeSlideSegment show={footRevealShow} index={1} className="mt-4 sm:mt-2">
             <a
               href="mailto:sangyuxi@gmail.com"
               className="font-bangla-mn text-xl text-white underline underline-offset-8 transition-opacity hover:opacity-80 sm:text-[24px]"
@@ -1444,7 +1466,7 @@ export default function AiryCaseStudyPage() {
               Let&apos;s connect 
             </a>
           </FadeSlideSegment>
-          <FadeSlideSegment show={footReveal.show} index={2} className="mt-16 sm:mt-[84px]">
+          <FadeSlideSegment show={footRevealShow} index={2} className="mt-16 sm:mt-[84px]">
             <div className="flex items-center">
               <p className="font-manrope text-base text-white">
                 Copyright &copy; 2026 sangyuxi.com. All rights reserved.
